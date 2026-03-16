@@ -1,14 +1,16 @@
 import './App.css'
 
-import { Home } from './components/home'
+import { ContenedorWeb } from './components/contenedorWeb'
+import { CardHome } from './components/cardDev'
 
 
 function App() {
 
   return (
-    <>
-      <Home/>
-    </>
+    <div id="web">
+      <CardHome/>
+      <ContenedorWeb/>
+    </div>
   )
 }
 
