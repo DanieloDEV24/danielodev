@@ -2,6 +2,7 @@ import './App.css'
 
 import { ContenedorWeb } from './components/contenedorWeb'
 import { CardHome } from './components/cardDev'
+import { Proyectos } from './components/proyectos'
 
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
     <div id="web">
       <CardHome/>
       <ContenedorWeb/>
+      <Proyectos/>
     </div>
   )
 }

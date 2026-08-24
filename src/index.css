@@ -66,9 +66,8 @@ button:focus-visible {
   justify-content: end;
   padding-top: 3%;
   align-items: flex-start; /* ← imprescindible con flex + sticky */
+  flex-wrap: wrap;
 }
-
-
 
 .contenedor-card {
   position: fixed;
@@ -153,9 +152,10 @@ button:focus-visible {
   left: 15%;
 }
 
-#contenedor-web {
-  width: 60%;
+#contenedor-web, #proyectos {
+  width: 70%;
   margin-right: 5%;
+  margin-left: 15%;
 }
 
 #contenedor-home .contenedor-titulo, 
@@ -217,6 +217,43 @@ button:focus-visible {
 
 #contenedor-proyectos {
   margin-top: 20%;
+}
+
+#contenedor-proyectos .card-proyecto {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 5%;
+}
+
+#contenedor-proyectos .card-proyecto .icono-proyecto {
+  width: 20%;
+  border-radius: 15px;
+}
+
+#contenedor-proyectos .card-proyecto .contenedor-texto-card {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  text-align: start;
+}
+
+#contenedor-proyectos .card-proyecto .contenedor-texto-card p, #contenedor-proyectos .card-proyecto .contenedor-texto-card h2 {
+  margin: 0%;
+  width: 100%;
+}
+
+#contenedor-home {
+  margin-left: 15%;
+}
+
+#contenedor-proyectos {
+  display: flex;
+  flex-direction: column;
+  gap: 10%;
 }
 
 @media (prefers-color-scheme: light) {
