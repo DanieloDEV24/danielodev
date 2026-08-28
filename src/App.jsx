@@ -11,7 +11,6 @@ function App() {
     <div id="web">
       <CardHome/>
       <ContenedorWeb/>
-      <Proyectos/>
     </div>
   )
 }

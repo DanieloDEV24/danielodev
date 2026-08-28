@@ -7,7 +7,7 @@ export const Home = () => {
                 
                 <h1>
                     <span className='titulo-home-dev'>DESARROLLADOR</span>
-                    <span className='titulo-home-full'>FULL STACK</span>
+                    <span className='titulo-home-full'>FULL STACK.</span>
                 </h1>
 
                 <p className="texto-home">

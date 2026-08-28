@@ -1,5 +1,5 @@
 import turismo from '../assets/img/turismo.png';
-import reservalo from '../assets/img/reservalo.png';
+import reservalo from '../assets/img/reservalo.jpeg';
 import rotMoncayo from '../assets/img/rotulos-moncayo.png';
 import myno from '../assets/img/myno-solutions.png'
 
@@ -10,7 +10,7 @@ const projects = [
         img: reservalo, 
         altImg: "icono de la web de reservas Reservalo",
         title: "Reservalo", 
-        description: "Web de reservas de las instalaciones municipales", 
+        description: "Reserva pistas deportivas, espacios municipales y actividades como excursiones en pocos clics. Disponibilidad en tiempo real y gestión de reservas, todo desde un solo lugar.", 
         estado: false, 
         srcGitHub: "https://github.com/DanieloDEV24/reservalo2.0", 
         srcWeb: ""
@@ -49,19 +49,31 @@ const projects = [
 
 export const Proyectos = () => {
     return (
-        <div id="proyectos">
-           <div id="contenedor-proyectos">
-                <div className="contenedor-titulo">
-                        <h1 className='titulo-proyectos-mis'>MIS</h1>
-                        <h1 className='titulo-proyectos-proyectos'>PROYECTOS</h1>
-                </div>
+        <section id="proyectos">
+                <h2 className="contenedor-titulo">
+                        <span className='titulo-proyectos-mis'>MIS</span>
+                        <span className='titulo-proyectos-proyectos'>PROYECTOS.</span>
+                </h2>
 
-                <div className="contenedor-proyectos">
-                    {projects.map(function(p) {
-                        return <CardProyecto img={p.img} altImg={p.altImg} titulo={p.title} descripcion={p.description} estado={p.estado} srcGitHub={p.srcGitHub} srcWeb={p.srcWeb}/>
-                    })}
-                </div>
-           </div>
-        </div>
+                <p className='description'>Algunos de los proyectos en los que he estado trabajando últimamente. Desde aplicaciones web funcionales hasta soluciones digitales pensadas para necesidades reales.</p>
+
+                <ul className="proyectos">
+                    {
+                        projects.map(function(p){
+                            return <li>
+                                    <CardProyecto 
+                                        img={p.img}
+                                        altImg={p.altImg}
+                                        titulo={p.title}
+                                        descripcion={p.description}
+                                        estado={p.estado}
+                                        srcGitHub={p.srcGitHub}
+                                        srcWeb={p.srcWeb}
+                                    />
+                                </li>
+                        })
+                    }
+                </ul>
+        </section>
     )
 }  

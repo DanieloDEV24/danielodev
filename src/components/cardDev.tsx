@@ -3,13 +3,15 @@ import avatar from '../assets/img/avatar.png'
 export const CardHome = () => {
     return (
         
-        <aside className='contenedor-card'>
+        <aside className='contenedor-card contenedor-card-dev'>
+            
+            {/* Al tener el aside con sticky no puedo meterle otro position */}
             <div className="contenedor-card-dev">
 
                 <svg width="41" height="31" viewBox="0 0 41 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
-                        top: '50px',
+                        top: '55px',
                         left: '2.9%',
                         transform: 'translateX(-50%)',
                         zIndex: 2,
@@ -27,8 +29,8 @@ export const CardHome = () => {
                     aria-hidden="true"
                     style={{
                         position: 'absolute',
-                        top: '3px',
-                        left: '51%',
+                        top: '0px',
+                        left: '68%',
                         transform: 'translateX(-50%)',
                         zIndex: 2,
                         pointerEvents: 'none'
@@ -40,8 +42,8 @@ export const CardHome = () => {
                 <svg width="113" height="58" viewBox="0 0 113 58" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
-                        top: '387px',
-                        left: '55%',
+                        top: '415px',
+                        left: '73%',
                         transform: 'translateX(-50%)',
                         zIndex: 2,
                         pointerEvents: 'none'
@@ -51,7 +53,7 @@ export const CardHome = () => {
 
                 <svg width="74" height="28" viewBox="0 0 74 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{
                     position: 'absolute',
-                    top: '375px',
+                    top: '380px',
                     left: '7%',
                     transform: 'translateX(-50%)',
                     zIndex: 2,
