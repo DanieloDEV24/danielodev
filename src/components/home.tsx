@@ -11,7 +11,7 @@ export const Home = () => {
                 </h1>
 
                 <p className="texto-home">
-                    Soy Daniel, desarrollador Full Stack. Me gusta construir cosas que funcionen y que la gente use de verdad. Aprendo rápido, me adapto a lo que el proyecto necesita y siempre busco mejorar.
+                    Soy Daniel, desarrollador Full Stack y docente en desarrollo web. Me gusta construir cosas que funcionen y que la gente use de verdad, y también compartir lo que sé para que otros puedan aprender a hacerlo. Aprendo rápido, me adapto a lo que el proyecto necesita y siempre busco mejorar.
                 </p>
 
                 <dl className="contenedor-contadores-home">
@@ -30,6 +30,10 @@ export const Home = () => {
                         <dd>año de experiencia</dd>
                     </div>
                 </dl>
+
+                <footer className="experiencia">
+                    
+                </footer>
             </div>
 
         </section>

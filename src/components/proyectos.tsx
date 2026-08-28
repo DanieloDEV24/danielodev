@@ -20,7 +20,7 @@ const projects = [
         img: turismo, 
         altImg: "icono de turismo de Fuente de Piedra",
         title: "Fuente de Piedra Turismo", 
-        description: "Web de Turismo de Fuente de Piedra", 
+        description: "Descubre qué ver, qué hacer y dónde alojarte en Fuente de Piedra. Rutas, patrimonio y gastronomía, toda la información turística del municipio en un solo lugar.", 
         estado: true, 
         srcGitHub: "https://github.com/DanieloDEV24/fuentedepiedraturismo", 
         srcWeb: "https://fuentedepiedraturismo.com/"
@@ -30,7 +30,7 @@ const projects = [
         img: rotMoncayo,
         altImg: "icono de la empresa Rótulos Moncayo", 
         title: "Rotulos Moncayo", 
-        description: "Web de una empresa de rótulos y serigrafiados", 
+        description: "Web corporativa para una empresa de rótulos y serigrafiados: catálogo de servicios, galería de trabajos realizados y formulario de contacto, con un diseño que refleja su identidad de marca..", 
         estado: true, 
         srcGitHub: "https://github.com/inidev-code/01-rotulosmoncayo", 
         srcWeb: "https://rotulosmoncayo.es/"
@@ -39,8 +39,8 @@ const projects = [
     {
         img: myno, 
         altImg: "icono de la empresa Myno Studio", 
-        title: "Myno Studio", 
-        description: "Web empresa de desarrollo web y marketing digital", 
+        title: "Myno Solutions", 
+        description: "Web corporativa para mi empresa de desarrollo web y marketing digital: presentación de servicios, portfolio de proyectos y formulario de contacto, con un diseño propio pensado para transmitir profesionalidad y cercanía.", 
         estado: false, 
         srcGitHub: "https://github.com/DanieloDEV24/maynosolutions", 
         srcWeb: ""
