@@ -1,5 +1,25 @@
+import { CardExperiencia } from "./cardExperiencia";
 
 export const Home = () => {
+
+    const experiencias = [
+        {
+            puesto: 'Desarrollador de Aplicaciones Web.', 
+            empresa: 'Ayuntamiento de Fuente de Piedra.',
+            descripcion: 'Desarrollo de aplicaciones web para el consistorio: una plataforma de gestión y reservas de instalaciones y actividades municipales, y la web oficial de turismo del municipio.'
+        }, 
+        {
+            puesto: 'Desarrollador de Aplicaciones Web.', 
+            empresa: 'Freelancer.',
+            descripcion: 'Diseño y desarrollo de sitios web para empresas, incluyendo Rótulos Moncayo. Actualmente en desarrollo la web de Myno Solutions y una plataforma de reservas para el centro de belleza N23.'
+        }, 
+        {
+            puesto: 'Tutor e-learning.', 
+            empresa: 'Grupo Dabo Consulting.',
+            descripcion: 'Docencia online en formación de desarrollo web e informática, resolviendo dudas del alumnado, corrigiendo ejercicios y haciendo seguimiento del progreso en los cursos.'
+        }
+    ];
+
     return(
         <section id="home" aria-labelledby="titulo-home">
 
@@ -32,7 +52,11 @@ export const Home = () => {
                 </dl>
 
                 <footer className="experiencia">
-                    
+                    {
+                        experiencias.map(function(e){
+                            return <CardExperiencia puesto={e.puesto} empresa={e.empresa} descripcion={e.descripcion}/>
+                        })
+                    }
                 </footer>
             </div>
 

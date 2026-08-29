@@ -225,6 +225,10 @@
     color: #ffffff70;
   }
 
+  #contenedor-home .contenedor-contadores-home {
+    margin-top: 2rem;
+  } 
+
 
   @media (prefers-color-scheme: light) {
     :root {
@@ -343,11 +347,62 @@
     color: #8E51FF;
   }
 
-  #home .contenedor-home footer.experiencia {
-    display: grid;
-    
-  }
 
+#home footer.experiencia {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
 
+#home footer.experiencia > *:last-child {
+  grid-column: 1 / -1;
+}
+
+#home footer.experiencia article {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  text-align: start;
+  border: 2px solid transparent;
+  border-radius: 1rem;
+  padding: 1.2rem;
   
+}
+
+#home footer.experiencia article h4, #home footer.experiencia article p, #home footer.experiencia article small {
+  margin: 0;
+}
+
+#home footer.experiencia article p{
+  margin-top: 1rem;
+  font-size: 1rem;
+}
+
+#home footer.experiencia article h4{
+  font-size: 1.5rem;
+}
+
+#home footer.experiencia article small{
+  font-size: .9rem;
+}
+
+#home footer.experiencia article:first-child {
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%2331D492' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
+  background-color: #31D49210;
+  color: #31D492;
+}
+
+#home footer.experiencia article:nth-of-type(2) {
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%23ff6a00' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
+  background-color: #ff6a0010;
+  color: #ff6a00;
+}
+
+#home footer.experiencia article:nth-of-type(3) {
+  border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%238E51FF' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
+  background-color: #8E51FF10;
+  color: #8E51FF;
+}
 
