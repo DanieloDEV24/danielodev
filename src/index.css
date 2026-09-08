@@ -85,11 +85,12 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-between;
 
     position: 'relative';
     z-index: 1;
 
-    height: 60vh;
+    height: 70vh;
   }
 
   #card-dev .card-fondo-avatar {
@@ -157,7 +158,7 @@
     position: absolute;
     z-index: 9999;
     top: 83%;
-    left: 15%;
+    left: 16%;
   }
 
   #contenedor-web {
@@ -283,23 +284,37 @@
     box-sizing: border-box;
     padding: 0;
     gap: 4rem;
-    row-gap: 2.5rem;
+    row-gap: 5rem;
   }
 
   #proyectos ul.proyectos li {
-    list-style: none;
+   list-style: none;
+  }
+
+  #proyectos ul.proyectos > li {
     width: 100%;
   }
 
+  article.card-proyecto .contenedor-card-proyecto {
+    padding: 0 1rem;
+  }
+
+
   article.card-proyecto {
     width: 95%;
-    background-color: #ffffff20;
+    /* background-color: #ffffff20; */
     border-radius: 1rem;
-    padding: 1.7rem;
+    padding: 1rem;
     display: flex;
     justify-content: start;
     align-items: start;
     flex-direction: column;
+    transition: all .3s ease-in-out;
+  }
+
+  article.card-proyecto:hover {
+    background-color: #ffffff10;
+    
   }
 
   article.card-proyecto img {
