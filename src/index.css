@@ -524,3 +524,33 @@
 #herramientas {
   margin-top: 10rem;
 }
+
+#herramientas .contenedor-herramientas {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+  gap: 2rem;
+  margin-top: 3rem;
+}
+
+#herramientas .contenedor-herramientas article {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+
+#herramientas .contenedor-herramientas article .contenedor-img {
+  width: 90px;
+  height: 90px;
+  background-color: #fff;
+  padding: 2% ;
+  box-sizing: border-box;
+  border-radius: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#herramientas .contenedor-herramientas article .contenedor-img img {
+  width: 100%;
+}
