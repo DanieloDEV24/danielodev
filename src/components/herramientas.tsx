@@ -24,6 +24,8 @@ import vscode from '../assets/img/vscode.jpg';
 
 import { CardHerramienta } from './cardHerramienta'
 
+import { useState } from 'react';
+
 const herramientas = [
     // FRONTEND
     {
@@ -72,7 +74,7 @@ const herramientas = [
     // OTROS
     {
         nombre: 'MySQL',
-        categoria: 'Otros',
+        categoria: 'Backend',
         icono: mysql
     },
     {
@@ -92,7 +94,10 @@ const herramientas = [
     }
 ];
 
-export const Herramientas = () => {
+export const Herramientas = () => { 
+
+    const [seleccion, setSeleccion] = useState('todos') 
+
     return (
         <section id="herramientas">
             <h2 className="contenedor-titulo">
@@ -100,11 +105,26 @@ export const Herramientas = () => {
                 <span className='titulo-proyectos-proyectos'>QUE USO.</span>
             </h2>
 
+            <p className="texto-herramientas">
+                Estas son las tecnologías con las que trabajo día a día. Las elijo según lo que pide cada proyecto
+            </p>
+
+            <aside className="navegacion">
+                <span onClick={() => setSeleccion('todos')} className={seleccion === 'todos' ? 'selected' : ''}>Todos</span>
+                <span onClick={() => setSeleccion('Backend')} className={seleccion === 'backend' ? 'selected' : ''}>BackEnd</span>
+                <span onClick={() => setSeleccion('Frontend')} className={seleccion === 'frontend' ? 'selected' : ''}>FrontEnd</span>
+                <span onClick={() => setSeleccion('Otros')} className={seleccion === 'otros' ? 'selected' : ''}>Otros</span>
+            </aside>
             <ul className="contenedor-herramientas">
                 {
-                    herramientas.map(function(herramienta){
-                        return <li><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
-                    })
+                        herramientas.map(function(herramienta){
+                            if(seleccion === 'todos') {
+                                return <li><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                            }
+                            else if(seleccion === herramienta.categoria){
+                                return <li><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                            } 
+                        })
                 }
             </ul>
         </section>

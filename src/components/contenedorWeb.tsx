@@ -1,6 +1,7 @@
 import { Home } from "./home"
 import { Proyectos } from "./proyectos"
 import { Herramientas } from "./herramientas"
+import { Contacto } from "./contacto"
 
 export const ContenedorWeb = () => {
     return (
@@ -8,6 +9,7 @@ export const ContenedorWeb = () => {
             <Home/>
             <Proyectos/>
             <Herramientas/>
+            <Contacto />
         </div>
     )
 }
