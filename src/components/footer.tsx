@@ -1,9 +1,10 @@
 export const Footer = () => {
-    return (
-        <footer className="footer">
-      <hr className="footer__hr-top" />
- 
-      <div className="footer__legal">
+  return (
+    <footer className="footer">
+      <hr className="footer__hr" />
+
+      <div className="contenedor-texto-footer">
+        <div className="footer__legal">
         <span tabIndex={0} className="footer__copy">
           © 2026 Porfolio DanieloDev24 &nbsp;
           <span aria-hidden="true" className="footer__separator">
@@ -12,18 +13,10 @@ export const Footer = () => {
           <br aria-hidden="true" className="footer__break" />
           &nbsp; Todos los derechos reservados.
         </span>
-        <a href="/2024/legal-advice" tabIndex={0} className="footer__link">
-          Aviso legal
-        </a>
-        <a href="/2024/privacy-policy" tabIndex={0} className="footer__link">
-          Política de privacidad
-        </a>
       </div>
- 
-      <hr aria-hidden="true" className="footer__hr-mobile" />
- 
-      <nav>
-        <ul className="footer__social" aria-label="redes sociales y botón para alternar tema">
+
+      <nav aria-label="redes sociales">
+        <ul className="footer__social">
           <li>
             <a
               target="_blank"
@@ -33,8 +26,8 @@ export const Footer = () => {
               className="footer__social-link"
             >
               <svg
-                width="48"
-                height="48"
+                width="40"
+                height="40"
                 fill="none"
                 viewBox="0 0 48 48"
                 className="footer__icon"
@@ -52,7 +45,7 @@ export const Footer = () => {
               </svg>
             </a>
           </li>
- 
+
           <li>
             <a
               target="_blank"
@@ -61,18 +54,30 @@ export const Footer = () => {
               href="https://www.linkedin.com/in/daniel-ruiz-soto-831885315/"
               className="footer__social-link"
             >
-            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-linkedin footer__icon" role="img"
-                aria-label="Logotipo de LinkedIn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="35"
+                height="35"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="footer__icon"
+                role="img"
+                aria-label="Logotipo de LinkedIn"
+              >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M8 11v5" />
                 <path d="M8 8v.01" />
                 <path d="M12 16v-5" />
                 <path d="M16 16v-3a2 2 0 1 0 -4 0" />
                 <path d="M3 7a4 4 0 0 1 4 -4h10a4 4 0 0 1 4 4v10a4 4 0 0 1 -4 4h-10a4 4 0 0 1 -4 -4l0 -10" />
-            </svg>
+              </svg>
             </a>
           </li>
- 
+
           <li>
             <a
               target="_blank"
@@ -82,8 +87,8 @@ export const Footer = () => {
               className="footer__social-link"
             >
               <svg
-                width="38"
-                height="38"
+                width="32"
+                height="32"
                 viewBox="0 0 100 100"
                 className="footer__icon"
                 role="img"
@@ -105,15 +110,29 @@ export const Footer = () => {
               href="mailto:danielruizdeveloper@gmail.com"
               className="footer__social-link"
             >
-                <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-mail footer__icon">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-                    <path d="M3 7l9 6l9 -6" />
-                </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="38"
+                height="38"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="footer__icon"
+                role="img"
+                aria-label="Email"
+              >
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
+                <path d="M3 7l9 6l9 -6" />
+              </svg>
             </a>
           </li>
         </ul>
       </nav>
+      </div>
     </footer>
-    )
-}
+  );
+};
