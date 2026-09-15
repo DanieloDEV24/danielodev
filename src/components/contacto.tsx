@@ -55,7 +55,7 @@ export const Contacto = () => {
 
             <ul className="contenedor-contacto">
                 {modosContacto.map(function(modo){
-                    return <li><a href={modo.enlace}><CardContacto icono={modo.icono} plataforma={modo.plataforma} usuario={modo.usuario} color={modo.color}/></a></li>
+                    return <li><a href={modo.enlace} target="_blank"><CardContacto icono={modo.icono} plataforma={modo.plataforma} usuario={modo.usuario} color={modo.color}/></a></li>
                 })}
             </ul>
         </section>

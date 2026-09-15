@@ -924,3 +924,11 @@ header.top-header {
   padding: 0rem 2rem;
 }
 
+#card-dev li svg, header .redes-sociales li svg {
+  transition: all .2s ease-in-out;
+}
+
+#card-dev li:hover svg, header .redes-sociales li:hover svg {
+  transform: translateY(-5px);
+}
+

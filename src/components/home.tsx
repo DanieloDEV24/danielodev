@@ -53,8 +53,8 @@ export const Home = () => {
 
                 <footer className="experiencia">
                     {
-                        experiencias.map(function(e){
-                            return <CardExperiencia puesto={e.puesto} empresa={e.empresa} descripcion={e.descripcion}/>
+                        experiencias.map(function(e, index){
+                            return <CardExperiencia key={index} puesto={e.puesto} empresa={e.empresa} descripcion={e.descripcion}/>
                         })
                     }
                 </footer>
