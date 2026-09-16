@@ -765,51 +765,98 @@ header.top-header {
   width: 100%;
   height: 100vh;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: start;
-  padding-left: 7rem;
+  justify-content: space-between;
+  align-items: center;
   background-color: #151312;
+  padding: 0rem 5rem;
+}
+
+.contenedor-menu-header .contenedor-frase {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: start;
+  height: 70%;
+}
+
+.contenedor-menu-header .contenedor-frase p.frase {
+  font-size: 5rem;
+  width: 97%;
+  font-weight: bold;
+  line-height: .9;
+  text-align: end;
+  margin: 1.5rem;
+  margin-right: 0;
+}
+
+.contenedor-menu-header .contenedor-frase p.frase span {
+  color: #ff5400;
+}
+
+.contenedor-menu-header .contendor-reloj {
+  padding-top: 2rem;
+}
+
+.contenedor-menu-header .contendor-reloj p.reloj {
+  font-size: 4rem;
+  font-weight: 500;
+  margin: 0;
+  text-align: end;
+  line-height: .9;
+}
+
+.contenedor-menu-header .contendor-reloj p.texto-reloj {
+  margin: 0;
+  text-align: end;
 }
 
 .contenedor-menu-header hr {
-  width: 50%;
+  width: 100%;
   margin: 0;         /* quita el margin auto que lo centra */
   margin-left: 0;
   margin-top: 1rem;
 }
 
-.contenedor-menu-header ol li, .contenedor-menu-header a {
+.contenedor-menu-header ul.enlaces {
+  list-style: none;
+}
+
+.contenedor-menu-header a {
   font-size: 5rem;
   font-weight: bold;
 }
 
-.contenedor-menu-header ol {
+.contenedor-menu-header ul {
   list-style: none;
   counter-reset: item;
   padding: 0;
 }
 
-.contenedor-menu-header ol li {
+/* .contenedor-menu-header ol li {
   counter-increment: item;
   color: #ff5400; 
   &&::before{
     content: counter(item, decimal-leading-zero) ". ";
   }
+} */
+
+.contenedor-menu-header ul:not(.enlaces) {
+  list-style: none;
+  margin-top: 2rem;
 }
 
-.contenedor-menu-header ul {
-  list-style: none;
-  display: flex;
-  gap: 1rem; 
-  padding: 0;
-  margin-top: -1rem;
-
+.contenedor-menu-header ul:not(.enlaces) a {
+  font-size: 2rem;
 }
 
 
 .contenedor-menu-header a {
   color: #fff;
+  transition: all .2s ease-in-out;
+}
+
+.contenedor-menu-header a:hover {
+  color: #ff5400;
 }
 
 .contenedor-menu-header.d-none {
@@ -924,11 +971,12 @@ header.top-header {
   padding: 0rem 2rem;
 }
 
-#card-dev li svg, header .redes-sociales li svg {
+#card-dev li svg, header .redes-sociales li svg, article.card-proyecto ul.links li svg {
   transition: all .2s ease-in-out;
 }
 
-#card-dev li:hover svg, header .redes-sociales li:hover svg {
+#card-dev li:hover svg, header .redes-sociales li:hover svg, article.card-proyecto ul.links li:hover svg {
   transform: translateY(-5px);
 }
+
 

@@ -8,7 +8,7 @@ import { CardContacto } from "./cardContacto";
 export const modosContacto: { plataforma: string; usuario: string; icono: JSX.Element, color: string, enlace: string }[] = [
     {
         plataforma: "Email",
-        usuario: "danielruizdeveloper.com",
+        usuario: "danielruizdeveloper@gmail.com",
         icono: <IconoEmail />,
         color: '#c63400', 
         enlace: 'mailto:danielruizdeveloper@gmail.com'
