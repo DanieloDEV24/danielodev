@@ -48,7 +48,6 @@
     font-weight: 500;
     font-family: inherit;
     background-color: #1a1a1a;
-    cursor: pointer;
     transition: border-color 0.25s;
   }
   #web {
@@ -78,12 +77,24 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    gap: 2rem;
 
     position: 'relative';
     z-index: 1;
 
     height: 70vh;
+  }
+
+  #card-dev .info-card-dev {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+  }
+
+  #card-dev .info-card-dev ul {
+    list-style: none;
   }
 
   #card-dev .card-fondo-avatar {
@@ -594,7 +605,7 @@
 
 }
 
-#herramientas aside.navegacion span {
+#herramientas aside.navegacion button {
   font-size: 1.3rem;
   font-weight: 600;
   color: #fff;
@@ -602,15 +613,14 @@
   padding: .5rem 1.5rem .3rem 1.5rem;
   border-radius: 2rem;
   transition: all ease-in-out .3s;
-  cursor: pointer;
 }
 
-#herramientas aside.navegacion span:hover, #herramientas aside.navegacion span.selected {
+#herramientas aside.navegacion button:hover, #herramientas aside.navegacion button.selected {
   background-color: #fff;
   color: #151312;
 }
 
-#contacto button.btn-cv {
+#contacto a.btn-cv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -618,13 +628,17 @@
   font-size: 1.5rem;
   background-color: #c63400;
   transition: all ease-in-out .3s;
+  width: 25%;
+  padding: 1rem;
+  color: #fff;
+  border-radius: .7rem;
 }
 
-#contacto button.btn-cv:hover{
+#contacto a.btn-cv:hover{
   transform: scale(1.05);
 }
 
-#contacto button.btn-cv:active{
+#contacto a.btn-cv:active{
   background-color: #ff4d0c;
 }
 
@@ -656,7 +670,6 @@
 
 #contacto article.card-contacto:hover {
   background-color: #ffffff20;
-  cursor: pointer;
 }
 
 #contacto article.card-contacto .contenedor-img {
@@ -725,7 +738,6 @@
   height: 40px;
   background: none;
   border: none;
-  cursor: pointer;
   padding: 0;
   position: absolute;
   top: 55px;
@@ -769,6 +781,29 @@ header.top-header {
   align-items: center;
   background-color: #151312;
   padding: 0rem 5rem;
+  transition: height .3s ease-in-out,
+              padding 0s linear 0s; /* al abrir: padding se aplica YA */
+}
+
+.contenedor-menu-header.d-none {
+  width: 100%;
+  height: 0vh;
+  padding: 0;
+  pointer-events: none;
+  transition: height .5s ease-in-out,
+              padding 0s linear .3s; /* al cerrar: padding se aplica AL FINAL */
+}
+
+.contenedor-menu-header.d-none .contenedor-frase, .contenedor-menu-header.d-none .contenedor-enlaces {
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity ease-in-out .3s, filter ease-in-out .3s;
+}
+
+.contenedor-menu-header .contenedor-frase, .contenedor-menu-header .contenedor-enlaces {
+  opacity: 1;
+  filter: blur(0);
+  transition: opacity ease-in-out .7s, filter ease-in-out .7s;
 }
 
 .contenedor-menu-header .contenedor-frase {
@@ -776,7 +811,8 @@ header.top-header {
   flex-direction: column;
   align-items: end;
   justify-content: start;
-  height: 70%;
+  height: 85%;
+  margin-top: 2rem;
 }
 
 .contenedor-menu-header .contenedor-frase p.frase {
@@ -857,14 +893,6 @@ header.top-header {
 
 .contenedor-menu-header a:hover {
   color: #ff5400;
-}
-
-.contenedor-menu-header.d-none {
-  width: 0%;
-  height: 0vh;
-  padding: 0;
-  opacity: 0;
-  pointer-events: none;
 }
 
 .footer {
@@ -980,3 +1008,35 @@ header.top-header {
 }
 
 
+/* CustomCursor.css */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
+}
+
+/* CustomCursor.css */
+@media (hover: hover) and (pointer: fine) {
+  * {
+    cursor: none;
+  }
+}
+
+.cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #ff6a00;
+  pointer-events: none;
+  z-index: 999999999;
+  transition: width .2s ease, height .2s ease;
+  will-change: transform;
+}
+
+.cursor--hover {
+  width: 32px;
+  height: 32px;
+}

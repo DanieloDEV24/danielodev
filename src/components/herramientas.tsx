@@ -110,19 +110,19 @@ export const Herramientas = () => {
             </p>
 
             <aside className="navegacion">
-                <span onClick={() => setSeleccion('todos')} className={seleccion === 'todos' ? 'selected' : ''}>Todos</span>
-                <span onClick={() => setSeleccion('Backend')} className={seleccion === 'backend' ? 'selected' : ''}>BackEnd</span>
-                <span onClick={() => setSeleccion('Frontend')} className={seleccion === 'frontend' ? 'selected' : ''}>FrontEnd</span>
-                <span onClick={() => setSeleccion('Otros')} className={seleccion === 'otros' ? 'selected' : ''}>Otros</span>
+                <button onClick={() => setSeleccion('todos')} className={seleccion === 'todos' ? 'selected' : ''}>Todos</button>
+                <button onClick={() => setSeleccion('Backend')} className={seleccion === 'backend' ? 'selected' : ''}>BackEnd</button>
+                <button onClick={() => setSeleccion('Frontend')} className={seleccion === 'frontend' ? 'selected' : ''}>FrontEnd</button>
+                <button onClick={() => setSeleccion('Otros')} className={seleccion === 'otros' ? 'selected' : ''}>Otros</button>
             </aside>
             <ul className="contenedor-herramientas">
                 {
-                        herramientas.map(function(herramienta){
+                        herramientas.map(function(herramienta, index){
                             if(seleccion === 'todos') {
-                                return <li><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                                return <li key={index}><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
                             }
                             else if(seleccion === herramienta.categoria){
-                                return <li><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                                return <li key={index}><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
                             } 
                         })
                 }

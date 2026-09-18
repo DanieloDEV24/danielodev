@@ -59,8 +59,8 @@ export const Proyectos = () => {
 
                 <ul className="proyectos">
                     {
-                        projects.map(function(p){
-                            return <li>
+                        projects.map(function(p, index){
+                            return <li key={index}>
                                     <CardProyecto 
                                         img={p.img}
                                         altImg={p.altImg}

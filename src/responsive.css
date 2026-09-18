@@ -1,0 +1,233 @@
+@media screen and (max-width: 1819px) {
+    #web {
+        gap: 4%;
+        padding: 0rem 4rem;
+    }
+}
+
+@media screen and (max-width: 1715px) {
+    #web {
+        gap: 3%;
+        padding: 0rem 3rem;
+    }
+}
+
+@media screen and (max-width: 1617px) {
+    .contenedor-card-dev {
+        width: 350px;
+    }
+}
+
+@media screen and (max-width: 1555px) {
+    .contenedor-card-dev {
+        width: 340px;
+    }
+
+    #card-dev .info-card-dev {
+        gap: 2.5rem;
+    }
+
+    .contenedor-card-dev .icono4 {
+        left: 9% !important;
+    }
+
+    .contenedor-card-dev .icono3 {
+       top: 67.8vh !important;
+       left: 82% !important;
+    }
+
+    #icon-fire {
+        top: 85% !important;
+        left: 18% !important;
+    }
+}
+
+@media screen and (max-width: 1513px) {
+    .contenedor-card-dev {
+        width: 320px;
+    }
+
+    #card-dev .info-card-dev {
+        gap: .4rem;
+    }
+
+    .contenedor-card-dev .icono4 {
+        left: 9% !important;
+        top: 54.5vh !important;
+    }
+
+    .contenedor-card-dev .icono3 {
+       top: 57.5vh !important;
+       left: 81% !important;
+    }
+
+    .contenedor-card-dev .icono2 {
+       left: 76% !important;
+    }
+
+    #icon-fire {
+        top: 83% !important;
+        left: 18% !important;
+    }
+
+    #card-dev {
+        height: 60vh;
+    }
+}
+
+
+@media screen and (max-width: 1430px) {
+    #home #contenedor-home > h1, #proyectos span, #herramientas span, #contacto span {
+        font-size: 6rem;
+    }
+
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
+        font-size: 1.3rem;
+    }
+
+    #contenedor-web {
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 1340px) {
+    #home #contenedor-home > h1, #proyectos span, #herramientas span, #contacto span {
+        font-size: 5.5rem;
+    }
+}
+
+@media screen and (max-width: 1282px) {
+    .contenedor-card-dev {
+        width: 280px;
+    }
+
+    #card-dev {
+        height: 55vh;
+        gap: 2rem;
+    }
+
+    #card-dev .mensaje {
+        margin: 0;
+    }
+
+    #card-dev h2 {
+        line-height: .9;
+    }
+
+    #card-dev .info-card-dev {
+        gap: 2rem;
+    }
+
+    #icon-fire {
+        top: 80.5% !important;
+        left: 22% !important;
+    }
+
+    .contenedor-card-dev .icono4 {
+        top: 48vh !important;
+        left: 11% !important;
+    }
+
+    .contenedor-card-dev .icono3 {
+       top: 52vh !important;
+       left: 79% !important;
+    }
+
+    .contenedor-card-dev .icono2 {
+        left: 79% !important;   
+        width: 190px;
+    }
+
+    .contenedor-card-dev .icono1 {
+        left: 3.5% !important;   
+        width: 35px;
+    }
+}
+
+@media screen and (max-width: 1225px) {
+    #contenedor-web {
+        width: 65%;
+    }
+
+    #home #contenedor-home > h1, #proyectos span, #herramientas span, #contacto span {
+        font-size: 5rem;
+    }
+
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
+        font-size: 1.2rem;
+    }
+}
+
+@media screen and (max-width: 1160px) {
+    #web {
+        flex-wrap: wrap;
+    }
+
+    aside.contenedor-card {
+        position: inherit;
+        width: 100%;
+        padding-top: 5rem;
+    }
+
+    aside.contenedor-card > div{
+        width: 100% !important;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    aside.contenedor-card article#card-dev {
+        width: 80%;
+        flex-direction: row !important;
+        padding: 5% ;
+        gap: 2rem;
+        height: auto;
+    }
+
+    aside.contenedor-card article#card-dev .card-fondo-avatar {
+        height: 80%;
+        box-sizing: border-box;
+        width: 30%;
+    }
+
+    aside.contenedor-card article#card-dev .card-fondo-avatar img {
+        width: 100%;
+    }
+
+    #card-dev .info-card-dev {
+        align-items: start;
+        gap: 1rem;
+    }
+
+    #card-dev .info-card-dev h2 {
+        font-size: 4rem;
+    }
+
+    #card-dev .info-card-dev .mensaje {
+        font-size: 1.3rem;
+        text-align: start;
+    }
+
+    #card-dev .redes-sociales {
+        width: 100%;
+        justify-content: start;
+        gap: 1rem;
+    }
+
+    #contenedor-web {
+        width: 100%;
+    }
+
+    .icono1, .icono2, .icono3, .icono4 {
+        display: none;
+    }
+
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
+        width: 100%;
+    }
+
+    #web {
+        padding: 0rem 5rem;
+    }
+
+}

@@ -43,15 +43,16 @@ export const Header = () => {
     }, [activo])
 
     return (
+        
         <header className="top-header">
             <ButtonMenu vari={activo} fun={setActivo} />
             <div className={`contenedor-menu-header ${!activo ? 'd-none' : '' }`}>
                <div className="contenedor-enlaces">
                      <ul className="enlaces">
-                    <li><a href="">HOME.</a></li>
-                    <li><a href="">PROYECTOS.</a></li>
-                    <li><a href="">HERRAMIENTAS.</a></li>
-                    <li><a href="">CONTACTO.</a></li>
+                    <li><a href="#home" onClick={() => {setActivo(false)}}>HOME.</a></li>
+                    <li><a href="#proyectos" onClick={() => {setActivo(false)}}>PROYECTOS.</a></li>
+                    <li><a href="#herramientas" onClick={() => {setActivo(false)}}>HERRAMIENTAS.</a></li>
+                    <li><a href="#contacto" onClick={() => {setActivo(false)}}>CONTACTO.</a></li>
                 </ul>
 
                 {/* <hr /> */}
@@ -69,7 +70,7 @@ export const Header = () => {
                                     <path d="M7 7.01L7.01 6.99889" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg> */}
 
-                                Linkedin
+                                Linkedin.
                             </a>
                         </li>
 
@@ -83,7 +84,7 @@ export const Header = () => {
                                     <path d="M9 20.0267C6 20.9999 3.5 20.0267 2 17.0267" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                 </svg> */}
 
-                                Github
+                                Github.
                             </a>
                         </li>
 
@@ -99,7 +100,7 @@ export const Header = () => {
                                     <path d="M16.5 7.5v.01" />
                                 </svg> */}
 
-                                Instagram
+                                Instagram.
                             </a>
                         </li>
 
@@ -112,7 +113,7 @@ export const Header = () => {
                                     <path d="M3 7l9 6l9 -6" />
                                 </svg> */}
 
-                                Email
+                                Email.
                             </a>
                         </li>
                     </ul>
@@ -120,10 +121,8 @@ export const Header = () => {
 
                <div className="contenedor-frase">
                 <p className="frase">
-                   <p className="frase">
-                        {texto.slice(0, PRIMERA_PARTE.length)}
-                        <span>{texto.slice(PRIMERA_PARTE.length)}</span>
-                    </p>
+                    {texto.slice(0, PRIMERA_PARTE.length)}
+                    <span>{texto.slice(PRIMERA_PARTE.length)}</span>
                 </p>
                 <div className="contendor-reloj">
                     <p className="reloj">
