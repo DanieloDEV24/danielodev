@@ -32,7 +32,6 @@
     }
 
     .contenedor-card-dev .icono3 {
-       top: 67.8vh !important;
        left: 82% !important;
     }
 
@@ -53,11 +52,11 @@
 
     .contenedor-card-dev .icono4 {
         left: 9% !important;
-        top: 54.5vh !important;
+        top: 85% !important;
     }
 
     .contenedor-card-dev .icono3 {
-       top: 57.5vh !important;
+       top: 90% !important;
        left: 81% !important;
     }
 
@@ -71,10 +70,33 @@
     }
 
     #card-dev {
-        height: 60vh;
+        min-height: 60vh;
+        height: auto;
     }
 }
 
+@media screen and (max-width: 1431px) {
+
+    .contenedor-menu-header .contenedor-frase {
+        margin-top: 5rem;
+    }
+
+    .contenedor-menu-header .contenedor-frase p.frase{
+        width: 96%;
+    }
+
+    .contenedor-menu-header .contenedor-frase p.frase, .contenedor-menu-header a {
+        font-size: 4rem;
+    }
+
+    .contenedor-menu-header .contendor-reloj p.reloj {
+        font-size: 3rem;
+    }
+
+    .contenedor-menu-header ul:not(.enlaces) a {
+        font-size: 1.5rem;
+    }
+}
 
 @media screen and (max-width: 1430px) {
     #home #contenedor-home > h1, #proyectos span, #herramientas span, #contacto span {
@@ -102,7 +124,8 @@
     }
 
     #card-dev {
-        height: 55vh;
+        min-height: 55vh;
+        height: auto;
         gap: 2rem;
     }
 
@@ -124,12 +147,12 @@
     }
 
     .contenedor-card-dev .icono4 {
-        top: 48vh !important;
+        top: 82% !important;
         left: 11% !important;
     }
 
     .contenedor-card-dev .icono3 {
-       top: 52vh !important;
+       top: 89% !important;
        left: 79% !important;
     }
 
@@ -158,6 +181,13 @@
     }
 }
 
+@media screen and (max-width: 1214px) {
+    
+    .contenedor-menu-header .contenedor-frase p.frase{
+        width: 95%;
+    }
+}
+
 @media screen and (max-width: 1160px) {
     #web {
         flex-wrap: wrap;
@@ -182,6 +212,7 @@
         padding: 5% ;
         gap: 2rem;
         height: auto;
+        min-height: auto;
     }
 
     aside.contenedor-card article#card-dev .card-fondo-avatar {
@@ -222,6 +253,34 @@
         display: none;
     }
 
+    #icon-fire {
+        left: 41% !important;
+    }
+
+    .icono6 {
+        display: block;
+        left: 4.1%;
+        top: 60%;
+    }
+    
+    .icono7 {
+        display: block;
+        top: 86%;
+        left: 33.7%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 15%;
+        right: 8%;
+    }
+
+    .icono5 {
+        display: block;
+        top: 63.5%;
+        right: 3.5%;
+    }
+
     #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
         width: 100%;
     }
@@ -230,4 +289,273 @@
         padding: 0rem 5rem;
     }
 
+    footer.footer {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    .footer .contenedor-texto-footer {
+        flex-wrap: wrap;
+        justify-content: center;
+
+        && > div, && > nav, && > nav ul {
+            width: 100%;
+            justify-content: center;
+        }
+
+        && > nav {
+            margin-top: 1rem;
+        }
+    }
+
+}
+
+@media screen and (max-width: 1160px) {
+    #card-dev .info-card-dev h2 {
+        font-size: 3.5rem;
+        z-index: 3;
+    }
+}
+
+@media screen and (max-width: 1145px) {
+    .icono5 {
+        display: block;
+        top: 63.5%;
+    }
+}
+
+@media screen and (max-width: 1110px) {
+    .icono8 {
+        display: block;
+        top: 15.3%;
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    .icono5 {
+        display: block;
+        top: 62%;
+    }
+}
+
+@media screen and (max-width: 1080px) {
+    .icono8 {
+        display: block;
+        top: 15.8%;
+    }
+}
+
+@media screen and (max-width: 1070px) {
+    .icono5 {
+        display: block;
+        top: 61%;
+    }
+}
+
+@media screen and (max-width: 1045px) {
+    .icono5 {
+        display: block;
+        top: 60.5%;
+    }
+
+    .icono7 {
+        top: 89%;
+        left: 30%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 16.2%;
+    }
+
+    #icon-fire {
+        top: 83% !important;
+        left: 38% !important;
+    }
+}
+
+@media screen and (max-width: 1030px) {
+    .icono5 {
+        display: block;
+        top: 59%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 16.7%;
+    }
+
+        #card-dev {
+        z-index: auto;
+    }
+
+    #card-dev .titulo-nombre {
+        position: relative;
+        z-index: 3;
+    }
+}
+
+@media screen and (max-width: 1015px) {
+    .icono5 {
+        display: block;
+        top: 59%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 17%;
+    }
+
+    .icono6 {
+        top: 55%;
+    }
+
+    .icono7 {
+        top: 90.6%;
+        left: 30%;
+        transform: rotate(10deg);
+    }
+    
+    #icon-fire {
+        top: 86% !important;
+        left: 38.5% !important;
+    }
+}
+
+@media screen and (max-width: 990px) {
+    .icono5 {
+        display: block;
+        top: 57%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 17.5%;
+    }
+}
+
+@media screen and (max-width: 980px) {
+
+    .contenedor-menu-header .contenedor-frase {
+        margin-top: 8.5rem;
+    }
+
+    .contenedor-menu-header .contenedor-frase p.frase{
+        width: 96%;
+    }
+
+    .contenedor-menu-header .contenedor-frase p.frase, .contenedor-menu-header a {
+        font-size: 3.5rem;
+    }
+
+    .contenedor-menu-header .contendor-reloj p.reloj {
+        font-size: 2.5rem;
+    }
+
+    .contenedor-menu-header ul:not(.enlaces) a {
+        font-size: 1.5rem;
+    }
+
+    .contenedor-menu-header ul {
+        margin: 0;
+    }
+
+    .contenedor-menu-header {
+        flex-wrap: wrap;
+    }
+
+    .contenedor-menu-header > div {
+        width: 100%;
+    }
+} 
+
+@media screen and (max-width: 970px) {
+    .icono5 {
+        display: block;
+        top: 56%;
+        right: 3%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 18%;
+    }
+}
+
+@media screen and (max-width: 950px) {
+    .icono5 {
+        display: block;
+        top: 54%;
+        right: 3%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 18.5%;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    .icono5 {
+        display: block;
+        top: 53%;
+        right: 3%;
+    }
+
+    .icono8 {
+        display: block;
+        top: 19%;
+    }
+
+    #icon-fire {
+        top: 88% !important;
+        left: 39% !important;
+    }
+}
+
+@media screen and (max-width: 910px) {
+    
+
+    #icon-fire {
+        top: 88% !important;
+        left: 39% !important;
+    }
+
+    .icono7 {
+        top: 89.7%;
+        left: 28%;
+        transform: rotate(10deg);
+    }
+
+    .icono6 {
+        top: 50%;
+    }
+
+    #icon-fire {
+        top: 88% !important;
+        left: 38% !important;
+    }
+}
+
+@media screen and (max-width: 890px) {
+
+    .icono7, .icono6, #icon-fire{
+        display: none;
+    }
+
+    .icono8 {
+        display: block;
+        top: 19.5%;
+        right: 50%;
+    }
+
+    .card-fondo-avatar {
+        z-index: 3;
+    }
+
+    .icono5 {
+        display: block;
+        top: 52%;
+        right: 3%;
+    }
 }
