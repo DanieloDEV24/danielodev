@@ -1,14 +1,14 @@
 @media screen and (max-width: 1819px) {
     #web {
         gap: 4%;
-        padding: 0rem 4rem;
+        padding: 4rem 4rem 0rem 4rem;
     }
 }
 
 @media screen and (max-width: 1715px) {
     #web {
         gap: 3%;
-        padding: 0rem 3rem;
+        padding: 3rem 3rem 0rem 3rem;
     }
 }
 
@@ -103,8 +103,13 @@
         font-size: 6rem;
     }
 
-    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
-        font-size: 1.3rem;
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas, #proyectos article p, #herramientas .contenedor-herramientas article .contenedor-texto p, #herramientas .contenedor-herramientas article .contenedor-texto p{
+        font-size: 1.3rem !important;
+    }
+    
+
+    #proyectos ul.proyectos li article.card-proyecto .title-develop .estado-proyecto span.texto {
+        font-size: 1.1rem;
     }
 
     #contenedor-web {
@@ -176,8 +181,12 @@
         font-size: 5rem;
     }
 
-    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
-        font-size: 1.2rem;
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas, #proyectos article p, #herramientas .contenedor-herramientas article .contenedor-texto p, #herramientas .contenedor-herramientas article .contenedor-texto p {
+        font-size: 1.2rem !important;
+    }
+
+    #proyectos ul.proyectos li article.card-proyecto .title-develop .estado-proyecto span.texto {
+        font-size: 1rem;
     }
 }
 
@@ -191,6 +200,12 @@
 @media screen and (max-width: 1160px) {
     #web {
         flex-wrap: wrap;
+        gap: 4rem;
+        padding-top: 0rem !important;
+    }
+
+    #proyectos article {
+        padding: 0 !important;
     }
 
     aside.contenedor-card {
@@ -281,31 +296,12 @@
         right: 3.5%;
     }
 
-    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
+    #contenedor-home p.texto-home, #contenedor-home .contenedor-contadores-home > div dd, #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas, #proyectos article p {
         width: 100%;
     }
 
     #web {
-        padding: 0rem 5rem;
-    }
-
-    footer.footer {
-        padding-left: 2rem;
-        padding-right: 2rem;
-    }
-
-    .footer .contenedor-texto-footer {
-        flex-wrap: wrap;
-        justify-content: center;
-
-        && > div, && > nav, && > nav ul {
-            width: 100%;
-            justify-content: center;
-        }
-
-        && > nav {
-            margin-top: 1rem;
-        }
+        padding: 5rem 5rem 0rem 5rem;
     }
 
 }
@@ -436,21 +432,10 @@
 
 @media screen and (max-width: 980px) {
 
-    .contenedor-menu-header .contenedor-frase {
-        margin-top: 8.5rem;
-    }
-
-    .contenedor-menu-header .contenedor-frase p.frase{
-        width: 96%;
-    }
-
     .contenedor-menu-header .contenedor-frase p.frase, .contenedor-menu-header a {
         font-size: 3.5rem;
     }
 
-    .contenedor-menu-header .contendor-reloj p.reloj {
-        font-size: 2.5rem;
-    }
 
     .contenedor-menu-header ul:not(.enlaces) a {
         font-size: 1.5rem;
@@ -462,11 +447,49 @@
 
     .contenedor-menu-header {
         flex-wrap: wrap;
+        justify-content: center;
+        padding: 5rem 4rem 0rem 4rem;
+        box-sizing: border-box;
+        gap: 3rem;
+        align-content: center;
     }
 
     .contenedor-menu-header > div {
         width: 100%;
+        margin: 0 !important;
     }
+
+    .contenedor-menu-header .contenedor-frase {
+        order: 1;
+        height: auto;
+        align-items: start;
+        justify-content: space-between;
+        flex-direction: row;
+
+    }
+
+    .contenedor-menu-header .contenedor-frase p.frase {
+        font-size: 3rem;
+        width: 60% !important;
+    }
+
+    .contenedor-menu-header .contenedor-frase p.reloj {
+        font-size: 2rem;
+    }
+
+    .contenedor-menu-header .contendor-reloj {
+        padding-top: .5rem;
+    }
+
+    .contenedor-menu-header .contenedor-frase p {
+        text-align: start !important;
+        margin: 0 !important;
+    }
+
+    .contenedor-menu-header .contenedor-enlaces {
+        order: 2;
+    }
+
 } 
 
 @media screen and (max-width: 970px) {
@@ -537,6 +560,8 @@
     }
 }
 
+
+
 @media screen and (max-width: 890px) {
 
     .icono7, .icono6, #icon-fire{
@@ -556,6 +581,368 @@
     .icono5 {
         display: block;
         top: 52%;
-        right: 3%;
+        right: 0%;
     }
+
+    #contacto a.btn-cv {   
+        width: 50%;
+    }
+
+    aside.contenedor-card article#card-dev {
+        padding: 3%;
+        width: 90%;
+    }
+
+    .menu-btn {
+        top: 30px;
+    }
+}
+
+@media screen and (max-width: 875px){
+    
+    .icono5 {
+        top: 50%;
+    }
+}
+
+@media screen and (max-width: 870px) {
+
+    #proyectos ul.proyectos {
+        grid-template-columns: 1fr;
+    }
+
+}
+
+@media screen and (max-width: 840px) {
+
+    .icono5 {
+        top: 48%;
+    }
+
+    .icono8 {
+        top: 21%;
+    }
+}
+
+@media screen and (max-width: 830px) {
+
+    .icono5 {
+        top: 53%;
+    }
+
+    .icono8 {
+        top: 19%;
+    }
+
+    #herramientas .contenedor-herramientas {
+        grid-template-columns: 1fr;
+    }
+
+    #web {
+        padding: 3.5rem 3rem 0rem 3rem;
+    }
+
+    #home #contenedor-home > h1, 
+    #proyectos span, 
+    #herramientas span, 
+    #contacto span, 
+    #contenedor-home .contenedor-contadores-home > div dt {
+        font-size: 3.8rem;
+    }
+
+    #contenedor-home p.texto-home, 
+    #contenedor-home .contenedor-contadores-home > div dd, 
+    #proyectos p.description, 
+    #contacto p.texto-contacto, 
+    #herramientas p.texto-herramientas, 
+    #proyectos article p, 
+    #herramientas aside.navegacion button, 
+    #herramientas .contenedor-herramientas article .contenedor-texto p, #herramientas .contenedor-herramientas article .contenedor-texto p, 
+    #contacto article.card-contacto p, 
+    .footer__copy, 
+    #card-dev .info-card-dev .mensaje  {
+        font-size: 1.1rem !important;
+    }
+
+    #contacto a.btn-cv {
+        font-size: 1.3rem;
+        
+    }
+
+    #herramientas .contenedor-herramientas article .contenedor-texto h3, 
+    #contacto article.card-contacto h3 {
+        font-size: 1.8rem ;
+    }
+
+    #card-dev .info-card-dev h2 {
+        font-size: 3rem;
+    }
+
+    article.card-proyecto h3.title-proyecto {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 810px) {
+    .icono5 {
+       
+        top: 52%;
+    }
+
+    .icono8 {
+        top: 19.5%;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .icono5 {
+       
+        top: 51%;
+    }
+
+    .icono8 {
+        top: 20%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .icono5 {
+        width: 220px;
+        top: 55.5%;
+    }
+
+    .icono8 {
+        top: 18%;
+        width: 240px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .icono5 {
+        top: 54%;
+    }
+
+    .icono8 {
+        top: 18.5%;
+        
+    }
+}
+
+@media screen and (max-width: 730px) {
+    .icono5 {
+        top: 52%;
+    }
+
+    .icono8 {
+        top: 19.5%;
+        
+    }
+}
+
+@media screen and (max-width: 710px) {
+    .icono5 {
+        top: 50%;
+    }
+
+    .icono8 {
+        top: 20%;
+    }
+
+    #card-dev .info-card-dev{
+        gap: .5rem;
+    }
+}
+
+
+/* @media screen and (max-width: 810px) {
+    .icono5 {
+        width: 220px;
+        top: 55%;
+    }
+
+    .icono8 {
+        width: 220px;
+        right: 50%;
+        top: 17%;
+    }
+}
+
+@media screen and (max-width: 790px) {
+    .icono5 {
+       
+        top: 54%;
+    }
+
+    .icono8 {
+        
+        top: 17.5%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    .icono5 {
+       
+        top: 52%;
+    }
+
+    .icono8 {
+        
+        top: 18%;
+    }
+} */
+
+/* @media screen and (max-width: 720px) {
+    aside.contenedor-card article#card-dev {
+        padding: 2% 3%;
+    }
+
+     .icono5 {
+        top: 49.5%;
+    }
+
+    .icono8 {
+        top: 19%;
+    }
+} */
+
+@media screen and (max-width: 700px) {
+
+    #web {
+        padding: 2.5rem 2rem 0rem 2rem;
+    }
+
+   #home #contenedor-home > h1, 
+    #proyectos span, 
+    #herramientas span, 
+    #contacto span, 
+    #contenedor-home .contenedor-contadores-home > div dt {
+        font-size: 3.2rem;
+    }
+
+    #contenedor-home p.texto-home, 
+    #contenedor-home .contenedor-contadores-home > div dd, 
+    #proyectos p.description, 
+    #contacto p.texto-contacto, 
+    #herramientas p.texto-herramientas, 
+    #proyectos article p, 
+    #herramientas aside.navegacion button, 
+    #herramientas .contenedor-herramientas article .contenedor-texto p, #herramientas .contenedor-herramientas article .contenedor-texto p, 
+    #contacto article.card-contacto p, 
+    .footer__copy, 
+    #card-dev .info-card-dev .mensaje{
+        font-size: 1.1rem !important;
+    }
+
+    #card-dev .info-card-dev h2 {
+        font-size: 2.5rem;
+    }
+
+    .icono5 {
+        top: 52%;
+    }
+
+    .icono8 {
+        top: 19%;
+    }
+
+    #herramientas aside.navegacion button {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    #contacto a.btn-cv{
+        width: 100%;
+    }
+    
+}
+
+@media screen and (max-width: 680px) {
+    .icono5 {
+        top: 50%;
+    }
+
+    .icono8 {
+        top: 19.7%;
+    }
+}
+
+@media screen and (max-width: 660px) {
+    .icono5 {
+        width: 180px;
+        top: 53%;
+    }
+
+    .icono8 {
+        width: 200px;
+        top: 18%;
+    }
+}
+
+@media screen and (max-width: 640px) {
+    .icono5 {
+        top: 51%;
+    }
+
+    .icono8 {
+        top: 19%;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    aside.contenedor-card article#card-dev {
+        flex-direction: column !important;
+        gap: 1rem;
+    }
+
+    aside.contenedor-card article#card-dev .card-fondo-avatar {
+        height: 200px;
+        box-sizing: border-box;
+        width: 50%;
+    }
+
+    aside.contenedor-card article#card-dev .card-fondo-avatar img {
+        width: 70%;
+    }
+
+    #card-dev .info-card-dev, #card-dev .redes-sociales {
+        align-items: center;
+        /* gap: 1rem; */
+    }
+
+    #card-dev .redes-sociales {
+        justify-content: center;
+    }
+
+    .icono5 {
+        width: 220px;
+        top: 67%;
+    } 
+    
+    .icono8 {
+        width: 240px;
+        top: 13%;
+    }
+
+    .icono6 {
+        display: block;
+        left: .5%;
+        top: 60%;
+    }
+
+    #icon-fire {
+        display: flex;
+        top: 69% !important;
+        left: 10% !important;
+    }
+
+    #contenedor-home .contenedor-contadores-home {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .icono8 {
+        right: 45%;
+    }
+    
 }

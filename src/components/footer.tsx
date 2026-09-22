@@ -6,12 +6,12 @@ export const Footer = () => {
       <div className="contenedor-texto-footer">
         <div className="footer__legal">
         <span tabIndex={0} className="footer__copy">
-          © 2026 Porfolio DanieloDev24 &nbsp;
+          <span className="primera-parte-footer">© 2026 Porfolio DanieloDev24 &nbsp;</span>
           <span aria-hidden="true" className="footer__separator">
             |
           </span>
           <br aria-hidden="true" className="footer__break" />
-          &nbsp; Todos los derechos reservados.
+          <span className="segunda-parte-footer">&nbsp; Todos los derechos reservados.</span>
         </span>
       </div>
 

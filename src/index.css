@@ -35,6 +35,15 @@
     min-height: 100vh;
   }
 
+  #root {
+     min-width: 0;
+  }
+
+  html, body {
+    overflow-x: hidden;
+    max-width: 100%;
+  }
+
   h1 {
     font-size: 3.2em;
     line-height: 1.1;
@@ -54,10 +63,9 @@
     width: 100%;
     display: flex;
     padding-top: 3%;
-    align-items: flex-start;
     gap: 5%;
     position: relative;
-    padding: 0rem 5rem;
+    padding: 5rem 5rem 0rem 5rem;
     box-sizing: border-box;
     flex-wrap: wrap;
   }
@@ -169,7 +177,6 @@
 
   #contenedor-web {
     width: 73%;
-    padding-top: 2rem;
   }
 
   #home #contenedor-home > h1, 
@@ -262,14 +269,11 @@
   }
 
   .contenedor-card-dev{
-    position: 'relative';
-    display: 'inline-block';
     width: 365px;
   }
 
   #home {
-    position: 'relative';
-    padding-top: 2rem;
+    box-sizing: border-box;
   }
 
   #proyectos {
@@ -283,10 +287,13 @@
   #proyectos h2, #home h1, #herramientas h2, #contacto h2{
     line-height: .9;
     margin: 0;
+    box-sizing: border-box;
   }
 
   #contacto {
     margin-top: 10rem;
+    box-sizing: border-box;
+    box-sizing: border-box;
   }
 
   #proyectos p.description, #contacto p.texto-contacto, #herramientas p.texto-herramientas {
@@ -536,6 +543,7 @@
 
 #herramientas {
   margin-top: 10rem;
+  box-sizing: border-box;
 }
 
 #herramientas .contenedor-herramientas {
@@ -553,6 +561,7 @@
   transition: all ease-in-out .3s;
   padding: 1rem;
   border-radius: 1rem;
+  box-sizing: border-box;
 }
 
 #herramientas .contenedor-herramientas article:hover {
@@ -603,7 +612,7 @@
   margin-top: 3rem;
   padding-left: 1rem;
   margin-bottom: 2rem;
-
+  flex-wrap: wrap;
 }
 
 #herramientas aside.navegacion button {
@@ -633,6 +642,7 @@
   padding: 1rem;
   color: #fff;
   border-radius: .7rem;
+  box-sizing: border-box;
 }
 
 #contacto a.btn-cv:hover{
@@ -667,6 +677,7 @@
   transition: all ease-in-out .3s;
   padding: 3rem 1rem;
   border-radius: 1rem;
+  box-sizing: border-box;
 }
 
 #contacto article.card-contacto:hover {
@@ -703,6 +714,7 @@
 
 #contacto article.card-contacto p {
   font-size: 1.3rem;
+  color: #ffffff50;
 }
 
 #contacto li:first-child  svg {
@@ -780,7 +792,8 @@ header.top-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #151312;
+  /* background-color: #151312; */
+  background-color: lightblue;
   padding: 0rem 5rem;
   transition: height .3s ease-in-out,
               padding 0s linear 0s; /* al abrir: padding se aplica YA */
@@ -919,6 +932,7 @@ header.top-header {
     var(--footer-line) 88%,
     transparent 100%
   );
+  box-sizing: border-box;
 }
 
 .footer__legal {
@@ -926,11 +940,13 @@ header.top-header {
   align-items: center;
   flex-wrap: wrap;
   gap: 20px;
+  box-sizing: border-box;
 }
 
 .footer__copy {
   color: var(--footer-text);
   font-size: 1.2rem;
+  box-sizing: border-box;
 }
 
 .footer__separator {
@@ -947,6 +963,7 @@ header.top-header {
   font-size: 1.2rem;
   text-decoration: none;
   transition: color 0.2s ease;
+  box-sizing: border-box;
 }
 
 .footer__link:hover,
@@ -961,12 +978,14 @@ header.top-header {
   list-style: none;
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 .footer__social-link {
   display: flex;
   color: var(--footer-text);
   transition: color 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
 }
 
 .footer__social-link:hover,
@@ -981,6 +1000,7 @@ header.top-header {
   align-items: center;
   justify-content: space-between;
   padding: 0rem 2rem;
+  box-sizing: border-box;
 }
 
 #card-dev li svg, header .redes-sociales li svg, article.card-proyecto ul.links li svg {
@@ -1027,4 +1047,173 @@ header.top-header {
 
 .icono5, .icono6, .icono7, .icono8 {
   display: none;
+}
+
+article.card-proyecto {
+  width: 100%;
+  box-sizing: border-box; /* para que el padding no desborde el 100% */
+  padding: 1rem;
+}
+
+/* ===== FOOTER — responsive de raíz ===== */
+
+.footer {
+  --footer-line: rgba(255, 255, 255, 0.35);
+  --footer-text: rgba(255, 255, 255, 0.85);
+  --footer-hover: #ff5400;
+
+  width: 100%;
+  background: transparent;
+  padding: clamp(1.5rem, 4vw, 48px) clamp(1rem, 6vw, 96px) clamp(1.5rem, 3vw, 40px);
+  box-sizing: border-box;
+}
+
+.footer__hr {
+  height: 1px;
+  width: 100%;
+  margin: 0 0 clamp(1.5rem, 3vw, 40px);
+  border: none;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    var(--footer-line) 12%,
+    var(--footer-line) 88%,
+    transparent 100%
+  );
+  box-sizing: border-box;
+}
+
+.contenedor-texto-footer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem 2rem;
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.footer__legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  min-width: 0;
+  flex: 1 1 auto;
+  box-sizing: border-box;
+}
+
+.footer__copy {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  color: var(--footer-text);
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.footer__separator {
+  opacity: 0.5;
+  margin: 0 4px;
+}
+
+.footer__break {
+  display: none;
+}
+
+.footer__link {
+  color: var(--footer-text);
+  font-size: clamp(0.9rem, 1.2vw, 1.2rem);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  box-sizing: border-box;
+}
+
+.footer__link:hover,
+.footer__link:focus-visible {
+  color: var(--footer-hover);
+}
+
+.footer .contenedor-texto-footer nav {
+  flex: 0 0 auto;
+  min-width: 0;
+}
+
+.footer__social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.footer__social-link {
+  display: flex;
+  color: var(--footer-text);
+  transition: color 0.2s ease, transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.footer__social-link:hover,
+.footer__social-link:focus-visible {
+  color: var(--footer-hover);
+  transform: translateY(-2px);
+}
+
+.footer__icon {
+  width: clamp(24px, 3vw, 32px);
+  height: clamp(24px, 3vw, 32px);
+  display: block;
+}
+
+/* Modo centrado en columna — cubre todo el rango donde
+   texto + iconos ya no caben cómodos en una sola fila */
+@media screen and (max-width: 900px) {
+  .contenedor-texto-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer__legal {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer__copy {
+    justify-content: center;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
+}
+
+/* Solo cuando el conjunto ya no cabe en una fila cómoda,
+   pasamos a columna centrada en vez de comprimir todo */
+@media screen and (max-width: 560px) {
+  .contenedor-texto-footer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer__legal {
+    justify-content: center;
+    text-align: center;
+  }
+
+  .footer__social {
+    justify-content: center;
+  }
 }
