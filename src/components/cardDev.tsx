@@ -45,7 +45,7 @@ export const CardHome = () => {
                 <svg width="113" height="58" viewBox="0 0 113 58" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
-                        top: '91.5%',
+                        top: '91%',
                         left: '83%',
                         transform: 'translateX(-50%)',
                         zIndex: 2,
@@ -58,7 +58,7 @@ export const CardHome = () => {
 
                 <svg width="74" height="28" viewBox="0 0 74 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{
                     position: 'absolute',
-                    top: '87%',
+                    top: '85%',
                     left: '8%',
                     transform: 'translateX(-50%)',
                     zIndex: 2,

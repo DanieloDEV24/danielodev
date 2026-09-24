@@ -40,7 +40,7 @@
   }
 
   html, body {
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
   }
 
@@ -74,6 +74,7 @@
     position: sticky;
     top: 7%;
     left: 0%;
+    align-self: flex-start;
   }
 
 #card-dev {
@@ -90,7 +91,7 @@
     position: relative; /* ojo: sin comillas, 'relative' no es válido */
     z-index: 1;
 
-    min-height: 70vh; /* en vez de height fijo */
+    min-height: 50vh; /* en vez de height fijo */
     height: auto;
 }
 
@@ -99,7 +100,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    gap: 2rem;
+    gap: 1rem;
   }
 
   #card-dev .info-card-dev ul {
@@ -171,8 +172,8 @@
     border-radius: 50%;
     position: absolute;
     z-index: 9999;
-    top: 85%;
-    left: 16%;
+    top: 83.5%;
+    left: 17%;
   }
 
   #contenedor-web {
@@ -229,11 +230,13 @@
     display: flex;
     align-items: start;
     gap: 5%;
+    flex-wrap: wrap;
   }
 
   #contenedor-home .contenedor-contadores-home > div {
-    width: 33%;
+    width: 30%;
     text-align: start;
+    min-width: 142px;
   }
 
   #contenedor-home .contenedor-contadores-home > div dt {
@@ -678,6 +681,7 @@
   padding: 3rem 1rem;
   border-radius: 1rem;
   box-sizing: border-box;
+  justify-content: space-between;
 }
 
 #contacto article.card-contacto:hover {
@@ -782,7 +786,7 @@ header.top-header {
   position: fixed;
   top: 0%;
   right: 0%;
-  z-index: 9999999999999;
+  z-index: 99999;
 
 }
 
@@ -792,8 +796,7 @@ header.top-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* background-color: #151312; */
-  background-color: lightblue;
+  background-color: #151312;
   padding: 0rem 5rem;
   transition: height .3s ease-in-out,
               padding 0s linear 0s; /* al abrir: padding se aplica YA */
@@ -1217,3 +1220,4 @@ article.card-proyecto {
     justify-content: center;
   }
 }
+
