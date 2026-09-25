@@ -1,12 +1,57 @@
+import { useRef, useState, type CSSProperties, type MouseEvent } from 'react'
 import avatar from '../assets/img/avatar.png'
 
+const MAX_TILT = 12 // grados máximos de inclinación
+const SCALE = 1.02 // ligero zoom al hacer hover
+
 export const CardHome = () => {
+    const containerRef = useRef<HTMLDivElement>(null)
+    const [tiltStyle, setTiltStyle] = useState<CSSProperties>({})
+
+    const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+        const container = containerRef.current
+        if (!container) return
+
+        const rect = container.getBoundingClientRect()
+        const x = e.clientX - rect.left
+        const y = e.clientY - rect.top
+
+        // normaliza a [-0.5, 0.5]
+        const percentX = x / rect.width - 0.5
+        const percentY = y / rect.height - 0.5
+
+        // invertido en Y: si el ratón está arriba, el conjunto se "hunde" hacia dentro por arriba
+        const rotateX = (-percentY * MAX_TILT).toFixed(2)
+        const rotateY = (percentX * MAX_TILT).toFixed(2)
+
+        setTiltStyle({
+            transform: `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${SCALE}, ${SCALE}, ${SCALE})`,
+        })
+    }
+
+    const handleMouseLeave = () => {
+        setTiltStyle({
+            transform: 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
+        })
+    }
+
     return (
-        
+
         <aside className='contenedor-card contenedor-card-dev'>
-            
+
             {/* Al tener el aside con sticky no puedo meterle otro position */}
-            <div className="contenedor-card-dev">
+            <div
+                className="contenedor-card-dev"
+                ref={containerRef}
+                onMouseMove={handleMouseMove}
+                onMouseLeave={handleMouseLeave}
+                style={{
+                    ...tiltStyle,
+                    transition: 'transform 0.15s ease-out',
+                    transformStyle: 'preserve-3d',
+                    willChange: 'transform',
+                }}
+            >
 
                 <svg width="41" height="31" viewBox="0 0 41 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
