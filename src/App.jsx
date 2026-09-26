@@ -7,11 +7,17 @@ import { Footer } from './components/footer'
 import { Header } from './components/header'
 import CustomCursor from './components/customCursor'
 
+import { useState } from 'react';
+import Preloader from './components/Preloader';
+
 
 function App() {
 
+  const [loading, setLoading] = useState(true);
+
   return (
     <>
+    {loading && <Preloader onFinish={() => setLoading(false)} />}
     <CustomCursor/>
       <Header/>
       <div id="web">
