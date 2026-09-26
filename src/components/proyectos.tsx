@@ -1,9 +1,17 @@
+import { motion } from 'motion/react'
 import turismo from '../assets/img/turismo.png';
 import reservalo from '../assets/img/reservalo.jpeg';
 import rotMoncayo from '../assets/img/rotulos-moncayo.png';
 import myno from '../assets/img/myno-solutions.png'
 
 import { CardProyecto } from "../components/cardProyecto"
+
+const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+}
 
 const projects = [
     {
@@ -50,17 +58,27 @@ const projects = [
 export const Proyectos = () => {
     return (
         <section id="proyectos">
-                <h2 className="contenedor-titulo">
+                <motion.h2 className="contenedor-titulo" {...fadeUp}>
                         <span className='titulo-proyectos-mis'>MIS</span>
                         <span className='titulo-proyectos-proyectos'>PROYECTOS.</span>
-                </h2>
+                </motion.h2>
 
-                <p className='description'>Algunos de los proyectos en los que he estado trabajando últimamente. Desde aplicaciones web funcionales hasta soluciones digitales pensadas para necesidades reales.</p>
+                <motion.p
+                    className='description'
+                    {...fadeUp}
+                    transition={{ ...fadeUp.transition, delay: 0.08 }}
+                >
+                    Algunos de los proyectos en los que he estado trabajando últimamente. Desde aplicaciones web funcionales hasta soluciones digitales pensadas para necesidades reales.
+                </motion.p>
 
                 <ul className="proyectos">
                     {
                         projects.map(function(p, index){
-                            return <li key={index}>
+                            return <motion.li
+                                    key={index}
+                                    {...fadeUp}
+                                    transition={{ ...fadeUp.transition, delay: 0.16 + index * 0.1 }}
+                                >
                                     <CardProyecto 
                                         img={p.img}
                                         altImg={p.altImg}
@@ -70,10 +88,10 @@ export const Proyectos = () => {
                                         srcGitHub={p.srcGitHub}
                                         srcWeb={p.srcWeb}
                                     />
-                                </li>
+                                </motion.li>
                         })
                     }
                 </ul>
         </section>
     )
-}  
+}

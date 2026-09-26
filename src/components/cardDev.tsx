@@ -1,4 +1,5 @@
 import { useRef, useState, type CSSProperties, type MouseEvent } from 'react'
+import { motion } from 'motion/react'
 import avatar from '../assets/img/avatar.png'
 
 const MAX_TILT = 12 // grados máximos de inclinación
@@ -16,11 +17,9 @@ export const CardHome = () => {
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
 
-        // normaliza a [-0.5, 0.5]
         const percentX = x / rect.width - 0.5
         const percentY = y / rect.height - 0.5
 
-        // invertido en Y: si el ratón está arriba, el conjunto se "hunde" hacia dentro por arriba
         const rotateX = (-percentY * MAX_TILT).toFixed(2)
         const rotateY = (percentX * MAX_TILT).toFixed(2)
 
@@ -37,7 +36,23 @@ export const CardHome = () => {
 
     return (
 
-        <aside className='contenedor-card contenedor-card-dev'>
+<motion.aside
+    className='contenedor-card contenedor-card-dev'
+    initial={{ opacity: 0, y: -60 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{
+        y: {
+            type: 'spring',
+            stiffness: 400,
+            damping: 12,
+            mass: 1.3,
+        },
+        opacity: {
+            duration: 0.25,
+            ease: 'easeOut',
+        },
+    }}
+>
 
             {/* Al tener el aside con sticky no puedo meterle otro position */}
             <div
@@ -118,28 +133,28 @@ export const CardHome = () => {
                     position: 'absolute',
                     zIndex: 2
                 }}>
-                    <path d="M261.823 1.25C281.489 1.25 269.815 20.0938 255.677 39.8205C213.887 78.6136 1.24998 193.441 1.25 170.165" stroke="#FF5400" stroke-width="2.5" stroke-linecap="square" stroke-dasharray="12 6"/>
+                    <path d="M261.823 1.25C281.489 1.25 269.815 20.0938 255.677 39.8205C213.887 78.6136 1.24998 193.441 1.25 170.165" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="12 6"/>
                 </svg>
 
                 <svg width="62" height="57" viewBox="0 0 62 57" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono6' style={{
                     position: 'absolute',
                     zIndex: 2
                 }}>
-                    <path d="M60.264 55.0948C-1.23602 27.5948 1.26398 14.5948 1.26398 9.59476C1.26398 4.59476 9.76398 1.59476 9.76398 1.59476" stroke="#FF5400" stroke-width="2.5" stroke-linecap="square" stroke-dasharray="5 5"/>
+                    <path d="M60.264 55.0948C-1.23602 27.5948 1.26398 14.5948 1.26398 9.59476C1.26398 4.59476 9.76398 1.59476 9.76398 1.59476" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
                 </svg>
 
                 <svg width="83" height="22" viewBox="0 0 83 22" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono7' style={{
                     position: 'absolute',
                     zIndex: 2
                 }}>
-                    <path d="M81.027 7.52696C78.027 29.027 39.027 18.027 25.027 11.027C11.027 4.02697 1.52696 1.52696 1.52696 1.52696" stroke="#FF5400" stroke-width="2.5" stroke-linecap="square" stroke-dasharray="5 5"/>
+                    <path d="M81.027 7.52696C78.027 29.027 39.027 18.027 25.027 11.027C11.027 4.02697 1.52696 1.52696 1.52696 1.52696" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
                 </svg>
 
                 <svg width="290" height="117" viewBox="0 0 290 117" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono8' style={{
                     position: 'absolute',
                     zIndex: 2
                 }}>
-                    <path d="M288.438 9.08849C288.438 9.08849 288.438 -2.91149 280.938 3.08851C273.438 9.08851 217.938 114.588 133.938 115.588C49.9385 116.588 10.4385 6.08851 6.43848 4.0885C2.43848 2.08848 1.43848 8.08849 1.43848 8.08849" stroke="#FF5400" stroke-width="2.5" stroke-linecap="square" stroke-dasharray="5 5"/>
+                    <path d="M288.438 9.08849C288.438 9.08849 288.438 -2.91149 280.938 3.08851C273.438 9.08851 217.938 114.588 133.938 115.588C49.9385 116.588 10.4385 6.08851 6.43848 4.0885C2.43848 2.08848 1.43848 8.08849 1.43848 8.08849" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
                 </svg>
 
                 <div id="icon-fire">
@@ -216,6 +231,6 @@ export const CardHome = () => {
 
                 </article>
             </div>
-        </aside>
+        </motion.aside>
     )
 }

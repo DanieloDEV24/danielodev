@@ -1,4 +1,41 @@
+import { useEffect, useRef, useState } from 'react'
+import { motion, useInView, animate } from 'motion/react'
 import { CardExperiencia } from "./cardExperiencia";
+
+const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+}
+
+type CounterProps = {
+    to: number
+    prefix?: string
+    duration?: number
+    delay?: number
+}
+
+const Counter = ({ to, prefix = '', duration = 1.4, delay = 0 }: CounterProps) => {
+    const ref = useRef<HTMLSpanElement>(null)
+    const isInView = useInView(ref, { once: true, amount: 0.6 })
+    const [value, setValue] = useState(0)
+
+    useEffect(() => {
+        if (!isInView) return
+
+        const controls = animate(0, to, {
+            duration,
+            delay,
+            ease: [0.16, 1, 0.3, 1],
+            onUpdate: (latest) => setValue(Math.round(latest)),
+        })
+
+        return () => controls.stop()
+    }, [isInView, to, duration, delay])
+
+    return <span ref={ref}>{prefix}{value}</span>
+}
 
 export const Home = () => {
 
@@ -25,36 +62,52 @@ export const Home = () => {
 
             <div id="contenedor-home">
                 
-                <h1>
+                <motion.h1 {...fadeUp}>
                     <span className='titulo-home-dev'>DESARROLLADOR</span>
                     <span className='titulo-home-full'>FULL STACK.</span>
-                </h1>
+                </motion.h1>
 
-                <p className="texto-home">
+                <motion.p
+                    className="texto-home"
+                    {...fadeUp}
+                    transition={{ ...fadeUp.transition, delay: 0.08 }}
+                >
                     Soy Daniel, desarrollador Full Stack y docente en desarrollo web. Me gusta construir cosas que funcionen y que la gente use de verdad, y también compartir lo que sé para que otros puedan aprender a hacerlo. Aprendo rápido, me adapto a lo que el proyecto necesita y siempre busco mejorar.
-                </p>
+                </motion.p>
 
-                <dl className="contenedor-contadores-home">
-                    <div>
-                        <dt>+3</dt>
-                        <dd>proyectos Reales</dd>
-                    </div>
+<motion.dl
+    className="contenedor-contadores-home"
+    {...fadeUp}
+    transition={{ ...fadeUp.transition, delay: 0.16 }}
+>
+    <div>
+        <dt><Counter to={3} prefix="+" delay={0.1} /></dt>
+        <dd>proyectos Reales</dd>
+    </div>
 
-                    <div>
-                        <dt>+8</dt>
-                        <dd>herramientas</dd>  
-                    </div>
+    <div>
+        <dt><Counter to={8} prefix="+" delay={0.1} /></dt>
+        <dd>herramientas</dd>  
+    </div>
 
-                    <div>
-                        <dt>+1</dt>
-                        <dd>año de experiencia</dd>
-                    </div>
-                </dl>
+    <div>
+        <dt><Counter to={1} prefix="+" delay={0.1} /></dt>
+        <dd>año de experiencia</dd>
+    </div>
+</motion.dl>
 
                 <footer className="experiencia">
                     {
                         experiencias.map(function(e, index){
-                            return <CardExperiencia key={index} puesto={e.puesto} empresa={e.empresa} descripcion={e.descripcion}/>
+                            return (
+                                <motion.div
+                                    key={index}
+                                    {...fadeUp}
+                                    transition={{ ...fadeUp.transition, delay: 0.24 + index * 0.1 }}
+                                >
+                                    <CardExperiencia puesto={e.puesto} empresa={e.empresa} descripcion={e.descripcion}/>
+                                </motion.div>
+                            )
                         })
                     }
                 </footer>

@@ -22,9 +22,18 @@ import github from '../assets/img/github.jpg';
 
 import vscode from '../assets/img/vscode.jpg';
 
+import { motion } from 'motion/react';
+
 import { CardHerramienta } from './cardHerramienta'
 
 import { useState } from 'react';
+
+const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+}
 
 const herramientas = [
     // FRONTEND
@@ -100,29 +109,49 @@ export const Herramientas = () => {
 
     return (
         <section id="herramientas">
-            <h2 className="contenedor-titulo">
+            <motion.h2 className="contenedor-titulo" {...fadeUp}>
                 <span className='titulo-proyectos-mis'>HERRAMIENTAS</span>
                 <span className='titulo-proyectos-proyectos'>QUE USO.</span>
-            </h2>
+            </motion.h2>
 
-            <p className="texto-herramientas">
+            <motion.p
+                className="texto-herramientas"
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: 0.08 }}
+            >
                 Estas son las tecnologías con las que trabajo día a día. Las elijo según lo que pide cada proyecto
-            </p>
+            </motion.p>
 
-            <aside className="navegacion">
+            <motion.aside
+                className="navegacion"
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: 0.16 }}
+            >
                 <button onClick={() => setSeleccion('todos')} className={seleccion === 'todos' ? 'selected' : ''}>Todos</button>
                 <button onClick={() => setSeleccion('Backend')} className={seleccion === 'backend' ? 'selected' : ''}>BackEnd</button>
                 <button onClick={() => setSeleccion('Frontend')} className={seleccion === 'frontend' ? 'selected' : ''}>FrontEnd</button>
                 <button onClick={() => setSeleccion('Otros')} className={seleccion === 'otros' ? 'selected' : ''}>Otros</button>
-            </aside>
+            </motion.aside>
             <ul className="contenedor-herramientas">
                 {
                         herramientas.map(function(herramienta, index){
                             if(seleccion === 'todos') {
-                                return <li key={index}><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                                return <motion.li
+                                        key={index}
+                                        {...fadeUp}
+                                        transition={{ ...fadeUp.transition, delay: 0.2 + index * 0.05 }}
+                                    >
+                                        <CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} />
+                                    </motion.li>
                             }
                             else if(seleccion === herramienta.categoria){
-                                return <li key={index}><CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} /></li>
+                                return <motion.li
+                                        key={index}
+                                        {...fadeUp}
+                                        transition={{ ...fadeUp.transition, delay: 0.2 + index * 0.05 }}
+                                    >
+                                        <CardHerramienta img={herramienta.icono} nombre={herramienta.nombre} categoria={herramienta.categoria} />
+                                    </motion.li>
                             } 
                         })
                 }

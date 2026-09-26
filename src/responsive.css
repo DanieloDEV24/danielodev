@@ -277,30 +277,31 @@
     }
 
     #icon-fire {
-        left: 41% !important;
+        left: 40.5% !important;
+        top: 74% !important;
     }
 
     .icono6 {
         display: block;
         left: 4.1%;
-        top: 60%;
+        top: 50%;
     }
     
     .icono7 {
         display: block;
-        top: 86%;
+        top: 80%;
         left: 33.7%;
     }
 
     .icono8 {
         display: block;
-        top: 15%;
+        top: -2.5%;
         right: 8%;
     }
 
     .icono5 {
         display: block;
-        top: 63.5%;
+        top: 56%;
         right: 3.5%;
     }
 
@@ -326,54 +327,56 @@
 }
 
 @media screen and (max-width: 1145px) {
-    .icono5 {
+    /* .icono5 {
         display: block;
         top: 63.5%;
-    }
+    } */
 }
 
 @media screen and (max-width: 1110px) {
     .icono8 {
         display: block;
-        top: 15.3%;
+        top: -3%;
+    }
+
+    .icono5 {
+        display: block;
+        top: 54%;
+    }
+
+    #icon-fire {
+        left: 41% !important;
+        top: 73% !important;
     }
 }
 
-@media screen and (max-width: 1100px) {
-    .icono5 {
-        display: block;
-        top: 62%;
-    }
-}
 
 @media screen and (max-width: 1080px) {
     .icono8 {
         display: block;
-        top: 15.8%;
+        top: -3%;
     }
-}
 
-@media screen and (max-width: 1070px) {
     .icono5 {
         display: block;
-        top: 61%;
+        top: 53%;
     }
 }
 
 @media screen and (max-width: 1045px) {
     .icono5 {
         display: block;
-        top: 60.5%;
+        top: 50%;
     }
 
     .icono7 {
-        top: 89%;
+        top: 87%;
         left: 30%;
     }
 
     .icono8 {
         display: block;
-        top: 16.2%;
+        top: -3%;
     }
 
     #icon-fire {
@@ -385,12 +388,12 @@
 @media screen and (max-width: 1030px) {
     .icono5 {
         display: block;
-        top: 59%;
+        top: 50%;
     }
 
     .icono8 {
         display: block;
-        top: 16.7%;
+        top: -3%;
     }
 
         #card-dev {
@@ -406,26 +409,26 @@
 @media screen and (max-width: 1015px) {
     .icono5 {
         display: block;
-        top: 59%;
+        top: 49%;
     }
 
     .icono8 {
         display: block;
-        top: 17%;
+        top: -3%;
     }
 
     .icono6 {
-        top: 55%;
+        top: 50%;
     }
 
     .icono7 {
-        top: 90.6%;
+        top: 89%;
         left: 30%;
         transform: rotate(10deg);
     }
     
     #icon-fire {
-        top: 86% !important;
+        top: 83% !important;
         left: 38.5% !important;
     }
 
@@ -437,12 +440,12 @@
 @media screen and (max-width: 990px) {
     .icono5 {
         display: block;
-        top: 57%;
+        top: 46%;
     }
 
     .icono8 {
         display: block;
-        top: 17.5%;
+        top: -3.5%;
     }
 }
 
@@ -511,74 +514,47 @@
 @media screen and (max-width: 970px) {
     .icono5 {
         display: block;
-        top: 56%;
+        top: 44%;
         right: 3%;
     }
 
-    .icono8 {
-        display: block;
-        top: 18%;
-    }
+
 }
 
 @media screen and (max-width: 950px) {
     .icono5 {
         display: block;
-        top: 54%;
+        top: 42%;
         right: 3%;
     }
 
-    .icono8 {
+    /* .icono8 {
         display: block;
         top: 18.5%;
-    }
+    } */
 }
 
 @media screen and (max-width: 930px) {
     .icono5 {
         display: block;
-        top: 53%;
+        top: 40%;
         right: 3%;
     }
 
     .icono8 {
         display: block;
-        top: 19%;
+        top: -3.5%;
     }
 
-    #icon-fire {
+    /* #icon-fire {
         top: 88% !important;
         left: 39% !important;
-    }
+    } */
 }
+
+
 
 @media screen and (max-width: 910px) {
-    
-
-    #icon-fire {
-        top: 88% !important;
-        left: 39% !important;
-    }
-
-    .icono7 {
-        top: 89.7%;
-        left: 28%;
-        transform: rotate(10deg);
-    }
-
-    .icono6 {
-        top: 50%;
-    }
-
-    #icon-fire {
-        top: 88% !important;
-        left: 38% !important;
-    }
-}
-
-
-
-@media screen and (max-width: 890px) {
 
     .icono7, .icono6, #icon-fire{
         display: none;
@@ -586,7 +562,7 @@
 
     .icono8 {
         display: block;
-        top: 19.5%;
+        top: -4%;
         right: 50%;
     }
 
@@ -596,7 +572,7 @@
 
     .icono5 {
         display: block;
-        top: 52%;
+        top: 40%;
         right: 0%;
     }
 
@@ -617,7 +593,7 @@
 @media screen and (max-width: 875px){
     
     .icono5 {
-        top: 50%;
+        top: 36%;
     }
 }
 
@@ -629,7 +605,7 @@
 
     .icono8 {
         display: block;
-        top: 20.5%;
+        top: -4%;
     }
 
 }
@@ -638,27 +614,24 @@
     #contacto article.card-contacto .contenedor-texto {
         width: 70%;
     }
-}
-
-@media screen and (max-width: 840px) {
 
     .icono5 {
-        top: 48%;
+        top: 32%;
     }
 
     .icono8 {
-        top: 21%;
+        top: -5%;
     }
 }
 
 @media screen and (max-width: 830px) {
 
     .icono5 {
-        top: 53%;
+        top: 41%;
     }
 
     .icono8 {
-        top: 19%;
+        top: -4%;
     }
 
     #herramientas .contenedor-herramientas {
@@ -724,67 +697,66 @@
 
 @media screen and (max-width: 810px) {
     .icono5 {
-       
-        top: 52%;
+        top: 39%;
     }
 
     .icono8 {
-        top: 19.5%;
+        top: -4%;
     }
 }
 
 @media screen and (max-width: 790px) {
     .icono5 {
        
-        top: 51%;
+        top: 37%;
     }
 
     .icono8 {
-        top: 20%;
+        top: -5%;
     }
 }
 
 @media screen and (max-width: 770px) {
     .icono5 {
         width: 220px;
-        top: 55.5%;
+        top: 42%;
     }
 
     .icono8 {
-        top: 18%;
+        top: -8%;
         width: 240px;
     }
 }
 
 @media screen and (max-width: 750px) {
     .icono5 {
-        top: 54%;
+        top: 39%;
     }
 
     .icono8 {
-        top: 18.5%;
+        top: -8%;
         
     }
 }
 
 @media screen and (max-width: 730px) {
     .icono5 {
-        top: 52%;
+        top: 37%;
     }
 
     .icono8 {
-        top: 19.5%;
+        top: -8%;
         
     }
 }
 
 @media screen and (max-width: 710px) {
     .icono5 {
-        top: 50%;
+        top: 33%;
     }
 
     .icono8 {
-        top: 20%;
+        top: -9%;
     }
 
     #card-dev .info-card-dev{
@@ -877,11 +849,11 @@
     }
 
     .icono5 {
-        top: 52%;
+        top: 37%;
     }
 
     .icono8 {
-        top: 19%;
+        top: -8%;
     }
 
     #herramientas aside.navegacion button {
@@ -921,33 +893,33 @@
 
 @media screen and (max-width: 680px) {
     .icono5 {
-        top: 50%;
+        top: 34%;
     }
 
     .icono8 {
-        top: 19.7%;
+        top: -9%;
     }
 }
 
 @media screen and (max-width: 660px) {
     .icono5 {
         width: 180px;
-        top: 53%;
+        top: 35%;
     }
 
     .icono8 {
         width: 200px;
-        top: 18%;
+        top: -12%;
     }
 }
 
 @media screen and (max-width: 640px) {
     .icono5 {
-        top: 51%;
+        top: 32%;
     }
 
     .icono8 {
-        top: 19%;
+        top: -12%;
     }
 }
 
@@ -978,24 +950,24 @@
 
     .icono5 {
         width: 220px;
-        top: 67%;
+        top: 61%;
     } 
     
     .icono8 {
         width: 240px;
-        top: 13%;
+        top: -5%;
     }
 
     .icono6 {
         display: block;
         left: .5%;
-        top: 60%;
+        top: 50%;
     }
 
     #icon-fire {
         display: flex;
-        top: 69% !important;
-        left: 10% !important;
+        top: 62% !important;
+        left: 12% !important;
     }
 
     #contenedor-home .contenedor-contadores-home {
@@ -1032,7 +1004,7 @@
 
     .icono5 {
         width: 180px;
-        top: 70%;
+        top: 63%;
     } 
 
     #home #contenedor-home > h1, 
@@ -1111,8 +1083,12 @@
 
     .icono5 {
         /* width: 180px; */
-        top: 71%;
+        top: 65%;
     } 
+
+    #icon-fire {
+        top: 60% !important;
+    }
 }
 
 @media screen and (max-width: 490px) {
@@ -1129,12 +1105,12 @@
 
     .icono8 {
         right: 30%;
-        top: 12%;
+        top: -4.5%;
     }
 
     .icono5 {
         width: 200px;
-        top: 71%;
+        top: 65%;
         right: -3%;
     } 
 
@@ -1200,13 +1176,13 @@
 @media screen and (max-width: 420px) {
     .icono5 {
         width: 170px;
-        top: 72%;
+        top: 67%;
         right: -3%;
     } 
 
     .icono8 {
         right: 25%;
-        top: 12.5%;
+        top: -4.5%;
     }
 
     #contacto article.card-contacto .contenedor-texto {
@@ -1241,7 +1217,7 @@
 
     .icono8 {
         right: 25%;
-        top: 11%;
+        top: -6%;
         width: 200px;
     }
 

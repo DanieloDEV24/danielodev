@@ -472,19 +472,19 @@
   font-size: .9rem;
 }
 
-#home footer.experiencia article:first-child {
+#home footer.experiencia > div:first-child article {
   border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%2331D492' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
   background-color: #31D49210;
   color: #31D492;
 }
 
-#home footer.experiencia article:nth-of-type(2) {
+#home footer.experiencia > div:nth-of-type(2) article {
   border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%23ff6a00' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
   background-color: #ff6a0010;
   color: #ff6a00;
 }
 
-#home footer.experiencia article:nth-of-type(3) {
+#home footer.experiencia > div:nth-of-type(3) article {
   border-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect x='1' y='1' width='98' height='98' rx='12' fill='none' stroke='%238E51FF' stroke-width='2' stroke-dasharray='16,6' /%3E%3C/svg%3E") 12 fill / 12px round;
   background-color: #8E51FF10;
   color: #8E51FF;
@@ -1029,23 +1029,91 @@ header.top-header {
   }
 }
 
-.cursor {
+/* --- Punto central: sigue al ratón con precisión --- */
+.cursor-dot {
   position: fixed;
   top: 0;
   left: 0;
-  width: 20px;
-  height: 20px;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  background: #ff6a00;
+  background: #ff5400;
   pointer-events: none;
   z-index: 999999999;
-  transition: width .2s ease, height .2s ease;
   will-change: transform;
+  transition: width .25s cubic-bezier(0.16, 1, 0.3, 1),
+              height .25s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color .25s ease,
+              opacity .2s ease;
 }
 
-.cursor--hover {
-  width: 32px;
-  height: 32px;
+/* --- Contenedor del anillo: SOLO posición, sin rotar --- */
+.cursor-ring-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 36px;
+  height: 36px;
+  pointer-events: none;
+  z-index: 999999998;
+  will-change: transform;
+  transition: width .3s cubic-bezier(0.16, 1, 0.3, 1),
+              height .3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* --- Anillo interior: SOLO rota, siempre centrado en el contenedor --- */
+.cursor-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  /* border: 1.5px dashed #ff5400; */
+  border: 1.5px solid #ff5400;
+  /* box-shadow: 0 0 12px rgba(255, 84, 0, 0.35); */
+  /* animation: cursor-spin 6s linear infinite; */
+  transition: border-color .3s ease,
+              background-color .3s ease,
+              border-style .3s ease,
+              box-shadow .3s ease;
+}
+
+@keyframes cursor-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* --- Estado hover (sobre elementos interactivos) --- */
+.cursor-dot--hover {
+  opacity: 0;
+}
+
+.cursor-ring-wrapper--hover {
+  width: 56px;
+  height: 56px;
+}
+
+.cursor-ring-wrapper--hover .cursor-ring {
+  border-style: solid;
+  border-width: 2px;
+  background: rgba(255, 84, 0, 0.05);
+  box-shadow: 0 0 22px rgba(255, 84, 0, 0.5);
+  animation-duration: 2.5s;
+}
+
+/* --- Estado click --- */
+.cursor-dot--click {
+  width: 6px;
+  height: 6px;
+  background: #ffffff;
+}
+
+.cursor-ring-wrapper--click {
+  width: 28px;
+  height: 28px;
+}
+
+.cursor-ring-wrapper--click .cursor-ring {
+  border-color: #ffffff;
+  box-shadow: 0 0 18px rgba(255, 255, 255, 0.5);
 }
 
 .icono5, .icono6, .icono7, .icono8 {

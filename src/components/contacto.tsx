@@ -1,3 +1,4 @@
+import { motion } from "motion/react";
 import { IconoEmail } from "./icons/iconoEmail";
 import { IconoGithub } from "./icons/iconoGithub";
 import { IconoInstagram } from "./icons/iconoInstagram";
@@ -5,6 +6,13 @@ import { IconoLinkedin } from "./icons/iconoLinkedin";
 import type { JSX } from "react";
 import { CardContacto } from "./cardContacto";
 import cvPdf from '../assets/docs/CV-Daniel-Ruiz-Soto.pdf';
+
+const fadeUp = {
+    initial: { opacity: 0, y: 30 },
+    whileInView: { opacity: 1, y: 0 },
+    viewport: { once: true, amount: 0.3 },
+    transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const },
+}
 
 export const modosContacto: { plataforma: string; usuario: string; icono: JSX.Element, color: string, enlace: string }[] = [
     {
@@ -40,23 +48,43 @@ export const modosContacto: { plataforma: string; usuario: string; icono: JSX.El
 export const Contacto = () => {
     return (
         <section id="contacto">
-            <h2 className="contenedor-titulo">
+            <motion.h2 className="contenedor-titulo" {...fadeUp}>
                 <span className='titulo-proyectos-mis'>¿QUIERES QUE</span>
                 <span className='titulo-proyectos-proyectos'>HABLEMOS?</span>
-            </h2>
-            <p className="texto-contacto">¿Tienes un proyecto en mente o buscas a alguien para tu equipo? Escríbeme por email o pásate por mis redes, respondo rápido. Si prefieres verlo todo junto, aquí tienes mi CV.</p>
-            <a className="btn-cv" href={cvPdf} download="CV-Daniel-Ruiz-Soto.pdf">
+            </motion.h2>
+
+            <motion.p
+                className="texto-contacto"
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: 0.08 }}
+            >
+                ¿Tienes un proyecto en mente o buscas a alguien para tu equipo? Escríbeme por email o pásate por mis redes, respondo rápido. Si prefieres verlo todo junto, aquí tienes mi CV.
+            </motion.p>
+
+            <motion.a
+                className="btn-cv"
+                href={cvPdf}
+                download="CV-Daniel-Ruiz-Soto.pdf"
+                {...fadeUp}
+                transition={{ ...fadeUp.transition, delay: 0.16 }}
+            >
                 Descargar CV <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-download">
 	<path stroke="none" d="M0 0h24v24H0z" fill="none" />
 	<path d="M4 17v2a2 2 0 0 0 2 2h12a2 2 0 0 0 2 -2v-2" />
 	<path d="M7 11l5 5l5 -5" />
 	<path d="M12 4l0 12" />
 </svg>
-            </a>
+            </motion.a>
 
             <ul className="contenedor-contacto">
                 {modosContacto.map(function(modo, index){
-                    return <li key={index}><a href={modo.enlace} target="_blank"><CardContacto icono={modo.icono} plataforma={modo.plataforma} usuario={modo.usuario} color={modo.color}/></a></li>
+                    return <motion.li
+                            key={index}
+                            {...fadeUp}
+                            transition={{ ...fadeUp.transition, delay: 0.24 + index * 0.08 }}
+                        >
+                            <a href={modo.enlace} target="_blank"><CardContacto icono={modo.icono} plataforma={modo.plataforma} usuario={modo.usuario} color={modo.color}/></a>
+                        </motion.li>
                 })}
             </ul>
         </section>
