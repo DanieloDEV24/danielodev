@@ -1315,3 +1315,261 @@ article.card-proyecto ul.links li:hover svg {
       0 8px 30px rgba(255, 84, 0, 0.10);
   }
 }
+
+/* Pagina error */
+/* ============================================================
+   404 — mismo lenguaje visual que el portfolio
+   TEMAS: claro por defecto. Oscuro si:
+     - <html data-theme="dark">  ó  <html class="dark">
+     - o, si no hay tema explícito, según prefers-color-scheme
+   👉 Si tu selector de tema es otro, cambia SOLO los 3 selectores
+      marcados con "TEMA" más abajo.
+   ============================================================ */
+
+.nf {
+  /* ---------- Tema claro ---------- */
+  --nf-bg: linear-gradient(135deg, #fff8f4 0%, #ffece0 55%, #ffe2d2 100%);
+  --nf-text: #141311;
+  --nf-accent-soft: #ffb088; /* como "FULL STACK." en claro */
+  --nf-body: #4a4541;
+  --nf-orange: #ff4d00;
+  --nf-orange-hover: #e64500;
+  --nf-on-orange: #ffffff;
+
+  --nf-term-bg: #ffffff;
+  --nf-term-bar: #f7f1ec;
+  --nf-term-border: rgba(20, 19, 17, 0.1);
+  --nf-term-shadow: 0 24px 60px -24px rgba(255, 77, 0, 0.35);
+  --nf-term-title: #8a827b;
+  --nf-term-text: #4a4541;
+  --nf-ok: #14a06a;
+  --nf-err: #d92d20;
+
+  position: relative;
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  align-items: center;
+  padding: clamp(5rem, 10vh, 7rem) clamp(1.25rem, 5vw, 4.5rem);
+  background: var(--nf-bg);
+  color: var(--nf-text);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* ---------- Tema oscuro ---------- */
+/* TEMA 1: atributo data-theme / clase .dark */
+:root[data-theme='dark'] .nf,
+:root.dark .nf {
+  --nf-bg: #141311;
+  --nf-text: #ffffff;
+  --nf-accent-soft: #2e2c2a; /* como "FULL STACK." en oscuro */
+  --nf-body: #d6d1cc;
+  --nf-orange-hover: #ff6a26;
+
+  --nf-term-bg: #1c1b1a;
+  --nf-term-bar: #101010;
+  --nf-term-border: rgba(255, 255, 255, 0.1);
+  --nf-term-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+  --nf-term-title: #8b857f;
+  --nf-term-text: #b9b3ad;
+  --nf-ok: #2fd28a;
+  --nf-err: #ff6b5e;
+}
+
+/* TEMA 2: preferencia del sistema cuando no hay tema explícito */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']):not(.light) .nf {
+    --nf-bg: #141311;
+    --nf-text: #ffffff;
+    --nf-accent-soft: #2e2c2a;
+    --nf-body: #d6d1cc;
+    --nf-orange-hover: #ff6a26;
+
+    --nf-term-bg: #1c1b1a;
+    --nf-term-bar: #101010;
+    --nf-term-border: rgba(255, 255, 255, 0.1);
+    --nf-term-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8);
+    --nf-term-title: #8b857f;
+    --nf-term-text: #b9b3ad;
+    --nf-ok: #2fd28a;
+    --nf-err: #ff6b5e;
+  }
+}
+
+/* TEMA 3: si usas otro mecanismo (p. ej. body.dark), añade aquí otro bloque
+   copiando las variables de "Tema oscuro". */
+
+/* ---------- Layout ---------- */
+.nf__inner {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 5vw, 4.5rem);
+}
+
+/* ---------- Titular ---------- */
+.nf__title {
+  margin: 0 0 1.75rem;
+  display: flex;
+  flex-direction: column;
+  font-size: clamp(3.75rem, 12vw, 9.5rem);
+  font-weight: 800;
+  line-height: 0.88;
+  letter-spacing: -0.045em;
+}
+
+.nf__title-main {
+  color: var(--nf-text);
+}
+
+.nf__title-accent {
+  color: var(--nf-accent-soft);
+}
+
+.nf__text {
+  margin: 0 0 2rem;
+  max-width: 46ch;
+  font-size: clamp(1rem, 1.4vw, 1.2rem);
+  line-height: 1.7;
+  color: var(--nf-body);
+}
+
+/* ---------- Botones ---------- */
+.nf__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.9rem;
+}
+
+.nf__btn {
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1;
+  padding: 0.95rem 1.5rem;
+  border-radius: 0.75rem;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
+}
+
+.nf__btn:focus-visible {
+  outline: 2px solid var(--nf-orange);
+  outline-offset: 3px;
+}
+
+.nf__btn--primary {
+  background: var(--nf-orange);
+  color: var(--nf-on-orange);
+  border: 2px solid var(--nf-orange);
+}
+
+.nf__btn--primary:hover {
+  background: var(--nf-orange-hover);
+  border-color: var(--nf-orange-hover);
+  transform: translateY(-2px);
+}
+
+/* Borde discontinuo: el mismo recurso que tus tarjetas */
+.nf__btn--ghost {
+  background: transparent;
+  color: var(--nf-orange);
+  border: 2px dashed var(--nf-orange);
+}
+
+.nf__btn--ghost:hover {
+  background: color-mix(in srgb, var(--nf-orange) 12%, transparent);
+}
+
+/* ---------- Terminal ---------- */
+.nf__term {
+  width: 100%;
+  background: var(--nf-term-bg);
+  border: 1px solid var(--nf-term-border);
+  border-radius: 0.9rem;
+  box-shadow: var(--nf-term-shadow);
+  overflow: hidden;
+  font-family: 'JetBrains Mono', 'Fira Code', ui-monospace, SFMono-Regular, Menlo,
+    Consolas, monospace;
+}
+
+.nf__term-bar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  background: var(--nf-term-bar);
+  border-bottom: 1px solid var(--nf-term-border);
+}
+
+.nf__dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.nf__dot--r { background: #ff5f57; }
+.nf__dot--y { background: #febc2e; }
+.nf__dot--g { background: #28c840; }
+
+.nf__term-title {
+  margin-left: 0.5rem;
+  font-size: 0.75rem;
+  color: var(--nf-term-title);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nf__term-body {
+  min-height: 15.5rem;
+  padding: 1.4rem 1.5rem 1.6rem;
+}
+
+.nf__line {
+  margin: 0 0 0.55rem;
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: var(--nf-term-text);
+  word-break: break-word;
+}
+
+.nf__line--cmd { color: var(--nf-orange); font-weight: 500; }
+.nf__line--ok  { color: var(--nf-ok); }
+.nf__line--err { color: var(--nf-err); }
+
+.nf__prompt { font-weight: 700; }
+.nf__mark   { display: inline-block; width: 1ch; }
+
+.nf__caret {
+  display: inline-block;
+  width: 0.55em;
+  height: 1.05em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--nf-orange);
+  animation: nf-blink 1s steps(1) infinite;
+}
+
+@keyframes nf-blink {
+  50% { opacity: 0; }
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .nf {
+    align-items: flex-start;
+  }
+  .nf__inner {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .nf__caret { animation: none; }
+  .nf__btn   { transition: none; }
+  .nf__btn--primary:hover { transform: none; }
+}
