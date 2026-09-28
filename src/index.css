@@ -1355,6 +1355,7 @@ article.card-proyecto ul.links li:hover svg {
   color: var(--nf-text);
   box-sizing: border-box;
   overflow: hidden;
+  min-width: 100vw;
 }
 
 /* ---------- Tema oscuro ---------- */
@@ -1403,13 +1404,17 @@ article.card-proyecto ul.links li:hover svg {
 /* ---------- Layout ---------- */
 .nf__inner {
   width: 100%;
-  max-width: 1200px;
+  /* max-width: 1200px; */
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-  align-items: center;
+  display: flex ;
   gap: clamp(2rem, 5vw, 4.5rem);
 }
+
+.nf__copy {
+  width: 40%;
+}
+
+
 
 /* ---------- Titular ---------- */
 .nf__title {
@@ -1487,7 +1492,7 @@ article.card-proyecto ul.links li:hover svg {
 
 /* ---------- Terminal ---------- */
 .nf__term {
-  width: 100%;
+  width: 60%;
   background: var(--nf-term-bg);
   border: 1px solid var(--nf-term-border);
   border-radius: 0.9rem;

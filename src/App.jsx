@@ -6,8 +6,7 @@ import { CardHome } from './components/cardDev'
 import { Footer } from './components/footer'
 import { Header } from './components/header'
 import CustomCursor from './components/customCursor'
-import NotFound from './pages/NotFound'
-
+import NotFound from './components/NotFound'
 import { useState } from 'react';
 import Preloader from './components/Preloader';
 
