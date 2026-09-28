@@ -76,17 +76,19 @@
     --bg: #ffffff;
     --text: #3a3532;
     --title: #151312;
-    --title-muted: rgba(21, 19, 18, 0.16);
+    /* Naranja translúcido en vez de gris: armoniza con el fondo */
+    --title-muted: rgba(255, 84, 0, 0.30);
     --muted: rgba(21, 19, 18, 0.65);
     --muted-2: rgba(21, 19, 18, 0.55);
 
-    --hover-bg: rgba(21, 19, 18, 0.05);
-    --hover-bg-strong: rgba(21, 19, 18, 0.08);
-    --surface-icon: rgba(21, 19, 18, 0.05);
+    /* Hover: blanco translúcido (aclara en vez de ensuciar) */
+    --hover-bg: rgba(255, 255, 255, 0.60);
+    --hover-bg-strong: rgba(255, 255, 255, 0.75);
+    --surface-icon: rgba(255, 255, 255, 0.70);
     --border-soft: rgba(21, 19, 18, 0.15);
     --btn-bg: #f9f9f9;
 
-    --tool-icon-bg: #f6f4f1;
+    --tool-icon-bg: #ffffff;
     --tool-icon-border: rgba(21, 19, 18, 0.08);
 
     --card-bg: #ffffff;
@@ -1286,19 +1288,31 @@ article.card-proyecto ul.links li:hover svg {
 }
 
 /* =========================================================
-   TEMA CLARO: degradados irregulares naranja y blanco
+   TEMA CLARO: fondo blanco con resplandor naranja difuso
    ========================================================= */
 @media (prefers-color-scheme: light) {
   :root {
     background-color: #ffffff;
     background-repeat: no-repeat;
+    background-attachment: fixed;
     background-image:
-      radial-gradient(90rem 65rem at 4% 6%,   rgba(255, 106, 0, 0.22), transparent 100%),
+      radial-gradient(90rem 65rem at 4% 6%,    rgba(255, 106, 0, 0.22), transparent 100%),
       radial-gradient(85rem 75rem at 100% 14%, rgba(255, 84, 0, 0.18),  transparent 100%),
       radial-gradient(100rem 60rem at 60% 38%, rgba(255, 150, 60, 0.12), transparent 100%),
       radial-gradient(80rem 80rem at 0% 62%,   rgba(255, 120, 20, 0.16), transparent 100%),
       radial-gradient(90rem 65rem at 92% 74%,  rgba(255, 106, 0, 0.15),  transparent 100%),
       radial-gradient(95rem 70rem at 18% 100%, rgba(255, 84, 0, 0.18),   transparent 100%),
       radial-gradient(85rem 65rem at 100% 100%, rgba(255, 140, 40, 0.22), transparent 100%);
+  }
+
+  /* Hover más pulido: cristal esmerilado + sombra naranja suave */
+  article.card-proyecto:hover,
+  #herramientas .contenedor-herramientas article:hover,
+  #contacto article.card-contacto:hover {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    box-shadow:
+      inset 0 0 0 1px rgba(255, 255, 255, 0.9),
+      0 8px 30px rgba(255, 84, 0, 0.10);
   }
 }
