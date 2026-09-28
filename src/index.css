@@ -80,20 +80,20 @@
     --muted: rgba(21, 19, 18, 0.65);
     --muted-2: rgba(21, 19, 18, 0.55);
 
-    --hover-bg: rgba(255, 84, 0, 0.07);
-    --hover-bg-strong: rgba(255, 84, 0, 0.10);
+    --hover-bg: rgba(21, 19, 18, 0.05);
+    --hover-bg-strong: rgba(21, 19, 18, 0.08);
     --surface-icon: rgba(21, 19, 18, 0.05);
     --border-soft: rgba(21, 19, 18, 0.15);
     --btn-bg: #f9f9f9;
 
-    --tool-icon-bg: #ffffff;
-    --tool-icon-border: rgba(255, 84, 0, 0.14);
+    --tool-icon-bg: #f6f4f1;
+    --tool-icon-border: rgba(21, 19, 18, 0.08);
 
     --card-bg: #ffffff;
     --card-title: #151312;
     --card-text: #555;
     --card-border: rgba(21, 19, 18, 0.08);
-    --card-shadow: 0 24px 60px rgba(255, 84, 0, 0.18);
+    --card-shadow: 0 10px 40px rgba(21, 19, 18, 0.08);
 
     --menu-bg: #fffaf5;
     --menu-text: #151312;
@@ -1286,84 +1286,13 @@ article.card-proyecto ul.links li:hover svg {
 }
 
 /* =========================================================
-   TEMA CLARO: más color y profundidad
+   TEMA CLARO: fondo anaranjado suave
    ========================================================= */
 @media (prefers-color-scheme: light) {
-  /* Fondo con manchas de color suaves fijas */
   :root {
     background-image:
       radial-gradient(60rem 40rem at 92% -5%, rgba(255, 106, 0, 0.14), transparent 60%),
-      radial-gradient(50rem 40rem at -10% 45%, rgba(50, 204, 204, 0.13), transparent 60%),
-      radial-gradient(45rem 35rem at 100% 90%, rgba(142, 81, 255, 0.11), transparent 60%);
+      radial-gradient(50rem 40rem at -10% 60%, rgba(255, 106, 0, 0.09), transparent 60%);
     background-attachment: fixed;
-  }
-
-  /* Segunda línea de los títulos en degradado naranja */
-  #home #contenedor-home > h1 span:nth-of-type(2),
-  #proyectos > h2 span:nth-of-type(2),
-  #herramientas > h2 span:nth-of-type(2),
-  #contacto > h2 span:nth-of-type(2) {
-    width: fit-content;
-    background: linear-gradient(90deg, #ff5400, #ffa53c);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Contadores con un color cada uno */
-  #contenedor-home .contenedor-contadores-home > div:nth-child(1) dt { color: var(--acc-orange); }
-  #contenedor-home .contenedor-contadores-home > div:nth-child(2) dt { color: var(--acc-cyan); }
-  #contenedor-home .contenedor-contadores-home > div:nth-child(3) dt { color: var(--acc-purple); }
-
-  /* Cards de proyecto teñidas con su color */
-  #proyectos ul.proyectos li:nth-child(1) { --acc: var(--acc-cyan); }
-  #proyectos ul.proyectos li:nth-child(2) { --acc: var(--acc-green); }
-  #proyectos ul.proyectos li:nth-child(3) { --acc: var(--acc-orange); }
-  #proyectos ul.proyectos li:nth-child(4) { --acc: var(--acc-purple); }
-
-  #proyectos ul.proyectos li article.card-proyecto {
-    background: color-mix(in srgb, var(--acc) 8%, #fff);
-    box-shadow:
-      inset 0 0 0 1px color-mix(in srgb, var(--acc) 22%, transparent),
-      0 12px 30px color-mix(in srgb, var(--acc) 14%, transparent);
-  }
-
-  #proyectos ul.proyectos li article.card-proyecto:hover {
-    background: color-mix(in srgb, var(--acc) 14%, #fff);
-  }
-
-  /* Herramientas: fichas blancas con sombra cálida y filtro activo naranja */
-  #herramientas .contenedor-herramientas article .contenedor-img {
-    box-shadow: 0 8px 18px rgba(255, 84, 0, 0.12);
-  }
-
-  #herramientas aside.navegacion button {
-    background-color: #fff;
-  }
-
-  #herramientas aside.navegacion button:hover,
-  #herramientas aside.navegacion button.selected {
-    background-color: #ff5400;
-    border-color: #ff5400;
-    color: #fff;
-  }
-
-  /* Contacto: cada fila con su color */
-  #contacto li:nth-child(1) { --acc: #c63400; }
-  #contacto li:nth-child(2) { --acc: var(--acc-green); }
-  #contacto li:nth-child(3) { --acc: var(--acc-cyan); }
-  #contacto li:nth-child(4) { --acc: var(--acc-indigo); }
-
-  #contacto article.card-contacto {
-    background: color-mix(in srgb, var(--acc) 6%, #fff);
-    box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--acc) 18%, transparent);
-  }
-
-  #contacto article.card-contacto:hover {
-    background: color-mix(in srgb, var(--acc) 12%, #fff);
-  }
-
-  #contacto article.card-contacto .contenedor-img {
-    background-color: color-mix(in srgb, var(--acc) 16%, #fff);
   }
 }
