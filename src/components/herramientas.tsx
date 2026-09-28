@@ -16,11 +16,11 @@ import codeigniter from '../assets/img/codeigniter.png';
 
 import mysql from '../assets/img/mysql.png';
 
-import git from '../assets/img/git.jpg';
+import git from '../assets/img/git.png';
 
-import github from '../assets/img/github.jpg';
+import github from '../assets/img/github.png';
 
-import vscode from '../assets/img/vscode.jpg';
+import vscode from '../assets/img/vscode.png';
 
 import { motion } from 'motion/react';
 
