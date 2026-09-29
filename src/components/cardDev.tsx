@@ -2,32 +2,58 @@ import { useRef, useState, type CSSProperties, type MouseEvent } from 'react'
 import { motion } from 'motion/react'
 import avatar from '../assets/img/avatar.png'
 
-const MAX_TILT = 12 // grados máximos de inclinación
-const SCALE = 1.02 // ligero zoom al hacer hover
+// Configuración del efecto de inclinación 3D
+const MAX_TILT = 12 // grados máximos de inclinación en cada eje
+const SCALE = 1.02  // ligero zoom al hacer hover
 
+/**
+ * CardHome
+ * Tarjeta de presentación personal (avatar, nombre, lema y redes sociales).
+ * Combina dos efectos:
+ *  1. Animación de entrada con `motion`: aparece desde arriba con rebote (spring).
+ *  2. Efecto "tilt" 3D: la tarjeta se inclina siguiendo el cursor del ratón
+ *     y vuelve a su posición al salir.
+ * Además incluye varios SVG decorativos (flechas/trazos naranjas dibujados a mano)
+ * posicionados de forma absoluta alrededor de la tarjeta.
+ */
 export const CardHome = () => {
+    // Referencia al div que se inclina, necesaria para medir su tamaño y posición
     const containerRef = useRef<HTMLDivElement>(null)
+
+    // Estilo dinámico (transform) que se recalcula con cada movimiento del ratón
     const [tiltStyle, setTiltStyle] = useState<CSSProperties>({})
 
+    /**
+     * Se ejecuta cada vez que el ratón se mueve sobre la tarjeta.
+     * Calcula dónde está el cursor respecto al centro y lo traduce a rotación.
+     */
     const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
         const container = containerRef.current
-        if (!container) return
+        if (!container) return // seguridad: si aún no está montado, no hace nada
 
+        // Posición y tamaño de la tarjeta en pantalla
         const rect = container.getBoundingClientRect()
+
+        // Posición del cursor DENTRO de la tarjeta (en píxeles)
         const x = e.clientX - rect.left
         const y = e.clientY - rect.top
 
+        // Se normaliza a un rango de -0.5 a 0.5 (0 = centro de la tarjeta)
         const percentX = x / rect.width - 0.5
         const percentY = y / rect.height - 0.5
 
+        // Rotación en X (arriba/abajo): se invierte el signo para que la tarjeta
+        // "mire" hacia el cursor. Rotación en Y (izquierda/derecha): directa.
         const rotateX = (-percentY * MAX_TILT).toFixed(2)
         const rotateY = (percentX * MAX_TILT).toFixed(2)
 
+        // Aplica perspectiva + rotaciones + zoom
         setTiltStyle({
             transform: `perspective(1200px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(${SCALE}, ${SCALE}, ${SCALE})`,
         })
     }
 
+    /** Al salir el ratón, la tarjeta vuelve a su posición neutra (sin rotación ni zoom) */
     const handleMouseLeave = () => {
         setTiltStyle({
             transform: 'perspective(1200px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)',
@@ -35,60 +61,65 @@ export const CardHome = () => {
     }
 
     return (
+        // <motion.aside> = <aside> con capacidades de animación.
+        // Gestiona SOLO la animación de entrada.
+        <motion.aside
+            className='contenedor-card contenedor-card-dev'
+            initial={{ opacity: 0, y: -60 }} // estado inicial: invisible y 60px más arriba
+            animate={{ opacity: 1, y: 0 }}   // estado final: visible y en su sitio
+            transition={{
+                // Desplazamiento vertical con efecto muelle (rebote)
+                y: {
+                    type: 'spring',
+                    stiffness: 400, // rigidez: más alto = más rápido/brusco
+                    damping: 12,    // amortiguación: más bajo = más rebote
+                    mass: 1.3,      // masa: más alto = más "pesado"
+                },
+                // La opacidad se anima de forma lineal y rápida
+                opacity: {
+                    duration: 0.25,
+                    ease: 'easeOut',
+                },
+            }}
+        >
 
-<motion.aside
-    className='contenedor-card contenedor-card-dev'
-    initial={{ opacity: 0, y: -60 }}
-    animate={{ opacity: 1, y: 0 }}
-    transition={{
-        y: {
-            type: 'spring',
-            stiffness: 400,
-            damping: 12,
-            mass: 1.3,
-        },
-        opacity: {
-            duration: 0.25,
-            ease: 'easeOut',
-        },
-    }}
->
-
-            {/* Al tener el aside con sticky no puedo meterle otro position */}
+            {/* Al tener el aside con sticky no puedo meterle otro position.
+                Por eso el efecto tilt se aplica en este div interior y no en el aside. */}
             <div
                 className="contenedor-card-dev"
                 ref={containerRef}
                 onMouseMove={handleMouseMove}
                 onMouseLeave={handleMouseLeave}
                 style={{
-                    ...tiltStyle,
-                    transition: 'transform 0.15s ease-out',
-                    transformStyle: 'preserve-3d',
-                    willChange: 'transform',
+                    ...tiltStyle,                              // transform dinámico del tilt
+                    transition: 'transform 0.15s ease-out',    // suaviza el movimiento
+                    transformStyle: 'preserve-3d',             // permite profundidad 3D en los hijos
+                    willChange: 'transform',                   // optimización: avisa al navegador
                 }}
             >
 
+                {/* ===== SVG DECORATIVOS =====
+                    Trazos naranjas (#FF5400) posicionados de forma absoluta.
+                    Todos con aria-hidden (salvo icono5-8, ver observaciones)
+                    y pointerEvents: 'none' para no bloquear el ratón. */}
+
+                {/* icono1: flecha curva pequeña, arriba a la izquierda */}
                 <svg width="41" height="31" viewBox="0 0 41 31" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
                         top: '70px',
                         left: '2.9%',
-                        transform: 'translateX(-50%)',
-                        zIndex: 2,
-                        pointerEvents: 'none'
+                        transform: 'translateX(-50%)', // centra el SVG respecto a su "left"
+                        zIndex: 2,                     // por encima del contenido de la tarjeta
+                        pointerEvents: 'none'          // ignora clics/hover
                     }}
                     className='icono1'
-                    >
-                    <path d="M39.4679 2.37858C40.0911 2.08145 40.3553 1.33542 40.0582 0.712282C39.7611 0.0891432 39.015 -0.175135 38.3919 0.122L38.9299 1.25029L39.4679 2.37858ZM7.19063 30.6893L8.44063 30.6893L8.44063 28.1893L7.19063 28.1893L7.19063 29.4393L7.19063 30.6893ZM1.96703 27.3161C1.4015 26.9201 0.622077 27.0576 0.226133 27.6231C-0.169812 28.1887 -0.0323395 28.9681 0.533186 29.364L1.25011 28.3401L1.96703 27.3161ZM1.5243 22.3233C1.05144 22.8263 1.07587 23.6174 1.57886 24.0902C2.08185 24.5631 2.87293 24.5387 3.34578 24.0357L2.43504 23.1795L1.5243 22.3233ZM12.765 16.8088C13.346 16.4359 13.5146 15.6626 13.1417 15.0816C12.7688 14.5007 11.9955 14.332 11.4145 14.7049L12.0898 15.7569L12.765 16.8088ZM16.6692 11.4906C16.0736 11.8396 15.8737 12.6054 16.2228 13.201C16.5719 13.7966 17.3377 13.9965 17.9333 13.6474L17.3012 12.569L16.6692 11.4906ZM28.5744 7.79631C29.1868 7.47777 29.4251 6.72304 29.1066 6.11056C28.788 5.49809 28.0333 5.25981 27.4208 5.57835L27.9976 6.68733L28.5744 7.79631ZM32.8854 2.80166C32.2671 3.10885 32.0149 3.85906 32.3221 4.47731C32.6293 5.09555 33.3795 5.34772 33.9978 5.04053L33.4416 3.9211L32.8854 2.80166ZM7.19063 29.4393L7.19063 28.1893C5.74369 28.1893 4.59552 28.0949 3.71234 27.9281C2.81597 27.7588 2.27176 27.5294 1.96703 27.3161L1.25011 28.3401L0.533186 29.364C1.24426 29.8619 2.17576 30.1821 3.24843 30.3847C4.33428 30.5897 5.64847 30.6893 7.19063 30.6893L7.19063 29.4393ZM2.43504 23.1795L3.34578 24.0357C5.21639 22.0459 8.44389 19.5825 12.765 16.8088L12.0898 15.7569L11.4145 14.7049C7.05085 17.506 3.61175 20.1028 1.5243 22.3233L2.43504 23.1795ZM17.3012 12.569L17.9333 13.6474C21.1453 11.7649 24.7223 9.79975 28.5744 7.79631L27.9976 6.68733L27.4208 5.57835C23.5382 7.59765 19.9236 9.58313 16.6692 11.4906L17.3012 12.569ZM33.4416 3.9211L33.9978 5.04053C35.7796 4.15518 37.6056 3.26663 39.4679 2.37858L38.9299 1.25029L38.3919 0.122C36.5178 1.01564 34.6797 1.91009 32.8854 2.80166L33.4416 3.9211Z" fill="#FF5400" />
+                >
+                    <path d="M39.4679 2.37858C..." fill="#FF5400" />
                 </svg>
 
-                <svg
-                    width="249"
-                    height="40"
-                    viewBox="0 0 249 40"
-                    fill="none"
-                    xmlns="http://www.w3.org/2000/svg"
-                    aria-hidden="true"
+                {/* icono2: línea curva discontinua, arriba a la derecha */}
+                <svg width="249" height="40" viewBox="0 0 249 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
                         top: '0px',
@@ -99,9 +130,11 @@ export const CardHome = () => {
                     }}
                     className='icono2'
                 >
-                    <path d="M1.25032 18.2189C60.0886 1.08006 118.927 -3.07648 177.765 5.74926C198.682 9.23544 199.774 10.7163 191.765 15.3397" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="12 6" />
+                    {/* strokeDasharray="12 6" -> trazo de 12px y hueco de 6px (línea punteada) */}
+                    <path d="M1.25032 18.2189C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="round" strokeDasharray="12 6" />
                 </svg>
 
+                {/* icono3: trazo discontinuo, abajo a la derecha */}
                 <svg width="113" height="58" viewBox="0 0 113 58" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
                     style={{
                         position: 'absolute',
@@ -112,121 +145,134 @@ export const CardHome = () => {
                         pointerEvents: 'none'
                     }}
                     className='icono3'
-                    >
-                    <path d="M107.25 1.25C115.25 1.25 110.501 7.3219 104.75 13.6783C87.7501 26.1783 1.24999 63.1783 1.25 55.6783" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="12 6" />
-                </svg>
-
-                <svg width="74" height="28" viewBox="0 0 74 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style={{
-                    position: 'absolute',
-                    top: '85%',
-                    left: '8%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 2,
-                    pointerEvents: 'none'
-                }}
-                className='icono4'
                 >
-                    <path d="M73.5646 22.1759C74.076 21.7121 74.1145 20.9216 73.6507 20.4102C73.187 19.8989 72.3964 19.8603 71.8851 20.3241L72.7249 21.25L73.5646 22.1759ZM4.2249 2.5H5.4749V0H4.2249V1.25V2.5ZM0.919148 5.12884C1.31422 5.69498 2.09343 5.83366 2.65957 5.43859C3.2257 5.04352 3.36438 4.26431 2.96932 3.69817L1.94423 4.4135L0.919148 5.12884ZM6.69795 7.28524C6.15356 6.86071 5.36809 6.95787 4.94356 7.50226C4.51902 8.04665 4.61618 8.83212 5.16057 9.25665L5.92926 8.27095L6.69795 7.28524ZM14.6413 15.3694C15.2452 15.7039 16.0059 15.4855 16.3404 14.8816C16.6749 14.2777 16.4565 13.5169 15.8526 13.1825L15.247 14.2759L14.6413 15.3694ZM20.7064 15.7102C20.0864 15.4065 19.3377 15.663 19.034 16.2829C18.7303 16.9029 18.9868 17.6517 19.6067 17.9554L20.1566 16.8328L20.7064 15.7102ZM29.896 22.4035C30.5421 22.6467 31.263 22.3201 31.5062 21.674C31.7495 21.0279 31.4229 20.307 30.7768 20.0638L30.3364 21.2337L29.896 22.4035ZM35.9507 21.8614C35.2928 21.6523 34.5899 22.0161 34.3808 22.674C34.1717 23.3319 34.5355 24.0348 35.1934 24.2439L35.5721 23.0527L35.9507 21.8614ZM46.1034 26.9806C46.7831 27.1013 47.432 26.6482 47.5527 25.9684C47.6734 25.2887 47.2202 24.6398 46.5405 24.5191L46.3219 25.7499L46.1034 26.9806ZM51.9255 25.2352C51.2376 25.1768 50.6327 25.6872 50.5743 26.375C50.5159 27.0629 51.0263 27.6679 51.7142 27.7262L51.8198 26.4807L51.9255 25.2352ZM63.1004 27.2224C63.7765 27.0831 64.2118 26.4221 64.0725 25.7459C63.9333 25.0698 63.2722 24.6345 62.5961 24.7738L62.8482 25.9981L63.1004 27.2224ZM67.5827 23.1574C66.9571 23.4495 66.6868 24.1933 66.9789 24.8189C67.2709 25.4444 68.0148 25.7147 68.6403 25.4227L68.1115 24.2901L67.5827 23.1574ZM4.2249 1.25V0C3.38139 0 2.62846 0.0825552 1.99807 0.28093C1.36967 0.47868 0.754335 0.827854 0.365779 1.43621C-0.0377258 2.06796 -0.0652639 2.77096 0.0811232 3.39266C0.222341 3.99241 0.535346 4.57884 0.919148 5.12884L1.94423 4.4135L2.96932 3.69817C2.68069 3.28457 2.55557 2.99376 2.51458 2.81968C2.47875 2.66755 2.52493 2.70012 2.4727 2.7819C2.43541 2.84028 2.4489 2.75992 2.74851 2.66564C3.04613 2.57198 3.52039 2.5 4.2249 2.5V1.25ZM5.92926 8.27095L5.16057 9.25665C7.62044 11.175 10.8766 13.2843 14.6413 15.3694L15.247 14.2759L15.8526 13.1825C12.1682 11.1417 9.02831 9.10254 6.69795 7.28524L5.92926 8.27095ZM20.1566 16.8328L19.6067 17.9554C22.8296 19.5339 26.3023 21.0507 29.896 22.4035L30.3364 21.2337L30.7768 20.0638C27.2613 18.7404 23.8617 17.2557 20.7064 15.7102L20.1566 16.8328ZM35.5721 23.0527L35.1934 24.2439C38.8065 25.3924 42.4841 26.3379 46.1034 26.9806L46.3219 25.7499L46.5405 24.5191C43.0469 23.8987 39.4771 22.9823 35.9507 21.8614L35.5721 23.0527ZM51.8198 26.4807L51.7142 27.7262C55.7016 28.0645 59.5612 27.9513 63.1004 27.2224L62.8482 25.9981L62.5961 24.7738C59.3501 25.4423 55.7408 25.5589 51.9255 25.2352L51.8198 26.4807ZM68.1115 24.2901L68.6403 25.4227C70.4361 24.5842 72.0915 23.512 73.5646 22.1759L72.7249 21.25L71.8851 20.3241C70.6118 21.479 69.1699 22.4163 67.5827 23.1574L68.1115 24.2901Z" fill="#FF5400" />
+                    <path d="M107.25 1.25C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="12 6" />
                 </svg>
 
-                <svg width="274" height="175" viewBox="0 0 274 175" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono5' style={{
-                    position: 'absolute',
-                    zIndex: 2
-                }}>
-                    <path d="M261.823 1.25C281.489 1.25 269.815 20.0938 255.677 39.8205C213.887 78.6136 1.24998 193.441 1.25 170.165" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="12 6"/>
+                {/* icono4: flecha ondulada, abajo a la izquierda */}
+                <svg width="74" height="28" viewBox="0 0 74 28" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"
+                    style={{
+                        position: 'absolute',
+                        top: '85%',
+                        left: '8%',
+                        transform: 'translateX(-50%)',
+                        zIndex: 2,
+                        pointerEvents: 'none'
+                    }}
+                    className='icono4'
+                >
+                    <path d="M73.5646 22.1759C..." fill="#FF5400" />
                 </svg>
 
-                <svg width="62" height="57" viewBox="0 0 62 57" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono6' style={{
-                    position: 'absolute',
-                    zIndex: 2
-                }}>
-                    <path d="M60.264 55.0948C-1.23602 27.5948 1.26398 14.5948 1.26398 9.59476C1.26398 4.59476 9.76398 1.59476 9.76398 1.59476" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
+                {/* icono5 a icono8: trazos discontinuos grandes.
+                    No tienen top/left aquí: su posición concreta se define en el CSS
+                    (mediante sus clases), probablemente con media queries. */}
+                <svg width="274" height="175" viewBox="0 0 274 175" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono5'
+                    style={{ position: 'absolute', zIndex: 2 }}>
+                    <path d="M261.823 1.25C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="12 6" />
                 </svg>
 
-                <svg width="83" height="22" viewBox="0 0 83 22" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono7' style={{
-                    position: 'absolute',
-                    zIndex: 2
-                }}>
-                    <path d="M81.027 7.52696C78.027 29.027 39.027 18.027 25.027 11.027C11.027 4.02697 1.52696 1.52696 1.52696 1.52696" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
+                <svg width="62" height="57" viewBox="0 0 62 57" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono6'
+                    style={{ position: 'absolute', zIndex: 2 }}>
+                    <path d="M60.264 55.0948C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5" />
                 </svg>
 
-                <svg width="290" height="117" viewBox="0 0 290 117" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono8' style={{
-                    position: 'absolute',
-                    zIndex: 2
-                }}>
-                    <path d="M288.438 9.08849C288.438 9.08849 288.438 -2.91149 280.938 3.08851C273.438 9.08851 217.938 114.588 133.938 115.588C49.9385 116.588 10.4385 6.08851 6.43848 4.0885C2.43848 2.08848 1.43848 8.08849 1.43848 8.08849" stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5"/>
+                <svg width="83" height="22" viewBox="0 0 83 22" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono7'
+                    style={{ position: 'absolute', zIndex: 2 }}>
+                    <path d="M81.027 7.52696C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5" />
                 </svg>
 
+                <svg width="290" height="117" viewBox="0 0 290 117" fill="none" xmlns="http://www.w3.org/2000/svg" className='icono8'
+                    style={{ position: 'absolute', zIndex: 2 }}>
+                    <path d="M288.438 9.08849C..." stroke="#FF5400" strokeWidth="2.5" strokeLinecap="square" strokeDasharray="5 5" />
+                </svg>
+
+                {/* Icono de llama (fuego) en blanco, posicionado desde el CSS mediante #icon-fire */}
                 <div id="icon-fire">
-                    <svg width="24px" strokeWidth="1.5" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" color="#fff"><path d="M8 18C8 20.4148 9.79086 21 12 21C15.7587 21 17 18.5 14.5 13.5C11 18 10.5 11 11 9C9.5 12 8 14.8177 8 18Z" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path><path d="M12 21C17.0495 21 20 18.0956 20 13.125C20 8.15444 12 3 12 3C12 3 4 8.15444 4 13.125C4 18.0956 6.95054 21 12 21Z" stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path></svg>
+                    <svg width="24px" strokeWidth="1.5" height="24px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" color="#fff">
+                        {/* Llama interior */}
+                        <path d="M8 18C8 20.4148..." stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                        {/* Contorno exterior de la llama */}
+                        <path d="M12 21C17.0495 21..." stroke="#fff" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"></path>
+                    </svg>
                 </div>
 
+                {/* ===== TARJETA PRINCIPAL ===== */}
                 <article id="card-dev">
 
+                    {/* Zona superior: imagen del avatar */}
                     <div className="card-fondo-avatar">
                         <img src={avatar} alt="avatar divertido de Daniel, estilo Apple" />
                     </div>
 
+                    {/* Zona inferior: nombre, lema y redes sociales */}
                     <div className="info-card-dev">
-                    <h2 className="titulo-nombre">Daniel Ruiz.</h2>
+                        <h2 className="titulo-nombre">Daniel Ruiz.</h2>
 
-                    <p className="mensaje">
-                        Código limpio, proyectos reales, resultados medibles.
-                    </p>
+                        <p className="mensaje">
+                            Código limpio, proyectos reales, resultados medibles.
+                        </p>
 
-                    
+                        {/* Lista de enlaces a redes sociales / contacto */}
+                        <ul className="redes-sociales">
 
-                    <ul className="redes-sociales">
-                        <li key={'linkedin-tarjeta-dev'}>
-                            <a  href="https://www.linkedin.com/in/daniel-ruiz-soto-831885315/"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Perfil de LinkedIn">
-                                <svg width="28px" height="28px" strokeWidth="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M21 8V16C21 18.7614 18.7614 21 16 21H8C5.23858 21 3 18.7614 3 16V8C3 5.23858 5.23858 3 8 3H16C18.7614 3 21 5.23858 21 8Z" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M7 17V13.5V10" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M11 17V13.75M11 10V13.75M11 13.75C11 10 17 10 17 13.75V17" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M7 7.01L7.01 6.99889" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </a>
-                        </li>
+                            {/* LinkedIn: se abre en pestaña nueva.
+                                rel="noopener noreferrer" evita que la página abierta
+                                acceda a window.opener (seguridad y privacidad) */}
+                            <li key={'linkedin-tarjeta-dev'}>
+                                <a href="https://www.linkedin.com/in/daniel-ruiz-soto-831885315/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Perfil de LinkedIn">
+                                    <svg width="28px" height="28px" strokeWidth="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 8V16C21 18.7614..." stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> {/* marco redondeado */}
+                                        <path d="M7 17V13.5V10" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />         {/* letra "i" (palo) */}
+                                        <path d="M11 17V13.75M11..." stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />     {/* letra "n" */}
+                                        <path d="M7 7.01L7.01 6.99889" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />   {/* punto de la "i" */}
+                                    </svg>
+                                </a>
+                            </li>
 
-                        <li key={'github-tarjeta-dev'}>
-                            <a  href="https://github.com/DanieloDEV24"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Perfil de GitHub">
-                                <svg width="28px" height="28px" strokeWidth="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M16 22.0268V19.1568C16.0375 18.68 15.9731 18.2006 15.811 17.7506C15.6489 17.3006 15.3929 16.8902 15.06 16.5468C18.2 16.1968 21.5 15.0068 21.5 9.54679C21.4997 8.15062 20.9627 6.80799 20 5.79679C20.4558 4.5753 20.4236 3.22514 19.91 2.02679C19.91 2.02679 18.73 1.67679 16 3.50679C13.708 2.88561 11.292 2.88561 8.99999 3.50679C6.26999 1.67679 5.08999 2.02679 5.08999 2.02679C4.57636 3.22514 4.54413 4.5753 4.99999 5.79679C4.03011 6.81549 3.49251 8.17026 3.49999 9.57679C3.49999 14.9968 6.79998 16.1868 9.93998 16.5768C9.61098 16.9168 9.35725 17.3222 9.19529 17.7667C9.03334 18.2112 8.96679 18.6849 8.99999 19.1568V22.0268" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                    <path d="M9 20.0267C6 20.9999 3.5 20.0267 2 17.0267" stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                </svg>
-                            </a>
-                        </li>
-                        <li key={'instagram-tarjeta-dev'}>
-                            <a  href="https://www.instagram.com/danielo.dev24/?hl=es"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                aria-label="Perfil de Instagram">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M4 8a4 4 0 0 1 4 -4h8a4 4 0 0 1 4 4v8a4 4 0 0 1 -4 4h-8a4 4 0 0 1 -4 -4l0 -8" />
-                                    <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />
-                                    <path d="M16.5 7.5v.01" />
-                                </svg>
-                            </a>
-                        </li>
+                            {/* GitHub */}
+                            <li key={'github-tarjeta-dev'}>
+                                <a href="https://github.com/DanieloDEV24"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Perfil de GitHub">
+                                    <svg width="28px" height="28px" strokeWidth="1.5" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M16 22.0268V19.1568..." stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> {/* silueta del gato */}
+                                        <path d="M9 20.0267C6 20.9999..." stroke="#ff5400" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" /> {/* cola */}
+                                    </svg>
+                                </a>
+                            </li>
 
-                        <li key={'email-tarjeta-dev'}>
-                            <a  href="mailto:danielruizdeveloper@gmail.com"
-                                aria-label="Enviar correo electrónico">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-mail">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                                    <path d="M3 7a2 2 0 0 1 2 -2h14a2 2 0 0 1 2 2v10a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-10" />
-                                    <path d="M3 7l9 6l9 -6" />
-                                </svg>
-                            </a>
-                        </li>
-                    </ul>
+                            {/* Instagram */}
+                            <li key={'instagram-tarjeta-dev'}>
+                                <a href="https://www.instagram.com/danielo.dev24/?hl=es"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label="Perfil de Instagram">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-brand-instagram">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />       {/* fondo invisible (estándar Tabler) */}
+                                        <path d="M4 8a4 4 0 0 1 4 -4h8..." />                     {/* marco de la cámara */}
+                                        <path d="M9 12a3 3 0 1 0 6 0a3 3 0 0 0 -6 0" />           {/* lente */}
+                                        <path d="M16.5 7.5v.01" />                                {/* punto del flash */}
+                                    </svg>
+                                </a>
+                            </li>
+
+                            {/* Email: usa mailto:, así que no necesita target="_blank" */}
+                            <li key={'email-tarjeta-dev'}>
+                                <a href="mailto:danielruizdeveloper@gmail.com"
+                                    aria-label="Enviar correo electrónico">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1" strokeLinecap="round" strokeLinejoin="round" className="icon icon-tabler icons-tabler-outline icon-tabler-mail">
+                                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                                        <path d="M3 7a2 2 0 0 1 2 -2h14..." /> {/* sobre */}
+                                        <path d="M3 7l9 6l9 -6" />             {/* solapa del sobre */}
+                                    </svg>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
 
                 </article>
