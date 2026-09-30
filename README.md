@@ -82,7 +82,7 @@ Sube el contenido de `dist/` a tu hosting (Vercel, Netlify, GitHub Pages...).
 
 ## 👤 Autor
 
-**Daniel Ruiz**
+**Daniel Ruiz Soto**
 
 - GitHub: [@DanieloDEV24](https://github.com/DanieloDEV24)
 - Email: danielruizdeveloper@gmail.com
