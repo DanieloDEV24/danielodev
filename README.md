@@ -1,16 +1,97 @@
-# React + Vite
+# danielo24.dev · Portfolio de Daniel Ruiz Soto
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+> Código limpio, proyectos reales, resultados medibles.
 
-Currently, two official plugins are available:
+Portfolio personal de **Daniel Ruiz Soto**, desarrollador Full Stack y docente en desarrollo web. Muestra mi perfil, los proyectos en los que trabajo, las tecnologías que uso y cómo contactar conmigo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+🔗 **Enlace:** [danielo24.dev](https://danielo24.dev)
 
-## React Compiler
+![Preview](./docs/preview.png)
+<!-- Sustituye por una captura de la web -->
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## ✨ Secciones
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+| Sección | Descripción |
+|---|---|
+| **Inicio / Sobre mí** | Presentación, estadísticas (+3 proyectos reales, +8 herramientas, +1 año de experiencia) y experiencia profesional |
+| **Mis proyectos** | Proyectos destacados, como *Reservalo* (plataforma de reservas de instalaciones municipales) |
+| **Herramientas que uso** | Stack tecnológico con filtros: Todos · BackEnd · FrontEnd · Otros |
+| **Contacto** | Email, GitHub, Instagram, LinkedIn y botón de descarga del CV |
+
+## 🛠️ Stack
+
+| Área | Tecnologías |
+|---|---|
+| Framework | React |
+| Lenguaje | TypeScript |
+| Bundler | Vite |
+| Estilos | CSS |
+
+## 📦 Requisitos
+
+- [Node.js](https://nodejs.org/) 18 o superior
+- npm (o pnpm / yarn)
+
+## 🚀 Instalación
+
+```bash
+# 1. Clona el repositorio
+git clone https://github.com/DanieloDEV24/NOMBRE-DEL-REPO.git
+
+# 2. Entra en la carpeta
+cd NOMBRE-DEL-REPO
+
+# 3. Instala las dependencias
+npm install
+
+# 4. Arranca el servidor de desarrollo
+npm run dev
+```
+
+La web estará disponible en `http://localhost:5173`.
+
+## 📜 Scripts
+
+| Comando | Acción |
+|---|---|
+| `npm run dev` | Servidor de desarrollo con HMR |
+| `npm run build` | Compilación de producción (`dist/`) |
+| `npm run preview` | Previsualiza la build en local |
+| `npm run lint` | Revisa el código con ESLint |
+
+## 📁 Estructura
+
+```
+├── public/            # Archivos estáticos (CV, favicon...)
+├── src/
+│   ├── assets/        # Imágenes e iconos
+│   ├── components/    # Componentes reutilizables
+│   ├── sections/      # Secciones de la web
+│   ├── App.tsx
+│   └── main.tsx
+├── index.html
+├── vite.config.ts
+└── package.json
+```
+<!-- Ajusta la estructura a la real de tu proyecto -->
+
+## 🌐 Despliegue
+
+```bash
+npm run build
+```
+
+Sube el contenido de `dist/` a tu hosting (Vercel, Netlify, GitHub Pages...).
+
+## 👤 Autor
+
+**Daniel Ruiz**
+
+- GitHub: [@DanieloDEV24](https://github.com/DanieloDEV24)
+- Email: danielruizdeveloper@gmail.com
+
+## 📄 Licencia
+
+Distribuido bajo licencia MIT. Consulta el archivo `LICENSE` para más información.
