@@ -6,7 +6,7 @@ Portfolio personal de **Daniel Ruiz Soto**, desarrollador Full Stack y docente e
 
 🔗 **Enlace:** [danielo24.dev](https://danielo24.dev)
 
-![Preview](./docs/preview.png)
+![Mockup](./src/assets/img/mockup.jpeg)
 <!-- Sustituye por una captura de la web -->
 
 ---
