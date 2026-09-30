@@ -91,6 +91,8 @@ Sube el contenido de `dist/` a tu hosting (Vercel, Netlify, GitHub Pages...).
 
 - GitHub: [@DanieloDEV24](https://github.com/DanieloDEV24)
 - Email: danielruizdeveloper@gmail.com
+- Instagram: [danielo.dev](https://www.instagram.com/danielo.dev24/?hl=es)
+- LinkedIn: [Daniel Ruiz Soto](https://www.linkedin.com/in/daniel-ruiz-soto-831885315/)
 
 ## 📄 Licencia
 
