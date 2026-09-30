@@ -1,53 +1,89 @@
 import { ButtonMenu } from "./buttonMenu"
 import { useState, useEffect } from "react"
 
+/**
+ * Header
+ * Cabecera del portfolio con un menú desplegable a pantalla completa.
+ * Al abrirlo se muestra:
+ * - Los enlaces de navegación a las secciones (#home, #proyectos, #herramientas, #contacto).
+ * - Los enlaces a redes sociales y email.
+ * - Una frase que se escribe letra a letra (efecto máquina de escribir).
+ * - Un reloj en vivo con la hora actual.
+ * Al pulsar un enlace de navegación, el menú se cierra.
+ * No recibe props; gestiona su propio estado (menú abierto, texto y reloj).
+ *
+ * @returns Un <header> con el botón del menú y el panel desplegable
+ */
 export const Header = () => {
 
+    // Frase dividida en dos partes para poder estilar "código." con un <span> distinto
     const PRIMERA_PARTE = "Convierto ideas en ";
     const SEGUNDA_PARTE = "código.";
     const TEXTO_COMPLETO = PRIMERA_PARTE + SEGUNDA_PARTE;
 
+    // Texto que se muestra en pantalla en este instante (va creciendo letra a letra)
     const [texto, setTexto] = useState("");
+
+    // true = menú abierto, false = menú cerrado
     const [activo, setActivo] = useState(false);
+
+    // Fecha actual que pinta el reloj
     const [reloj, setReloj] = useState(new Date); // Tenemos que crear el estado para mostrar en cada segundo la nueva fecha, ya que solo se re-renderiza con el cambio de prop
                                                   // del elemento, al refrescar o cuando cambia el estado (useState) 
     
+    // Efecto del reloj: actualiza la fecha cada segundo.
     // Aquí usamos un useEffect ya que nos sirve para demostrar cuando debemos de realizar la función. Al renderizar el componente cada segundo (useState del reloj), crearíamos un intervalo cada segundo y con el paso del tiempo tendríamos muchos y esto perjudicaría el estado de la web. Con este useEffect con el array vacío, decimos que solo queremos hacerlo una vez cuando se renderice al inicio   
     useEffect(() => {
         const intervalId = setInterval(() => {
             setReloj(new Date());
         }, 1000);
 
+        // Limpieza al desmontar: detiene el intervalo para evitar fugas de memoria
         return () => clearInterval(intervalId);
     }, []);
 
+    // Efecto de la frase: se ejecuta cada vez que cambia `activo` (se abre o se cierra el menú)
     useEffect(() => {
 
+        // Menú cerrado: vaciamos el texto y no arrancamos ninguna animación
         if (!activo) {
             setTexto(""); // reseteamos para que la próxima vez que se abra, vuelva a escribir desde cero
             return;
         }
 
+        // Menú abierto: añadimos una letra más cada 80 ms
         let index = 0
         const intervalTexto = setInterval(() => {
             index ++;
            setTexto(TEXTO_COMPLETO.slice(0, index))
         }, 80);
 
+        // Ojo: esta comprobación se ejecuta una sola vez, justo después de crear el intervalo
+        // (con index = 0), así que nunca se cumple. Ver notas al final.
        if (index === TEXTO_COMPLETO.length) {
             setTexto("")
             clearInterval(intervalTexto);
         }
 
+        // Limpieza: si el menú se cierra a mitad de la animación, se detiene el intervalo
         return () => clearInterval(intervalTexto);
     }, [activo])
 
     return (
-        
+        // Contenedor de la cabecera
         <header className="top-header">
+
+            {/* Botón hamburguesa: recibe el estado y el setter para abrir/cerrar el menú */}
             <ButtonMenu vari={activo} fun={setActivo} />
+
+            {/* Panel del menú. Cuando no está activo se oculta con la clase d-none */}
             <div className={`contenedor-menu-header ${!activo ? 'd-none' : '' }`}>
+
+               {/* Columna izquierda: enlaces de navegación y redes sociales */}
                <div className="contenedor-enlaces">
+
+                    {/* Navegación interna: cada enlace lleva a una sección por su id
+                        y cierra el menú al pulsarlo */}
                      <ul className="enlaces">
                     <li><a href="#home" onClick={() => {setActivo(false)}}>HOME.</a></li>
                     <li><a href="#proyectos" onClick={() => {setActivo(false)}}>PROYECTOS.</a></li>
@@ -57,7 +93,11 @@ export const Header = () => {
 
                 {/* <hr /> */}
 
+                    {/* Enlaces externos. Los que llevan a otra web se abren en pestaña nueva
+                        con rel="noopener noreferrer"; el aria-label describe el destino */}
                     <ul className="redes-sociales">
+
+                        {/* LinkedIn */}
                         <li key={'linkedin-header'}>
                              <a  href="https://www.linkedin.com/in/daniel-ruiz-soto-831885315/"
                                 target="_blank"
@@ -74,6 +114,7 @@ export const Header = () => {
                             </a>
                         </li>
 
+                        {/* GitHub */}
                         <li key={'github-header'}>
                              <a  href="https://github.com/DanieloDEV24"
                                 target="_blank"
@@ -88,6 +129,7 @@ export const Header = () => {
                             </a>
                         </li>
 
+                        {/* Instagram */}
                         <li key={'instagram-header'}>
                             <a  href="https://www.instagram.com/danielo.dev24/?hl=es"
                                 target="_blank"
@@ -104,6 +146,7 @@ export const Header = () => {
                             </a>
                         </li>
 
+                        {/* Email: mailto: abre el cliente de correo, por eso no lleva target="_blank" */}
                         <li key={'email-header'}>
                             <a  href="mailto:danielruizdeveloper@gmail.com"
                                 aria-label="Enviar correo electrónico">
@@ -119,11 +162,17 @@ export const Header = () => {
                     </ul>
                </div>
 
+               {/* Columna derecha: frase animada y reloj */}
                <div className="contenedor-frase">
+
+                {/* Frase en máquina de escribir: la primera parte va como texto normal
+                    y lo que sobra (la palabra "código.") se envuelve en un <span> para darle otro estilo */}
                 <p className="frase">
                     {texto.slice(0, PRIMERA_PARTE.length)}
                     <span>{texto.slice(PRIMERA_PARTE.length)}</span>
                 </p>
+
+                {/* Reloj en vivo, formato 24 h con segundos (p. ej. 14:05:09) */}
                 <div className="contendor-reloj">
                     <p className="reloj">
                         {
