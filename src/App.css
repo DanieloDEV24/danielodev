@@ -1,41 +1,241 @@
-#root {
-  /* max-width: 1280px;
-  margin: 0 auto; */
-  padding: 0;
+/* main {
+  width: 100%;
+  display: flex;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.barra-lateral {
+  width: 70px;
+  background-color: #2FF3D1;
+} */
+
+/* .separador {
+  width: 100%;
+  box-sizing: border-box;
+} */
+
+section.home {
+  width: 100%;
+  display: flex;
+  height: 80vh;
+  padding: 3rem 10rem;
+  text-align: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  box-sizing: border-box;
+  position: relative;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+section.home h1 {
+  font-size: 8rem;
+  line-height: .8;
+  margin: 0;
+}
+
+section.home h1 span {
+  color: #0A0B0C;                      /* relleno: mismo tono que el fondo o más oscuro */
+  -webkit-text-stroke: 4px #2FF3D1;    /* se ve solo la mitad exterior, así que dobla el grosor */
+  paint-order: stroke fill;
+}
+
+section.home p {
+  width: 60%;
+}
+
+section.home p strong {
+  color: #2FF3D1;
+}
+
+section.home footer {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+section.home footer a {
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: .75rem 1.5rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 20%;
+}
+
+section.home footer a.primary-link {
+  background-color: #2FF3D1;
+  color: #0A0B0C;
+}
+
+section.home footer a.secondary-link {
+  color: #ffffff;
+  border: 1px solid #ffffff90;
+}
+
+header.header-principal {
+  display: flex;
+  width: 100%;
+  height: 150px;
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 3rem;
+}
+
+header.header-principal a.logo {
+  width: 250px;
+}
+
+header.header-principal a.logo img {
+  width: 100%;
+}
+
+header.header-principal nav {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 30px;
+  padding: .5rem;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  width: 35%;
+}
+
+
+header.header-principal nav a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.1rem;
+  width: 30%;
+  padding: .5rem 1.2rem;
+  border-radius: 25px;
+}
+
+header.header-principal nav a.active {
+  background-color: #2FF3D1;
+  color: #0A0B0C;
+
+}
+
+#icono-dev {
+  width: 11%;
+  position: absolute;
+  top: 14%;
+  left: 42%;
+  transform: rotate(12deg);
+}
+
+#icono-flecha {
+  width: 11%;
+  position: absolute;
+  top: 28%;
+  right: 20%;
+  transform: scaleX(-1) rotate(-120deg);
+  z-index: -1;
+}
+
+#icono-hastag {
+  width: 7%;
+  position: absolute;
+  top: 41%;
+  right: 31%;
+  transform: rotate(105deg);
+  
+}
+
+#flecha {
+  width: 7%;
+  position: absolute;
+  top: 31%;
+  left: 29%;
+}
+
+/**
+ * Contenedor del sello: círculo turquesa en la esquina del hero.
+ * Al ser position: absolute, también sirve de referencia para el anillo de texto.
+ */
+.circulo-flecha {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background-color: #2FF3D1;
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  bottom: 10%;
+  right: 10%;
+}
+
+/**
+ * Anillo de texto: cubre todo el círculo y queda por detrás de la flecha.
+ */
+.sello-texto {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  animation: girar-sello 20s linear infinite; /* 15s por vuelta, velocidad constante */
+}
+
+/* Una vuelta completa */
+@keyframes girar-sello {
   to {
     transform: rotate(360deg);
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Respeta a quien tiene activado "reducir movimiento" en su sistema */
+@media (prefers-reduced-motion: reduce) {
+  .sello-texto {
+    animation: none;
   }
 }
 
-.card {
-  padding: 2em;
+/* Texto del borde: negrita y del mismo negro del fondo */
+.sello-texto text {
+  font-size: 15px;
+  letter-spacing: 1px;
+  fill: #0a0b0d;
 }
 
-.read-the-docs {
-  color: #888;
+/**
+ * Flecha central (tu PNG).
+ * position: relative para que quede por encima del SVG.
+ */
+.circulo-flecha img {
+  position: relative;
+  width: 40%;
 }
+
+.cartel-dev-docente {
+  position: absolute;
+  background-color: #ffffff;
+  color: #0A0B0C;
+  width: 170px;
+  display: flex;
+  align-items: center;
+  font-size: .7rem;
+  justify-content: center;
+  gap: .3rem;
+  padding: .5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  top: 10%;
+  left: 10%;
+  transform: rotate(-10deg);
+}
+
+
+
