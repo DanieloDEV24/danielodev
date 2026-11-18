@@ -767,33 +767,26 @@
         width: 160px;
     }
 }
-
 /* =====================================================================
    DESDE AQUÍ: sustituye en tu responsive.css todo lo que va desde
    @media (max-width: 766px) hasta el final del archivo.
 
-   Los iconos y el cartel del home ahora se miden desde el CENTRO de la
-   sección: top: calc(50% - Npx). Así se mueven igual que el título
-   (centrado) y la composición se ve igual en cualquier alto de móvil.
+   Tus valores de iconos y cartel están tal cual los tenías. Lo único
+   nuevo es .circulo-flecha (el sello): ahora también se mide desde el
+   CENTRO de la sección (top: calc(50% + Npx)), igual que el título, los
+   botones y los iconos, en lugar de desde el borde inferior.
 
-   Alturas de referencia usadas para convertir tus % antiguos
-   (offset = % x alto - alto / 2):
-   - 766px:          alto de sección 1024 (tablet vertical, 100vh)
-   - 700px a 431px:  alto de sección 990  (110vh sobre un móvil de 900)
-   - 430px a 391px:  alto 840 (100vh)
-   - 390px a 351px:  alto 844 (100vh)
-   - 350px o menos:  alto 640 (100vh)
-   Si algún icono queda unos px desplazado, ajusta solo su Npx.
-
-   Requisitos: section.home con position: relative y sin transform en
-   estos bloques (Motion lo escribe en línea).
+   - En el bloque de 766px se pone bottom: auto una sola vez; los bloques
+     más pequeños solo cambian top, width y height.
+   - Se han quitado todos los bottom del sello a partir de 766px.
+   - Requisitos: section.home con position: relative y sin transform.
    ===================================================================== */
 
 @media screen and (max-width: 766px) {
 
     section.home {
-        height: 100vh;   /* fallback navegadores antiguos */
-        height: 100svh;  /* altura estable: Safari ya no corta el sello */
+        height: 110vh;   /* fallback navegadores antiguos */
+        height: 110svh;  /* altura estable: Safari ya no corta el sello */
         padding-top: 5rem;
     }
 
@@ -804,7 +797,8 @@
     .circulo-flecha {
         width: 125px;
         height: 125px;
-        bottom: 2rem;
+        bottom: auto;                  /* ahora manda top */
+        top: calc(50% + 280px);
     }
 
     #icono-flecha {
@@ -835,7 +829,7 @@
     }
 
     .cartel-dev-docente {
-        top: calc(50% - 348px);
+        top: calc(50% - 285px);
     }
 }
 
@@ -893,7 +887,11 @@
     .circulo-flecha {
         width: 125px;
         height: 125px;
-        bottom: 2rem;
+        top: calc(50% + 300px);
+    }
+
+    .cartel-dev-docente {
+        top: calc(50% - 330px);
     }
 
     #icono-flecha {
@@ -1016,7 +1014,7 @@
     }
 
     .circulo-flecha {
-        bottom: 4rem;
+        top: calc(50% + 306px);
     }
 
     header.header-principal nav.nav-movil a {
@@ -1180,7 +1178,7 @@
     .circulo-flecha {
         width: 110px;
         height: 110px;
-        bottom: 6rem;
+        top: calc(50% + 286px);
     }
 
     section.home {
@@ -1249,8 +1247,8 @@
 
     section.home {
         padding-top: 0rem;
-        height: 100vh;
-        height: 100svh;
+        height: 110vh;
+        height: 110svh;
     }
 
     section.home > p {
@@ -1289,7 +1287,7 @@
     }
 
     .circulo-flecha {
-        bottom: 8rem;
+        top: calc(50% + 184px);
     }
 
     header.header-principal nav.nav-movil a {
@@ -1302,12 +1300,9 @@
     .circulo-flecha {
         width: 90px;
         height: 90px;
-        bottom: 1.5rem;
+        top: calc(50% + 165px);
     }
 }
-
-/* (Eliminado el bloque max-width: 420px y max-height: 820px:
-   tenía los mismos valores que el de 430px y ya queda cubierto.) */
 
 @media screen and (max-width: 415px) {
 
@@ -1435,6 +1430,12 @@
 
     .cartel-dev-docente {
         top: calc(50% - 250px);
+    }
+
+    .circulo-flecha {
+        width: 90px;
+        height: 90px;
+        top: calc(50% + 150px);
     }
 }
 
