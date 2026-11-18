@@ -1,5 +1,5 @@
 import { motion, MotionConfig, type Variants } from "motion/react"
-import logo from '../assets/images/logo-oscuro.png'
+import logo from '../assets/images/logo-oscuro.webp'
 import { useScrollSpy } from '../hooks/useScrollSpy'
 import { useEffect, useState, type CSSProperties } from 'react';
 
