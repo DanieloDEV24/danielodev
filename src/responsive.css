@@ -1,0 +1,1413 @@
+@media screen and (max-width: 1800px) {
+    #icono-flecha {
+        right: 18%;
+        top: 39%;
+    }
+
+    #icono-hastag {
+        top: 52%;
+        right: 30%;
+    }
+
+    #icono-dev {
+        width: 11%;
+        position: absolute;
+        top: 26%;
+        left: 42%;
+    }
+
+    #flecha {
+        top: 42%;
+        left: 28%;
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    #icono-flecha {
+        right: 17%;
+        top: 39%;
+        width: 12%;
+    }
+
+    #icono-hastag {
+        top: 52%;
+        right: 30%;
+    }
+
+    #icono-dev {
+        width: 12%;
+        position: absolute;
+        top: 26%;
+        left: 41%;
+    }
+
+    #flecha {
+        top: 41%;
+        left: 26%;
+        width: 8%;
+    }
+}
+
+@media screen and (max-width: 1650px) {
+    section.proyectos > ul.grid-proyectos {
+        gap: 1rem;
+    }
+}
+
+@media screen and (max-width: 1600px) {
+    #icono-flecha {
+        right: 16%;
+        top: 40%;
+        width: 12%;
+    }
+
+    #icono-hastag {
+        top: 53%;
+        right: 29%;
+    }
+
+    #icono-dev {
+        width: 12%;
+        position: absolute;
+        top: 26%;
+        left: 41%;
+    }
+
+    #flecha {
+        top: 41%;
+        left: 25%;
+        width: 8%;
+    }
+}
+
+@media screen and (max-width: 1585px) {
+    section.proyectos > ul.grid-proyectos {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-rows: repeat(3, minmax(0, 1fr));
+        grid-template-areas: "pr1 pr1 pr2"
+                             "pr3 pr4 pr5"
+                             "pr6 pr6 .";
+    }
+}
+
+@media screen and (max-width: 1560px) {
+    header.header-principal nav {
+        width: 55%;
+    }
+
+    header.header-principal {
+        align-items: start;
+    }
+}
+
+
+@media screen and (max-width: 1500px) {
+    #icono-flecha {
+        right: 13%;
+        top: 41%;
+        width: 13%;
+    }
+
+    #icono-hastag {
+        top: 52%;
+        right: 27%;
+        width: 8%;
+    }
+
+    #icono-dev {
+        width: 14%;
+        position: absolute;
+        top: 26%;
+        left: 39%;
+    }
+
+    #flecha {
+        top: 40%;
+        left: 23%;
+        width: 9%;
+    }
+}
+
+@media screen and (max-width: 1430px) {
+
+    header.header-principal nav {
+        width: 60%;
+    }
+
+}
+
+@media screen and (max-width: 1400px) {
+      #icono-flecha {
+        right: 10%;
+        top: 40%;
+        width: 15%;
+    }
+
+    #icono-hastag {
+        top: 51%;
+        right: 25%;
+        width: 9%;
+    }
+
+    #icono-dev {
+        width: 15%;
+        position: absolute;
+        top: 25%;
+        left: 39%;
+    }
+
+    #flecha {
+        top: 39%;
+        left: 21%;
+        width: 10%;
+    }
+
+    section.home > p {
+        width: 100% !important;
+    }
+
+    section.proyectos > h2, section.sobreMi > h2, section.herramientas > h2, section.contacto h2 {
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 1350px) {
+    #icono-flecha {
+        right: 10%;
+        top: 38%;
+        width: 15%;
+    }
+
+    #icono-hastag {
+        top: 50%;
+        right: 24%;
+        width: 9%;
+    }
+
+    #flecha {
+        top: 38%;
+        left: 20%;
+        width: 10%;
+    }
+
+    #icono-dev {
+        width: 15%;
+        position: absolute;
+        top: 26%;
+        left: 39%;
+    }
+
+    .cartel-dev-docente {
+        top: 20%;
+        left: 7%;
+    }
+
+    .circulo-flecha {
+        bottom: 5%;
+        right: 5%;
+    }
+}
+
+@media screen and (max-width: 1342px) {
+    #icono-dev {
+        width: 15%;
+        position: absolute;
+        top: 24%;
+        left: 30%;
+    }
+
+    #icono-flecha {
+        right: 15%;
+        top: 39%;
+        width: 15%;
+    }
+
+    #icono-hastag {
+        top: 52%;
+        right: 35%;
+        width: 9%;
+    }
+
+    #flecha {
+        top: 35%;
+        left: 18%;
+        width: 11%;
+        z-index: -2;
+    }
+
+    section.home h1 span {
+        z-index: -3;
+        position: relative;
+    }
+}
+
+@media screen and (max-width: 1316px) {
+    header.header-principal nav {
+        width: 65%;
+    }
+}
+
+@media screen and (max-width: 1305px) {
+    section.sobreMi .cards .card-dev h3, section.sobreMi .cards .card-docente h3 {
+        margin: 0;
+        font-size: 2.2rem;
+        line-height: .9;
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    #icono-dev {
+        width: 15%;
+        position: absolute;
+        top: 26%;
+        left: 35%;
+    }
+
+    #flecha {
+        top: 35%;
+        left: 18%;
+        width: 11%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 1250px) {
+    #icono-flecha {
+        right: 13%;
+        top: 39%;
+        width: 16%;
+    }
+
+    #icono-dev {
+        width: 16%;
+        position: absolute;
+        top: 26%;
+        left: 35%;
+    }
+
+    #icono-hastag {
+        top: 52%;
+        right: 35%;
+        width: 10%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 18%;
+        width: 12%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 1230px) {
+    header.header-principal .nav-principal {
+        display: none;
+    }
+
+    header.header-principal button {
+        display: block;
+    }
+
+    header.header-principal.header-oscuro, header.header-principal{
+        height: 90px;
+        align-items: center;
+        
+    }
+
+    header.header-principal a.logo {
+        align-self: center;
+        padding-top: 10px;
+    }
+
+    .circulo-flecha {
+        width: 140px;
+        height: 140px;
+        right: 7%;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    #icono-flecha {
+        right: 11%;
+        top: 38%;
+        width: 16%;
+    }
+
+    #icono-dev {
+        width: 16%;
+        position: absolute;
+        top: 26%;
+        left: 33%;
+    }
+
+    #icono-hastag {
+        top: 53%;
+        right: 35%;
+        width: 10%;
+    }
+
+    #flecha {
+        top: 37%;
+        left: 18%;
+        width: 12%;
+        z-index: -2;
+    }
+
+    section.proyectos, section.sobreMi, section.herramientas, section.contacto, footer.footer-principal {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+
+    section.proyectos > ul.grid-proyectos {
+        /* 2 columnas iguales */
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+        /* Reset de las filas heredadas del grid de 3 columnas */
+        grid-template-rows: none;
+        grid-auto-rows: auto;
+
+        /* Todas las filas con el mismo nº de celdas y todas las áreas definidas */
+        grid-template-areas:
+            "pr1 pr1"
+            "pr2 pr3"
+            "pr6 pr6"
+            "pr4 pr5";  
+    }
+
+    section.contacto .enlaces-contcato {
+       flex-wrap: wrap;
+       gap: 1rem;
+    }
+
+    section.contacto .enlaces-contcato a {
+        width: 45%;
+    }
+
+}
+
+@media screen and (max-width: 1155px) {
+    section.home > p{
+        width: 80%;
+    }
+
+    section.home footer a {
+        width: 30%;
+    }
+
+    .cartel-dev-docente {
+        top: 24%;
+    }
+}
+
+@media screen and (max-width: 1145px) {
+    section.home h1 {
+        font-size: 7rem;
+        line-height: .8;
+        margin: 0;
+    }
+
+    #icono-flecha {
+        right: 14%;
+        top: 40%;
+        width: 15%;
+    }
+
+    #icono-dev {
+        width: 15%;
+        position: absolute;
+        top: 28%;
+        left: 33%;
+    }
+
+    #icono-hastag {
+        top: 53%;
+        right: 35%;
+        width: 9%;
+    }
+
+    #flecha {
+        top: 38%;
+        left: 20%;
+        width: 11%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 1104px) {
+    section.home > p{
+        width: 85%;
+    }
+
+    #icono-flecha {
+        right: 14%;
+        top: 41%;
+        width: 15%;
+    }
+
+    .circulo-flecha {
+        width: 120px;
+        height: 120px;
+    }
+
+    section.sobreMi .cards {
+        flex-direction: column;
+        width: 100%;
+        gap: 2rem;
+    }
+
+    section.sobreMi .cards .card-dev, section.sobreMi .cards .card-docente {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 1060px) {
+    section.home > p{
+        width: 85%;
+    }
+
+    #icono-flecha {
+        right: 14%;
+        top: 41%;
+        width: 15%;
+    }
+
+    .circulo-flecha {
+        width: 120px;
+        height: 120px;
+    }
+    
+    section.home {
+        padding-left: 6rem;
+        padding-right: 6rem;
+    }
+}
+
+@media screen and (max-width: 1024px) {
+    section.home {
+        padding-top: 7rem;
+    }
+
+    .cartel-dev-docente {
+        top: 20%;
+    }
+
+    #icono-flecha {
+        right: 8%;
+        top: 37%;
+        width: 15%;
+        z-index: -99;
+    }
+
+    #icono-dev {
+        width: 16%;
+        position: absolute;
+        top: 26%;
+        left: 40%;
+    }
+
+    #icono-hastag {
+        top: 46%;
+        right: 24%;
+        width: 9%;
+    }
+
+    #flecha {
+        top: 38%;
+        left: 20%;
+        width: 11%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    #icono-flecha {
+        right: 7%;
+        top: 37%;
+        width: 15%;
+        z-index: -99;
+    }
+
+    .footer-card {
+        flex-wrap: nowrap
+    }
+
+    .footer-card a {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 980px) {
+    #icono-flecha {
+        right: 6%;
+        top: 37%;
+        width: 15%;
+        z-index: -99;
+    }
+}
+
+@media screen and (max-width: 954px) {
+    #icono-flecha {
+        right: 13%;
+        top: 37%;
+        width: 15%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 47%;
+        right: 35%;
+        width: 9%;
+    }
+
+    #icono-dev {
+        width: 16%;
+        position: absolute;
+        top: 26%;
+        left: 36%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 18%;
+        width: 11%;
+        z-index: -2;
+    }
+
+    .footer-card {
+        flex-wrap: wrap
+    }
+
+    .footer-card a {
+        width: 100%;
+        padding: .6rem 2rem;
+    }
+}
+
+@media screen and (max-width: 930px) {
+    section.proyectos > h2, section.sobreMi > h2, section.herramientas > h2, section.contacto h2 {
+        font-size: 4rem;
+        margin-bottom: 0;
+    }
+
+    section.proyectos, section.sobreMi, section.herramientas, section.contacto, footer.footer-principal {
+        padding-left: 4rem;
+        padding-right: 4rem;
+        gap: .7rem;
+    }
+
+    section.proyectos > h2 span, section.sobreMi > h2 span, section.herramientas > h2 span, section.contacto h2 span {
+        color: #0A0B0C;
+        -webkit-text-stroke: 2px #2FF3D1;
+        paint-order: stroke fill;
+    }
+}
+
+@media screen and (max-width: 900px) {
+    #icono-flecha {
+        right: 11%;
+        top: 37%;
+        width: 16%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 47%;
+        right: 35%;
+        width: 9%;
+    }
+
+    #icono-dev {
+        width: 16%;
+        position: absolute;
+        top: 26%;
+        left: 36%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 18%;
+        width: 11%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    #icono-flecha {
+        right: 9%;
+        top: 37%;
+        width: 17%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 47%;
+        right: 35%;
+        width: 10%;
+    }
+
+    #icono-dev {
+        width: 18%;
+        position: absolute;
+        top: 26%;
+        left: 36%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 16%;
+        width: 12%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 840px) {
+    section.proyectos, section.sobreMi, section.herramientas, section.contacto, footer.footer-principal {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+@media screen and (max-width: 817px) {
+    section.home > p{
+        width: 100%;
+    }
+
+    .circulo-flecha {
+        bottom: 5%;
+    }
+}
+
+@media screen and (max-width: 815px) {
+    
+    #icono-flecha {
+        right: 7%;
+        top: 37%;
+        width: 17%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 47%;
+        right: 35%;
+        width: 10%;
+    }
+
+    #icono-dev {
+        width: 18%;
+        position: absolute;
+        top: 26%;
+        left: 36%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 15%;
+        width: 12%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 808px) {
+    section.contacto .enlaces-contcato a {
+        width: 100%;
+        padding: .8rem;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    section.home {
+        padding-left: 5rem;
+        padding-right: 5rem;
+    }
+
+    section.home footer {
+        gap: 1rem;
+    }
+
+    section.home footer a {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 770px) {
+    #icono-flecha {
+        right: 5%;
+        top: 37%;
+        width: 18%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 47%;
+        right: 33%;
+        width: 12%;
+    }
+
+    #icono-dev {
+        width: 19%;
+        position: absolute;
+        top: 26%;
+        left: 31%;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 12%;
+        width: 13%;
+        z-index: -2;
+    }
+
+    .circulo-flecha {
+        width: 130px;
+        height: 130px;
+        bottom: 0%;
+    }
+
+    .cartel-dev-docente {
+        width: 160px;
+    }
+}
+
+@media screen and (max-width: 766px) {
+    
+    section.home {
+        height: 100vh;
+        padding-top: 5rem;
+    }
+    
+    section.home h1 {
+        width: 95%;
+    }
+
+    .circulo-flecha {
+        width: 125px;
+        height: 125px;
+        bottom: 3%;
+    }
+
+    #icono-flecha {
+        right: 19%;
+        top: 30%;
+        width: 20%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 48%;
+        right: 13%;
+        width: 14%;
+    }
+
+    #icono-dev {
+        width: 21%;
+        position: absolute;
+        top: 20%;
+        left: 20%;
+    }
+
+    #flecha {
+        top: 40%;
+        left: 22%;
+        width: 15%;
+        z-index: -2;
+    }
+
+    .cartel-dev-docente {
+        top: 16%;
+    }
+}
+
+@media screen and (max-width: 750px) {
+   section.proyectos > ul.grid-proyectos {
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        grid-template-rows: none;
+        grid-auto-rows: auto;
+        grid-template-areas: "pr1"
+                             "pr2"
+                             "pr3"
+                             "pr4"
+                             "pr5"
+                             "pr6";
+        gap: 2rem;
+    }
+
+    section.proyectos > h2,
+    section.sobreMi > h2,
+    section.herramientas > h2,
+    section.contacto h2 {
+        /* Divide la palabra con guion al llegar al final de la línea */
+        hyphens: auto;
+        -webkit-hyphens: auto; /* Safari antiguo */
+
+        /* Respaldo: si aun así no cabe, rompe la palabra (sin guion) */
+        overflow-wrap: break-word;
+
+        /* Opcional: reparte mejor las líneas en títulos */
+        text-wrap: balance;
+
+        text-align: start;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    section.home footer {
+        flex-wrap: wrap;
+    }
+
+
+    section.home footer a {
+        width: 100%;
+    }
+
+    section.sobreMi {
+        padding-top: 3rem;
+    }
+
+    section.home {
+        height: 110vh;
+        padding-top: 3rem;
+    }
+
+    .circulo-flecha {
+        width: 125px;
+        height: 125px;
+        bottom: 3%;
+    }
+
+    #icono-flecha {
+        right: 19%;
+        top: 28%;
+        width: 20%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 44%;
+        right: 11%;
+        width: 14%;
+    }
+
+    #icono-dev {
+        width: 21%;
+        position: absolute;
+        top: 19%;
+        left: 20%;
+    }
+
+    #flecha {
+        top: 38%;
+        left: 22%;
+        width: 15%;
+        z-index: -2;
+    }
+
+}
+
+@media screen and (max-width: 691px) {
+    section.home {
+        padding-left: 4rem;
+        padding-right: 4rem;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    section.herramientas ul.contenedor-herramientas li .stacks-herramientas span {
+        padding: .5rem 1.5rem;
+    }
+}
+
+@media screen and (max-width: 650px) {
+    .cartel-dev-docente {
+        top: 13%;
+    }
+
+    #icono-flecha {
+        right: 15%;
+        top: 26%;
+        width: 22%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 42%;
+        right: 9%;
+        width: 16%;
+    }
+
+    #icono-dev {
+        width: 22%;
+        position: absolute;
+        top: 17%;
+        left: 17%;
+    }
+
+    #flecha {
+        top: 35%;
+        left: 22%;
+        width: 17%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 600px) {
+
+    .cartel-dev-docente {
+        top: 11%;
+        transform: rotate(-10deg) !important;
+    }
+    section.home > p {
+        font-size: 1rem;
+    }
+
+    section.home h1 {
+        font-size: 6rem;
+        line-height: .8;
+        margin: 0;
+    }
+
+    #icono-flecha {
+        right: 18%;
+        top: 28%;
+        width: 20%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 42%;
+        right: 10%;
+        width: 15%;
+    }
+
+    #icono-dev {
+        width: 20%;
+        position: absolute;
+        top: 21%;
+        left: 17%;
+    }
+
+    #flecha {
+        top: 35%;
+        left: 22%;
+        width: 16%;
+        z-index: -2;
+    }
+
+    .cartel-dev-docente {
+        top: 15%;
+    }
+
+    .circulo-flecha {
+        bottom: 4rem;
+    }
+
+    header.header-principal nav.nav-movil a {
+        font-size: 3.5rem;
+    }
+
+    header.header-principal nav.nav-movil.open {
+        gap: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    #icono-flecha {
+        right: 16%;
+        top: 28%;
+        width: 20%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 21%;
+        position: absolute;
+        top: 20.5%;
+        left: 17%;
+    }
+
+    #flecha {
+        top: 34%;
+        left: 20%;
+        width: 18%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 43%;
+        right: 8%;
+        width: 15%;
+    }
+
+
+}
+
+@media screen and (max-width: 535px) {
+    header.header-principal nav.nav-movil a {
+        font-size: 3rem;
+    } 
+}
+
+@media screen and (max-width: 520px) {
+
+    #flecha {
+        top: 37%;
+        left: 20%;
+        width: 18%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 23%;
+        position: absolute;
+        top: 23%;
+        left: 15%;
+    }
+
+    #icono-flecha {
+        right: 14%;
+        top: 30%;
+        width: 22%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 43%;
+        right: 5%;
+        width: 17%;
+    }
+
+    section.home {
+        padding-left: 3rem;
+        padding-right: 3rem;
+    }
+}
+
+
+
+@media screen and (max-width: 500px) {
+    
+    section.proyectos > h2,
+    section.sobreMi > h2,
+    section.herramientas > h2,
+    section.contacto h2 {
+        font-size: 3rem;
+    }
+
+    section.sobreMi .cards .card-dev h3, section.sobreMi .cards .card-docente h3{
+        margin: 0;
+        font-size: 1.8rem;
+        line-height: .9;
+    }
+
+    section.proyectos, section.sobreMi, section.herramientas, section.contacto, footer.footer-principal {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    section.herramientas ul.contenedor-herramientas li .stacks-herramientas span {
+        width: 32%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    section.herramientas ul.contenedor-herramientas li .stacks-herramientas {
+        justify-content: center;
+    }
+
+    header.header-principal a.logo {
+        width: 200px;
+        z-index: 9999;
+    }
+
+    
+}
+
+@media screen and (max-width: 490px) {
+    .cartel-dev-docente {
+        top: 12%;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    section.home h1 {
+        font-size: 5.5rem;
+        line-height: .8;
+        margin: 0;
+    }
+
+    #flecha {
+        top: 36%;
+        left: 18%;
+        width: 21%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 25%;
+        position: absolute;
+        top: 24%;
+        left: 13%;
+    }
+
+    #icono-flecha {
+        right: 13%;
+        top: 31%;
+        width: 25%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 42%;
+        right: 3%;
+        width: 19%;
+    }
+
+    .circulo-flecha {
+        width: 110px;
+        height: 110px;
+        bottom: 10%;
+    }
+
+    section.home {
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    header.header-principal nav.nav-movil a {
+        font-size: 2.7rem;
+    }
+
+    header.header-principal nav.nav-movil.open {
+        gap: 2.7rem;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    section.herramientas ul.contenedor-herramientas li .stacks-herramientas span {
+        width: 100%;
+        padding: .7rem 1rem;
+    }
+}
+
+@media screen and (max-width: 440px) {
+    .cartel-dev-docente {
+        top: 14%;
+    }
+
+    #icono-flecha {
+        right: 13%;
+        top: 28%;
+        width: 24%;
+        z-index: -2;
+    }
+}
+
+@media screen and (max-width: 430px) {
+    section.contacto .contenedor-contacto {
+        padding: 2rem;
+    }
+
+    section.home h1 {
+        font-size: 5rem;
+        line-height: .8;
+        margin: 0;
+    }
+
+    section.home {
+        padding-top: 0rem;
+        height: 90vh;
+    }
+
+
+
+    section.home > p {
+        display: none;
+    }
+
+    #flecha {
+        top: 35%;
+        left: 18%;
+        width: 23%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 27%;
+        position: absolute;
+        top: 23%;
+        left: 13%;
+    }
+
+    #icono-flecha {
+        right: 13%;
+        top: 31%;
+        width: 25%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 43%;
+        right: 3%;
+        width: 19%;
+    }
+
+    .cartel-dev-docente {
+        top: 17%;
+    }
+
+    .circulo-flecha {
+        bottom: 15%;
+    }
+
+    /* section.home {
+        height: 100vh;
+    } */
+
+    header.header-principal nav.nav-movil a {
+        font-size: 2.5rem;
+    }
+}
+
+@media screen and (max-width: 415px) {
+    
+    section.proyectos > h2,
+    section.sobreMi > h2,
+    section.herramientas > h2,
+    section.contacto h2 {
+        font-size: 2.5rem;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    
+
+    header.header-principal nav.nav-movil.open {
+        padding-top: 7rem;
+        padding-left: 2rem;
+        padding-right: 2rem;
+    }
+
+    header.header-principal {
+        padding-left: 1rem;
+        padding-right: 2rem;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    #flecha {
+        top: 38%;
+        left: 18%;
+        width: 19%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 25%;
+        position: absolute;
+        top: 25%;
+        left: 13%;
+    }
+
+    #icono-flecha {
+        right: 13%;
+        top: 31%;
+        width: 24%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 42%;
+        right: 3%;
+        width: 18%;
+    }
+
+    .cartel-dev-docente {
+        top: 17%;
+    }
+
+    section.home h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media screen and (max-width: 380px) {
+    section.sobreMi .cards .card-dev, section.sobreMi .cards .card-docente {
+        padding: 1.5rem;
+    }
+
+    section.proyectos, section.sobreMi, section.herramientas, section.contacto, footer.footer-principal {
+        padding-left: 1.7rem;
+        padding-right: 1.7rem;
+    }
+}
+
+@media screen and (max-width: 370px) {
+    
+    header.header-principal nav.nav-movil a {
+        font-size: 2.2rem;
+    }
+}
+
+@media screen and (max-width: 365px) {
+    
+    section.proyectos > h2,
+    section.sobreMi > h2,
+    section.herramientas > h2,
+    section.contacto h2 {
+        font-size: 2.2rem;
+    }
+
+}
+
+@media screen and (max-width: 350px) {
+
+    section.home h1 {
+        font-size: 4rem;
+    }
+
+    #flecha {
+        top: 37%;
+        left: 18%;
+        width: 20%;
+        z-index: -2;
+    }
+
+    #icono-dev {
+        width: 23%;
+        position: absolute;
+        top: 27%;
+        left: 15%;
+    }
+
+    #icono-flecha {
+        right: 13%;
+        top: 32%;
+        width: 23%;
+        z-index: -2;
+    }
+
+    #icono-hastag {
+        top: 42%;
+        right: 4%;
+        width: 17%;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    
+    section.contacto .contenedor-contacto {
+        padding: 1.5rem;
+    }
+
+    header.header-principal nav.nav-movil a {
+        font-size: 2rem;
+    }
+
+}
+
+
+
+

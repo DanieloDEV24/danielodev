@@ -1,3 +1,68 @@
+/**
+ * Variable del fondo.
+ * Color en RGB sin comas para poder usarlo con alpha:
+ * rgb(var(--glow-turquesa) / 0.12)
+ */
+:root {
+  --glow-turquesa: 47 243 209; /* #2FF3D1 */
+}
+
+/**
+ * Destellos desenfocados (turquesa #2FF3D1).
+ * Solo tres, para que el fondo respire:
+ *  1. Home: esquina superior derecha, grande.
+ *  2. Proyectos: lateral izquierdo, a media altura.
+ *  3. Entre Proyectos y Herramientas: lateral derecho, justo en la unión de las dos secciones.
+ *
+ * Formato: ellipse <radio-x> <radio-y> at <x> <y>.
+ * El degradado termina en transparent 70%, así que solo llega al 70% del radio:
+ * mientras (centro ± 0.7 × radio-y) quede dentro de la sección no se corta con la vecina.
+ */
+
+/* Home: esquina superior derecha (el centro está en el borde, así que solo se ve un cuarto) */
+section.home {
+  background:
+    radial-gradient(ellipse 60% 100% at 100% 0%, rgb(var(--glow-turquesa) / 0.18), transparent 70%);
+}
+
+/**
+ * Proyectos: dos capas.
+ *  - Lateral izquierdo a media altura (% de la sección).
+ *  - Mitad SUPERIOR del destello de la unión: centrado en el borde de abajo (100%).
+ */
+section.proyectos {
+  background:
+    /* Mitad de arriba del destello de la unión (borde inferior, lado derecho) */
+    radial-gradient(ellipse 800px 500px at 100% 100%, rgb(var(--glow-turquesa) / 0.15), transparent 70%),
+    /* Lateral izquierdo, centrado en vertical */
+    radial-gradient(ellipse 55% 70% at 0% 50%, rgb(var(--glow-turquesa) / 0.15), transparent 70%);
+}
+
+/**
+ * Herramientas: mitad INFERIOR del destello de la unión, centrado en el borde de arriba (0%).
+ * Mismos radios en px y mismo alpha que arriba para que las dos mitades casen sin corte.
+ */
+section.herramientas {
+  background:
+    radial-gradient(ellipse 800px 500px at 100% 0%, rgb(var(--glow-turquesa) / 0.15), transparent 70%);
+}
+
+/**
+ * Grano global (ruido fractal en SVG).
+ * Va por encima de todo con opacidad muy baja para unificar la textura
+ * y romper los degradados lisos. Si prefieres que no toque el texto,
+ * cambia z-index a -1.
+ */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 10000;       /* Por encima del header (9999) */
+  pointer-events: none; /* No bloquea clics */
+  opacity: 0.05;        /* Sube a 0.08 si no se nota */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
 /* main {
   width: 100%;
   display: flex;
@@ -13,10 +78,17 @@
   box-sizing: border-box;
 } */
 
+/**
+ * Sección hero (Home).
+ * Contiene el fondo de rejilla (::before) y el contenido centrado.
+ */
 section.home {
+  --grid-size: 56px;                       /* Tamaño de cada celda de la rejilla */
+  --grid-line: rgba(47, 243, 209, 0.07);   /* Líneas turquesa sutiles (#2FF3D1) */
+
   width: 100%;
   display: flex;
-  height: 80vh;
+  height: 92vh;
   padding: 3rem 10rem;
   text-align: center;
   flex-direction: column;
@@ -25,28 +97,71 @@ section.home {
   gap: 2rem;
   box-sizing: border-box;
   position: relative;
+  isolation: isolate; /* Contexto de apilamiento: la rejilla (z-index -1) queda dentro del hero */
+  overflow: hidden;   /* Recorta la rejilla a los límites de la sección */
+  padding-top: 12rem;
 }
 
+/**
+ * Fondo de rejilla.
+ * Pseudo-elemento para no afectar al contenido ni a los clics.
+ */
+section.home::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;          /* Detrás del contenido */
+  pointer-events: none; /* No bloquea clics */
+
+  /* Líneas verticales + horizontales formando las celdas */
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),  /* Líneas verticales */
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px); /* Líneas horizontales */
+  background-size: var(--grid-size) var(--grid-size);
+
+  /* Visible arriba, se desvanece hacia abajo para enlazar con "Sobre mí" */
+  -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+}
+
+/**
+ * Título principal del hero.
+ */
 section.home h1 {
   font-size: 8rem;
   line-height: .8;
   margin: 0;
 }
 
+/**
+ * Palabras con efecto contorno turquesa dentro del título.
+ */
 section.home h1 span {
   color: #0A0B0C;                      /* relleno: mismo tono que el fondo o más oscuro */
   -webkit-text-stroke: 4px #2FF3D1;    /* se ve solo la mitad exterior, así que dobla el grosor */
   paint-order: stroke fill;
 }
 
+/**
+ * Párrafo de presentación.
+ */
 section.home p {
   width: 60%;
 }
 
+section.home > p {
+  width: 70%;
+  font-size: 1.2rem;
+}
+
+/* Palabras destacadas en turquesa */
 section.home p strong {
   color: #2FF3D1;
 }
 
+/**
+ * Contenedor de los botones (Ver proyectos / Hablemos).
+ */
 section.home footer {
   display: flex;
   gap: 2rem;
@@ -55,6 +170,7 @@ section.home footer {
   width: 100%;
 }
 
+/* Estilo base compartido por los dos botones */
 section.home footer a {
   text-decoration: none;
   font-size: 1.1rem;
@@ -68,11 +184,13 @@ section.home footer a {
   width: 20%;
 }
 
+/* Botón principal: relleno turquesa */
 section.home footer a.primary-link {
   background-color: #2FF3D1;
   color: #0A0B0C;
 }
 
+/* Botón secundario: solo borde */
 section.home footer a.secondary-link {
   color: #ffffff;
   border: 1px solid #ffffff90;
@@ -80,17 +198,49 @@ section.home footer a.secondary-link {
 
 header.header-principal {
   display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
-  height: 150px;
   box-sizing: border-box;
   padding: 1rem 2rem;
+  padding-right: 3rem;
+  padding-top: calc(1rem + env(safe-area-inset-top, 0px));
+  height: calc(150px + env(safe-area-inset-top, 0px));
   align-items: center;
   justify-content: space-between;
-  padding-right: 3rem;
+  z-index: 9999;
+  transition: height 0.3s ease, padding 0.3s ease;
+}
+
+header.header-principal::before {
+  content: "";
+  position: absolute;
+  top: -300px;            /* se sale por arriba y cubre toda la franja de Safari */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: rgba(10, 11, 12, 0.85);  /* más opaco: que no se lea el texto de detrás */
+  -webkit-backdrop-filter: blur(16px) saturate(160%);
+  backdrop-filter: blur(16px) saturate(160%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+header.header-principal.header-oscuro {
+  height: calc(120px + env(safe-area-inset-top, 0px));
+}
+
+header.header-principal.header-oscuro::before {
+  opacity: 1;
 }
 
 header.header-principal a.logo {
   width: 250px;
+  z-index: 9999;
 }
 
 header.header-principal a.logo img {
@@ -109,7 +259,7 @@ header.header-principal nav {
   -webkit-backdrop-filter: blur(12px) saturate(160%);
   border: 1px solid rgba(255, 255, 255, 0.18);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
-  width: 35%;
+  width: 50%;
 }
 
 
@@ -120,6 +270,7 @@ header.header-principal nav a {
   width: 30%;
   padding: .5rem 1.2rem;
   border-radius: 25px;
+  transition: all .2s ease-in-out;
 }
 
 header.header-principal nav a.active {
@@ -131,34 +282,39 @@ header.header-principal nav a.active {
 #icono-dev {
   width: 11%;
   position: absolute;
-  top: 14%;
+  top: 28%;
   left: 42%;
   transform: rotate(12deg);
+  animation: flotar4 3s ease-in-out infinite;
 }
 
 #icono-flecha {
   width: 11%;
   position: absolute;
-  top: 28%;
+  top: 40%;
   right: 20%;
   transform: scaleX(-1) rotate(-120deg);
   z-index: -1;
+  animation: flotar3 3s ease-in-out infinite;
 }
 
 #icono-hastag {
   width: 7%;
   position: absolute;
-  top: 41%;
+  top: 51%;
   right: 31%;
   transform: rotate(105deg);
+  animation: flotar 3s ease-in-out infinite;
   
 }
 
 #flecha {
   width: 7%;
   position: absolute;
-  top: 31%;
+  top: 42%;
   left: 29%;
+  animation: flotar2 3s ease-in-out infinite;
+  
 }
 
 /**
@@ -174,7 +330,7 @@ header.header-principal nav a.active {
   display: flex;
   align-items: center;
   justify-content: center;
-  bottom: 10%;
+  bottom: 5%;
   right: 10%;
 }
 
@@ -232,10 +388,946 @@ header.header-principal nav a.active {
   padding: .5rem;
   border-radius: 10px;
   font-weight: bold;
-  top: 10%;
+  top: 25%;
   left: 10%;
-  transform: rotate(-10deg);
+  transform: rotate(-15deg);
+}
+
+/* @keyframes flotar {
+  0%,
+  100% {
+    transform: translateY(0) rotate(105deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(105deg); 
+  }
+}
+
+@keyframes flotar2{
+  0%,
+  100% {
+    transform: translateY(0)
+  }
+  50% {
+    transform: translateY(-5px) 
+  }
+}
+
+@keyframes flotar3 {
+  0%,
+  100% {
+    transform: translateY(0) scaleX(-1) rotate(-120deg);
+  }
+  50% {
+    transform: translateY(-5px) scaleX(-1) rotate(-120deg); 
+  }
+}
+
+@keyframes flotar4 {
+  0%,
+  100% {
+    transform: translateY(0) rotate(12deg);
+  }
+  50% {
+    transform: translateY(-5px) rotate(12deg); 
+  }
+} */
+
+
+
+@media (prefers-reduced-motion: reduce) {
+  #icono-hastag {
+    animation: none;
+  }
+}
+
+section.proyectos, section.sobreMi, section.herramientas, section.contacto {
+  width: 100%;
+  display: flex;
+  padding: 5rem;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
+  gap: 2rem;
+  box-sizing: border-box;
+}
+
+section.proyectos > h2, section.sobreMi > h2, section.herramientas > h2, section.contacto h2 {
+  font-size: 6rem;
+}
+
+section.proyectos > h2 span, section.sobreMi > h2 span, section.herramientas > h2 span, section.contacto h2 span {
+  color: #0A0B0C;                      /* relleno: mismo tono que el fondo o más oscuro */
+  -webkit-text-stroke: 4px #2FF3D1;/* se ve solo la mitad exterior, así que dobla el grosor */
+  paint-order: stroke fill;
 }
 
 
+section.contacto h2 span {
+  color: transparent;
+  -webkit-text-stroke: 2px #2FF3D1;
+}
 
+.proyecto1 {grid-area: pr1;}
+.proyecto2 {grid-area: pr2;}
+.proyecto3 {grid-area: pr3;}
+.proyecto4 {grid-area: pr4;}
+.proyecto5 {grid-area: pr5;}
+.proyecto6 {grid-area: pr6;}
+
+/**
+ * Grid de proyectos.
+ * - width: 100% -> el ul ocupa todo el ancho de la sección (en un flex con align-items: start se encoge)
+ * - minmax(0, 1fr) -> las 4 columnas son iguales aunque el contenido sea más ancho
+ * - Sin align-items: las tarjetas de una fila se estiran a la altura de la más alta
+ */
+section.proyectos > ul.grid-proyectos {
+  list-style: none;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-areas: "pr1 pr1 pr2 pr3"
+                       "pr4 pr5 pr6 pr6";
+  gap: 1.5rem;
+  padding: 0;
+  margin: 0;
+}
+
+section.proyectos > ul.grid-proyectos li p {
+  margin: 0;
+}
+
+/**
+ * Tarjeta de proyecto.
+ * Es flex en columna: el footer se ancla abajo con margin-top: auto.
+ * Se elimina el min-height fijo: la altura la marca la tarjeta más alta de la fila.
+ */
+section.proyectos > ul.grid-proyectos li {
+  width: 100%;
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  text-align: start; 
+  position: relative;
+  gap: 1rem;
+}
+
+
+section.proyectos > ul.grid-proyectos li img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 15px;
+}
+
+section.proyectos > ul.grid-proyectos li h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+}
+
+/* Etiqueta de estado sobre la imagen */
+section.proyectos > ul.grid-proyectos li span.estado {
+  position: absolute;
+  left: 40px;
+  top: 40px;
+  z-index: 1;
+  color: #2FF3D1;
+  background-color: #0A0B0C80;
+  padding: .3rem .7rem;
+  font-size: .9rem;
+  border-radius: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: .4rem;
+}
+
+/**
+ * Punto parpadeante del estado.
+ * Antes: "li span div" -> ahora apunta a .circle, sea div o span.
+ * display: block para que respete el ancho y el alto.
+ */
+section.proyectos > ul.grid-proyectos li span.estado .circle {
+  display: block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50px;
+  background-color: #2FF3D1;
+  animation: parpadeo 1.6s ease-in-out infinite;
+}
+
+.stacks {
+  display: flex;
+  flex-wrap: wrap;               /* si hay muchos stacks, pasan a la línea siguiente */
+  align-items: center;
+  justify-content: start;
+  gap: .4rem 1rem;
+  color: #2FF3D1;
+}
+
+/**
+ * Pie de la tarjeta, anclado abajo.
+ * Antes: position: absolute + bottom: 20px (salía del flujo y podía solaparse con el texto).
+ * Ahora: margin-top: auto empuja el footer al final del li, que es flex en columna.
+ */
+.footer-card {
+  margin-top: auto;
+  width: 100%;
+  padding-top: 1rem;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: .75rem;
+}
+
+/* Base común de los botones del footer (antes: width: 30% fijo) */
+.footer-card a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: .3rem;
+  text-decoration: none;
+  font-size: .95rem;
+  font-weight: 600;
+  color: #ffffff;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  padding: .4rem 1rem;
+  transition: border-color .2s, color .2s, opacity .2s;
+}
+
+.footer-card a.btn-github:hover {
+  border-color: #2FF3D1;
+  color: #2FF3D1;
+}
+
+/* Botón de la web publicada: relleno turquesa */
+.footer-card a.btn-web {
+  background-color: #2FF3D1;
+  color: #0A0B0C;
+  border-color: #2FF3D1;
+}
+
+.footer-card a.btn-web:hover {
+  opacity: .85;
+}
+
+/* Texto para los proyectos en desarrollo */
+.footer-card .disponible-pronto {
+  color: #ffffff90;
+  font-size: .95rem;
+}
+
+@keyframes parpadeo {
+  0%,
+  100% {
+    opacity: 100%;
+  }
+  50% {
+    opacity: 20%; 
+  }
+}
+
+/* Sin parpadeo si el usuario tiene activado "reducir movimiento" */
+@media (prefers-reduced-motion: reduce) {
+  section.proyectos > ul.grid-proyectos li span.estado .circle {
+    animation: none;
+  }
+}
+
+section.sobreMi .cards {
+  display: flex;
+  align-items: stretch;
+  justify-content: start;
+  gap: 1rem;
+}
+
+
+section.sobreMi .cards .card-dev {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  
+  width: 50%;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: start;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+}
+
+section.sobreMi .cards .card-dev h3 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: .9;
+}
+
+section.sobreMi .cards .card-dev small {
+  color: #2FF3D1;
+}
+
+section.sobreMi .cards .card-docente {
+  background-color: #2FF3D1;
+  color: #0a0b0d;
+  width: 50%;
+  box-sizing: border-box;
+  padding: 2rem;
+  text-align: start;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+}
+
+section.sobreMi .cards .card-docente h3 {
+  margin: 0;
+  font-size: 2.5rem;
+  line-height: .9;
+  color: #0A0B0C;
+}
+
+section.sobreMi .cards .card-socente small {
+  color: #0A0B0C;
+}
+
+section.herramientas ul.contenedor-herramientas {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 370px), 1fr));
+  gap: 1rem;
+  width: 100%;
+}
+
+section.herramientas ul.contenedor-herramientas li {
+  text-align: start;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 1.5rem;
+  
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  
+  padding: 2rem;
+  border-radius: 20px;
+  box-sizing: border-box;
+}
+
+section.herramientas ul.contenedor-herramientas li small {
+  color: #2FF3D1;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+
+section.herramientas ul.contenedor-herramientas li .stacks-herramientas {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+section.herramientas ul.contenedor-herramientas li .stacks-herramientas span {
+  padding: .2rem 1rem;
+  border: 1px solid;
+  border-radius: 50px;
+  font-size: .9rem;
+  background-color: #14161A;
+  transition: all .15s ease-in-out;
+}
+
+section.herramientas ul.contenedor-herramientas li .stacks-herramientas span:hover {
+  border-color: #2FF3D1;
+  color: #2FF3D1;
+  cursor: pointer;
+}
+
+section.herramientas ul.contenedor-herramientas li:last-of-type {
+  background-color: #2FF3D1;
+}
+
+section.herramientas ul.contenedor-herramientas li:last-of-type small {
+  color: #0A0B0C;
+}
+
+section.herramientas ul.contenedor-herramientas li:last-of-type .stacks-herramientas span {
+  color: #2FF3D1;
+}
+
+section.herramientas ul.contenedor-herramientas li:last-of-type .stacks-herramientas span:hover {
+  background-color: #313641;
+}
+
+section.contacto .contenedor-contacto {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: start;
+  gap: 1rem;
+  padding: 3rem 2rem;
+  border-radius: 20px;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px) saturate(160%);
+  -webkit-backdrop-filter: blur(12px) saturate(160%);
+  /* border: 1px solid rgba(255, 255, 255, 0.18); */
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+
+  box-sizing: border-box;
+  width: 100%;
+}
+
+section.contacto .enlaces-contcato {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 2rem;
+  width: 100%;
+}
+
+section.contacto .enlaces-contcato a {
+  text-decoration: none;
+  color: #d7dadf;
+  border: 1px solid;
+  padding: .7rem .7rem;
+  border-radius: 25px;
+  transition:  .2s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .2rem;
+  width: 100%;
+}
+
+section.contacto .enlaces-contcato a:hover {
+  background-color: #2FF3D1;
+  color: #0A0B0C;
+  border-color: #2FF3D1;
+}
+
+section.contacto .desgradado-contacto {
+    background:
+    /* resplandor: elipse anclada abajo a la izquierda que se desvanece */
+    radial-gradient(
+      ellipse 360px 240px at 18% 100%,
+      rgba(45, 226, 200, 0.35) 0%,
+      rgba(45, 226, 200, 0.12) 45%,
+      transparent 75%
+    );
+
+    width: 100%;
+    border-radius: 20px;
+}
+
+section.contacto {
+  padding-bottom: 0;
+}
+
+footer.footer-principal {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  padding: 5rem;
+  padding-bottom: 2rem;
+}
+
+
+.mb {
+  --mb-color: #fff;   /* color de los puntos */
+  --mb-open: #2FF3D1;         /* color de la X cuando está abierto */
+  --mb-ease: cubic-bezier(0.7, 0, 0.2, 1);
+
+  position: relative;
+  width: 64px;
+  height: 64px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--mb-color);
+  cursor: pointer;
+  transition: color 0.5s var(--mb-ease), transform 0.25s var(--mb-ease);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mb:active { transform: scale(0.92); }
+.mb:focus-visible { outline: 3px solid var(--mb-open); outline-offset: 4px; }
+
+.mb-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  border-radius: 4px;
+  background: currentColor;
+  transform: translate(-50%, -50%) translate(var(--x), var(--y)) rotate(var(--r));
+  transition: transform 0.6s var(--mb-ease), width 0.6s var(--mb-ease), height 0.6s var(--mb-ease);
+}
+
+/* Cerrado: cuadrado de 4 puntos */
+.mb-dot--a { --x: -9px; --y: -9px; --r: 0deg; }
+.mb-dot--b { --x: 9px;  --y: -9px; --r: 0deg; }
+.mb-dot--c { --x: -9px; --y: 9px;  --r: 0deg; }
+.mb-dot--d { --x: 9px;  --y: 9px;  --r: 0deg; }
+
+/* Abierto: los puntos se estiran y forman una X */
+.mb[aria-expanded="true"] { color: var(--mb-open); }
+.mb[aria-expanded="true"] .mb-dot { width: 20px; height: 3px; }
+.mb[aria-expanded="true"] .mb-dot--a { --x: -7px; --y: -7px; --r: 45deg; }
+.mb[aria-expanded="true"] .mb-dot--d { --x: 7px;  --y: 7px;  --r: 45deg; }
+.mb[aria-expanded="true"] .mb-dot--b { --x: 7px;  --y: -7px; --r: -45deg; }
+.mb[aria-expanded="true"] .mb-dot--c { --x: -7px; --y: 7px;  --r: -45deg; }
+
+@media (prefers-reduced-motion: reduce) {
+  .mb, .mb-dot { transition-duration: 0.01s !important; }
+}
+
+header.header-principal nav.nav-movil {
+  display: none;
+}
+
+header.header-principal nav.nav-movil.open {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 2rem;
+  position: fixed;
+  inset: 0;                 /* top/right/bottom/left: 0 */
+  z-index: 40;
+  padding: 0rem 3rem;
+  padding-top: 8rem;
+  
+  background: #0A0B0C;
+}
+
+header.header-principal nav.nav-movil a {
+  color: #f4f2ff;
+  text-decoration: none;
+  font-size: clamp(2.6rem, 13vw, 4.6rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  padding: 0;
+}
+
+/* El botón debe quedar por encima del menú para poder cerrarlo */
+.mb { position: relative; z-index: 50; }
+
+/**
+ * Menú móvil (nav.nav-movil)
+ * Overlay a pantalla completa con revelado circular desde el botón y fondo de rejilla.
+ * IMPORTANTE: nunca usar display: none aquí, porque impide que la transición se ejecute.
+ * El estado cerrado se oculta con visibility + clip-path + pointer-events.
+ */
+header.header-principal nav.nav-movil {
+  /* Punto de donde nace el círculo = centro de tu botón */
+  --cx: calc(100% - 56px);
+  --cy: 56px;
+  --ease: cubic-bezier(0.7, 0, 0.2, 1);
+
+  /* Rejilla (misma que section.home) */
+  --grid-size: 56px;                       /* Tamaño de cada celda */
+  --grid-line: rgba(47, 243, 209, 0.07);   /* Líneas turquesa sutiles (#2FF3D1) */
+
+  /* Pantalla completa */
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  max-width: none;
+  height: 100vh;
+  height: 100dvh;
+  margin: 0;
+  padding: 8rem 3rem calc(110px + env(safe-area-inset-bottom, 0px));
+  box-sizing: border-box;
+  z-index: 40;
+  isolation: isolate; /* La rejilla (z-index -1) queda dentro del menú */
+
+  /* Anula los estilos de "cápsula" heredados de header.header-principal nav */
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+  background: #0A0B0C;
+
+  display: flex; /* siempre flex: así la transición sí se ve */
+  flex-direction: column;
+  justify-content: start;
+  align-items: flex-start;
+  gap: 2rem;
+  text-align: left;
+
+  /* Cerrado: círculo de 0px en el botón, sin clics ni foco */
+  visibility: hidden;
+  pointer-events: none;
+  clip-path: circle(0px at var(--cx) var(--cy));
+  transition: clip-path 0.7s var(--ease), visibility 0s 0.7s;
+}
+
+/**
+ * Fondo de rejilla del menú.
+ * Pseudo-elemento para no afectar al contenido ni a los clics.
+ */
+header.header-principal nav.nav-movil::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;          /* Detrás de los enlaces */
+  pointer-events: none; /* No bloquea clics */
+
+  /* Líneas verticales + horizontales formando las celdas */
+  background-image:
+    linear-gradient(to right, var(--grid-line) 1px, transparent 1px),   /* Líneas verticales */
+    linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px);  /* Líneas horizontales */
+  background-size: var(--grid-size) var(--grid-size);
+
+  /* Visible arriba, se desvanece hacia abajo */
+  -webkit-mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 75%, transparent 100%);
+}
+
+/* Abierto: el círculo crece hasta cubrir toda la pantalla */
+header.header-principal nav.nav-movil.open {
+  visibility: visible;
+  pointer-events: auto;
+  clip-path: circle(150vmax at var(--cx) var(--cy));
+  transition: clip-path 0.8s var(--ease), visibility 0s;
+}
+
+/* Enlaces */
+header.header-principal nav.nav-movil a {
+  width: auto;
+  margin: 0;
+  padding: 0; /* anula el padding heredado de "header nav a" */
+  color: #f4f2ff;
+  text-decoration: none;
+  white-space: nowrap;
+  font-family: 'Clash Display';
+  font-size: clamp(2.2rem, 11vw, 4rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1.08;
+  text-transform: uppercase;
+
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.4s ease, transform 0.6s var(--ease);
+}
+
+/* Entran escalonados al abrir */
+header.header-principal nav.nav-movil.open a {
+  opacity: 1;
+  transform: none;
+  transition-delay: calc(0.25s + var(--i, 0) * 0.07s);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.header-principal nav.nav-movil,
+  header.header-principal nav.nav-movil a {
+    transition-duration: 0.01s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+header.header-principal button {
+  display: none;
+}
+
+header.header-principal nav.nav-movil.open span, header.header-principal nav.nav-movil span {
+
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  font-size: 2rem;
+  gap: .7rem;
+  color: #2FF3D1;
+  margin-top: .7rem;
+}
+
+header.header-principal nav.nav-movil.open span a, header.header-principal nav.nav-movil span a {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: initial;
+  color: #2FF3D1;
+}
+
+/* ===== Página 404 (pegar en App.css). Todas las clases llevan el prefijo e404- para no chocar con las tuyas ===== */
+
+/**
+ * Contenedor de la página y variables.
+ * Si ya tienes estos tokens globales en :root, borra las variables y usa los tuyos.
+ */
+.e404 {
+  --fondo: #0d0e0e;
+  --turquesa: #33f0d1;
+  --texto: #f1f1f4;
+  --texto-suave: #b9bcc0;
+  --fuente-titulo: "Archivo", "Arial Black", sans-serif;
+  --fuente-texto: "Inter", system-ui, sans-serif;
+  --fuente-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 6rem 1.5rem 4rem;
+  padding-top: 0%;
+  padding-bottom: 0%;
+  color: var(--texto);
+  font-family: var(--fuente-texto);
+  background-color: var(--fondo);
+  /* Resplandor turquesa arriba a la derecha + rejilla sutil */
+  background-image:
+    radial-gradient(ellipse at 100% 0%, rgba(51, 240, 209, 0.16), transparent 45%),
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: auto, 48px 48px, 48px 48px;
+}
+
+/* ---------- 404 gigante con el 0 en contorno ---------- */
+.e404-numero {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  font-family: var(--fuente-titulo);
+  font-weight: 900;
+  font-stretch: 125%;
+  font-size: clamp(6rem, 22vw, 15rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* Cero solo con contorno turquesa */
+.e404-cero {
+  margin: 0 0.02em;
+  color: transparent;
+  -webkit-text-stroke: 4px var(--turquesa);
+}
+
+.e404-subtitulo {
+  margin: 0.5rem 0 0;
+  text-align: center;
+  font-size: clamp(1.1rem, 2vw, 1.5rem);
+  color: var(--texto-suave);
+}
+
+.e404-subtitulo strong {
+  color: var(--turquesa);
+}
+
+/* ---------- Terminal de cristal ---------- */
+.e404-terminal {
+  width: min(100%, 44rem);
+  margin-top: 2.2rem;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 1.2rem;
+  background: rgba(255, 255, 255, 0.045);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+}
+
+/* Barra superior con los puntos de ventana */
+.e404-barra {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  font: 400 0.8rem var(--fuente-mono);
+  color: var(--texto-suave);
+}
+
+.e404-barra i {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Primer punto en turquesa */
+.e404-barra i:first-child {
+  background: var(--turquesa);
+}
+
+.e404-barra span {
+  margin-left: 0.6rem;
+}
+
+/* Zona de salida: con scroll propio para que no crezca sin límite */
+.e404-log {
+  min-height: 13.5rem;
+  max-height: 20rem;
+  overflow-y: auto;
+  padding: 1.1rem 1.2rem 1.2rem;
+  font: 400 0.95rem/1.7 var(--fuente-mono);
+  cursor: text;
+}
+
+.e404-log > div {
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.e404-prompt {
+  color: var(--turquesa);
+  font-weight: 700;
+}
+
+.e404-error {
+  color: #ff7a7a;
+}
+
+/* Rutas del listado `ls` */
+.e404-enlace {
+  margin-right: 1rem;
+  color: var(--turquesa);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Fila del input interactivo */
+.e404-fila {
+  display: flex;
+  gap: 0.6rem;
+}
+
+.e404-fila input {
+  flex: 1;
+  min-width: 0;
+  border: 0;
+  outline: 0;
+  background: none;
+  color: var(--texto);
+  font: inherit;
+  caret-color: var(--turquesa);
+}
+
+/* Resalta la fila cuando el input tiene el foco */
+.e404-fila:focus-within {
+  margin: 0 -0.4rem;
+  padding: 0 0.4rem;
+  border-radius: 0.4rem;
+  background: rgba(51, 240, 209, 0.06);
+}
+
+/* ---------- Acciones ---------- */
+.e404-acciones {
+  position: relative;
+  margin-top: 2.2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.e404-boton-primario,
+.e404-boton-secundario {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  min-width: 13rem;
+  padding: 1rem 2rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+
+.e404-boton-primario {
+  background: var(--turquesa);
+  color: #0d0e0e;
+}
+
+.e404-boton-secundario {
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: var(--texto);
+}
+
+.e404-boton-primario:hover,
+.e404-boton-secundario:hover {
+  transform: translateY(-2px);
+}
+
+.e404-boton-secundario:hover {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+/* Foco visible para navegación con teclado */
+.e404-boton-primario:focus-visible,
+.e404-boton-secundario:focus-visible,
+.e404-enlace:focus-visible {
+  outline: 3px solid var(--texto);
+  outline-offset: 3px;
+}
+
+/* Flecha dibujada que señala el botón principal */
+.e404-flecha {
+  position: absolute;
+  left: -5.5rem;
+  top: -2.6rem;
+  width: 4.5rem;
+  fill: none;
+  stroke: var(--turquesa);
+  stroke-width: 9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* Respeta a quien desactiva las animaciones en el sistema */
+@media (prefers-reduced-motion: reduce) {
+  .e404-boton-primario,
+  .e404-boton-secundario {
+    transition: none;
+  }
+}
+
+/* ---------- Móvil ---------- */
+@media (max-width: 720px) {
+  .e404 {
+    padding-top: 5rem;
+  }
+
+  .e404-cero {
+    -webkit-text-stroke-width: 3px;
+  }
+
+  .e404-flecha {
+    display: none;
+  }
+
+  .e404-acciones {
+    flex-direction: column;
+    width: 100%;
+    gap: 1rem;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "danielo24.dev",
+  "short_name": "danielo24",
+  "description": "Daniel Ruiz, desarrollador Full Stack y docente",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0A0B0C",
+  "theme_color": "#0A0B0C",
+  "icons": [
+    { "src": "/favicon.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

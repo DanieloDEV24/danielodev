@@ -1,13 +1,68 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>danielodev</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+    <!-- Colores del navegador -->
+    <meta name="theme-color" content="#0A0B0C">
+    <meta name="color-scheme" content="dark">
+
+    <!-- Iconos y manifest -->
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="manifest" href="/site.webmanifest">
+
+    <!-- SEO básico -->
+    <title>danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente</title>
+    <meta name="description" content="Soy Daniel Ruiz, desarrollador Full Stack y docente. Me gusta convertir ideas en aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <meta name="author" content="Daniel Ruiz Soto">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <link rel="canonical" href="https://danielo24.dev/">
+
+    <!-- Open Graph: vista previa en LinkedIn, WhatsApp, Facebook... -->
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="danielo24.dev">
+    <meta property="og:url" content="https://danielo24.dev/">
+    <meta property="og:title" content="danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente">
+    <meta property="og:description" content="Aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <meta property="og:image" content="https://danielo24.dev/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="danielo24.dev, webs que se notan. Daniel Ruiz, desarrollador Full Stack y docente.">
+    <meta property="og:locale" content="es_ES">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente">
+    <meta name="twitter:description" content="Aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <meta name="twitter:image" content="https://danielo24.dev/og-image.png">
+    <meta name="twitter:image:alt" content="danielo24.dev, webs que se notan. Daniel Ruiz, desarrollador Full Stack y docente.">
+
+    <!-- Datos estructurados para Google: quién eres y qué haces -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Daniel Ruiz Soto",
+      "alternateName": "Daniel Ruiz",
+      "url": "https://danielo24.dev/",
+      "image": "https://danielo24.dev/og-image.png",
+      "jobTitle": "Desarrollador web Full Stack y docente",
+      "description": "Desarrollador Full Stack y docente de desarrollo web.",
+      "knowsLanguage": "es",
+      "sameAs": [
+        "https://github.com/DanieloDEV24"
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>
+
+    <!-- Mensaje para quien tenga JavaScript desactivado -->
+    <noscript>Esta web necesita JavaScript para funcionar.</noscript>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
