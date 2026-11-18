@@ -1,11 +1,11 @@
 import { motion, MotionConfig, type Variants } from "motion/react"
 import { ESTADOS_PROYECTOS } from "../Enums/enums"
-import mockup1 from "../assets/images/mockup-reservalo.png"
-import mockup2 from "../assets/images/mockup-rotulos.jpeg"
-import mockup3 from "../assets/images/mockup-turismo.jpeg"
-import mockup4 from "../assets/images/mockup-danielsur.jpeg"
-import mockup5 from "../assets/images/mockup-j10.jpeg"
-import mockup6 from "../assets/images/mockup-myno.jpeg"
+import mockup1 from "../assets/images/mockup-reservalo.webp"
+import mockup2 from "../assets/images/mockup-rotulos.webp"
+import mockup3 from "../assets/images/mockup-turismo.webp"
+import mockup4 from "../assets/images/mockup-danielsur.webp"
+import mockup5 from "../assets/images/mockup-j10.webp"
+import mockup6 from "../assets/images/mockup-myno.webp"
 
 /**
  * subida

@@ -1,5 +1,5 @@
 import { motion, type Variants } from "motion/react"
-import flechaOscura from "../assets/images/flecha-oscura.png"
+import flechaOscura from "../assets/images/flecha-oscura.webp"
 
 /**
  * Texto que rodea el sello. Se repite para cubrir toda la circunferencia

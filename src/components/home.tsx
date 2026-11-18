@@ -1,9 +1,9 @@
 import { motion, MotionConfig, type Variants } from "motion/react"
 import { ArrowIcon } from "./icons/arrowIcon"
-import iconoDev from "../assets/images/icono-dev.png"
-import flechaCurva from "../assets/images/flecha-curva.png"
-import iconoHastag from "../assets/images/icono-hashtag.png"
-import flecha from "../assets/images/flecha.png"
+import iconoDev from "../assets/images/icono-dev.webp"
+import flechaCurva from "../assets/images/flecha-curva.webp"
+import iconoHastag from "../assets/images/icono-hashtag.webp"
+import flecha from "../assets/images/flecha.webp"
 
 import { Sello } from "./sello"
 
