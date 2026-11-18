@@ -768,13 +768,35 @@
     }
 }
 
+/* =====================================================================
+   DESDE AQUÍ: sustituye en tu responsive.css todo lo que va desde
+   @media (max-width: 766px) hasta el final del archivo.
+
+   Los iconos y el cartel del home ahora se miden desde el CENTRO de la
+   sección: top: calc(50% - Npx). Así se mueven igual que el título
+   (centrado) y la composición se ve igual en cualquier alto de móvil.
+
+   Alturas de referencia usadas para convertir tus % antiguos
+   (offset = % x alto - alto / 2):
+   - 766px:          alto de sección 1024 (tablet vertical, 100vh)
+   - 700px a 431px:  alto de sección 990  (110vh sobre un móvil de 900)
+   - 430px a 391px:  alto 840 (100vh)
+   - 390px a 351px:  alto 844 (100vh)
+   - 350px o menos:  alto 640 (100vh)
+   Si algún icono queda unos px desplazado, ajusta solo su Npx.
+
+   Requisitos: section.home con position: relative y sin transform en
+   estos bloques (Motion lo escribe en línea).
+   ===================================================================== */
+
 @media screen and (max-width: 766px) {
-    
+
     section.home {
-        height: 100vh;
+        height: 100vh;   /* fallback navegadores antiguos */
+        height: 100svh;  /* altura estable: Safari ya no corta el sello */
         padding-top: 5rem;
     }
-    
+
     section.home h1 {
         width: 95%;
     }
@@ -782,18 +804,18 @@
     .circulo-flecha {
         width: 125px;
         height: 125px;
-        bottom: 3%;
+        bottom: 2rem;
     }
 
     #icono-flecha {
         right: 19%;
-        top: 30%;
+        top: calc(50% - 170px);
         width: 20%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 48%;
+        top: calc(50% - 20px);
         right: 13%;
         width: 14%;
     }
@@ -801,19 +823,19 @@
     #icono-dev {
         width: 21%;
         position: absolute;
-        top: 20%;
+        top: calc(50% - 255px);
         left: 20%;
     }
 
     #flecha {
-        top: 40%;
+        top: calc(50% - 90px);
         left: 22%;
         width: 15%;
         z-index: -2;
     }
 
     .cartel-dev-docente {
-        top: 16%;
+        top: calc(50% - 348px);
     }
 }
 
@@ -854,7 +876,6 @@
         flex-wrap: wrap;
     }
 
-
     section.home footer a {
         width: 100%;
     }
@@ -865,24 +886,25 @@
 
     section.home {
         height: 110vh;
+        height: 110svh;
         padding-top: 3rem;
     }
 
     .circulo-flecha {
         width: 125px;
         height: 125px;
-        bottom: 3%;
+        bottom: 2rem;
     }
 
     #icono-flecha {
         right: 19%;
-        top: 28%;
+        top: calc(50% - 218px);
         width: 20%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 44%;
+        top: calc(50% - 59px);
         right: 11%;
         width: 14%;
     }
@@ -890,12 +912,12 @@
     #icono-dev {
         width: 21%;
         position: absolute;
-        top: 19%;
+        top: calc(50% - 307px);
         left: 20%;
     }
 
     #flecha {
-        top: 38%;
+        top: calc(50% - 119px);
         left: 22%;
         width: 15%;
         z-index: -2;
@@ -918,31 +940,31 @@
 
 @media screen and (max-width: 650px) {
     .cartel-dev-docente {
-        top: 13%;
+        top: calc(50% - 335px);
     }
 
     #icono-flecha {
         right: 15%;
-        top: 26%;
+        top: calc(50% - 220px);
         width: 22%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 42%;
-        right: 9%;
+        top: calc(50% - 70px);
+        right: 8%;
         width: 16%;
     }
 
     #icono-dev {
         width: 22%;
         position: absolute;
-        top: 17%;
+        top: calc(50% - 300px);
         left: 17%;
     }
 
     #flecha {
-        top: 35%;
+        top: calc(50% - 130px);
         left: 22%;
         width: 17%;
         z-index: -2;
@@ -952,9 +974,10 @@
 @media screen and (max-width: 600px) {
 
     .cartel-dev-docente {
-        top: 11%;
+        top: calc(50% - 320px);
         transform: rotate(-10deg) !important;
     }
+
     section.home > p {
         font-size: 1rem;
     }
@@ -967,13 +990,13 @@
 
     #icono-flecha {
         right: 18%;
-        top: 28%;
+        top: calc(50% - 200px);
         width: 20%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 42%;
+        top: calc(50% - 79px);
         right: 10%;
         width: 15%;
     }
@@ -981,19 +1004,15 @@
     #icono-dev {
         width: 20%;
         position: absolute;
-        top: 21%;
+        top: calc(50% - 270px);
         left: 17%;
     }
 
     #flecha {
-        top: 35%;
+        top: calc(50% - 130px);
         left: 22%;
         width: 16%;
         z-index: -2;
-    }
-
-    .cartel-dev-docente {
-        top: 15%;
     }
 
     .circulo-flecha {
@@ -1012,7 +1031,7 @@
 @media screen and (max-width: 550px) {
     #icono-flecha {
         right: 16%;
-        top: 28%;
+        top: calc(50% - 200px);
         width: 20%;
         z-index: -2;
     }
@@ -1020,36 +1039,35 @@
     #icono-dev {
         width: 21%;
         position: absolute;
-        top: 20.5%;
+        top: calc(50% - 270px);
         left: 17%;
     }
 
     #flecha {
-        top: 34%;
+        top: calc(50% - 145px);
         left: 20%;
         width: 18%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 43%;
+        top: calc(50% - 69px);
         right: 8%;
         width: 15%;
     }
-
 
 }
 
 @media screen and (max-width: 535px) {
     header.header-principal nav.nav-movil a {
         font-size: 3rem;
-    } 
+    }
 }
 
 @media screen and (max-width: 520px) {
 
     #flecha {
-        top: 35%;
+        top: calc(50% - 130px);
         left: 20%;
         width: 18%;
         z-index: -2;
@@ -1058,19 +1076,19 @@
     #icono-dev {
         width: 23%;
         position: absolute;
-        top: 20%;
+        top: calc(50% - 270px);
         left: 15%;
     }
 
     #icono-flecha {
         right: 14%;
-        top: 28%;
+        top: calc(50% - 200px);
         width: 22%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 42%;
+        top: calc(50% - 79px);
         right: 5%;
         width: 17%;
     }
@@ -1081,10 +1099,8 @@
     }
 }
 
-
-
 @media screen and (max-width: 500px) {
-    
+
     section.proyectos > h2,
     section.sobreMi > h2,
     section.herramientas > h2,
@@ -1119,12 +1135,11 @@
         z-index: 9999;
     }
 
-    
 }
 
 @media screen and (max-width: 490px) {
     .cartel-dev-docente {
-        top: 12%;
+        top: calc(50% - 320px);
     }
 }
 
@@ -1136,7 +1151,7 @@
     }
 
     #flecha {
-        top: 34%;
+        top: calc(50% - 140px);
         left: 18%;
         width: 21%;
         z-index: -2;
@@ -1145,27 +1160,27 @@
     #icono-dev {
         width: 25%;
         position: absolute;
-        top: 22%;
+        top: calc(50% - 260px);
         left: 13%;
     }
 
     #icono-flecha {
         right: 13%;
-        top: 29%;
+        top: calc(50% - 195px);
         width: 25%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 41%;
-        right: 3%;
+        top: calc(50% - 80px);
+        right: 4%;
         width: 18%;
     }
 
     .circulo-flecha {
         width: 110px;
         height: 110px;
-        bottom: 10%;
+        bottom: 6rem;
     }
 
     section.home {
@@ -1191,24 +1206,11 @@
     }
 }
 
-@media screen and (max-width: 440px) {
-    .cartel-dev-docente {
-        top: 14%;
-    }
-
-    #icono-flecha {
-        right: 13%;
-        top: 28%;
-        width: 24%;
-        z-index: -2;
-    }
-}
-
 @media screen and (max-width: 438px) {
-    
+
     #flecha {
-        top: 32%;
-        left: 18%;
+        top: calc(50% - 160px);
+        left: 16%;
         width: 23%;
         z-index: -2;
     }
@@ -1216,19 +1218,19 @@
     #icono-dev {
         width: 27%;
         position: absolute;
-        top: 20%;
+        top: calc(50% - 275px);
         left: 13%;
     }
 
     #icono-flecha {
         right: 13%;
-        top: 28%;
+        top: calc(50% - 205px);
         width: 25%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 41%;
+        top: calc(50% - 89px);
         right: 3%;
         width: 18%;
     }
@@ -1248,58 +1250,67 @@
     section.home {
         padding-top: 0rem;
         height: 100vh;
+        height: 100svh;
     }
 
     section.home > p {
         display: none;
     }
 
-    #flecha {
-        top: 35%;
-        left: 18%;
-        width: 23%;
-        z-index: -2;
+    .cartel-dev-docente {
+        top: calc(50% - 277px);
     }
 
     #icono-dev {
         width: 27%;
         position: absolute;
-        top: 23%;
+        top: calc(50% - 227px);
         left: 13%;
     }
 
+    #flecha {
+        width: 23%;
+        top: calc(50% - 126px);
+        left: 18%;
+        z-index: -2;
+    }
+
     #icono-flecha {
-        right: 13%;
-        top: 31%;
         width: 25%;
+        top: calc(50% - 165px);
+        right: 13%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 43%;
-        right: 3%;
         width: 19%;
-    }
-
-    .cartel-dev-docente {
-        top: 17%;
+        top: calc(50% - 59px);
+        right: 3%;
     }
 
     .circulo-flecha {
-        bottom: 15%;
+        bottom: 8rem;
     }
-
-    /* section.home {
-        height: 100vh;
-    } */
 
     header.header-principal nav.nav-movil a {
         font-size: 2.5rem;
     }
 }
 
+/* Móviles bajos (iPhone SE y similares): sello más pequeño para que no choque con los botones */
+@media screen and (max-width: 430px) and (max-height: 700px) {
+    .circulo-flecha {
+        width: 90px;
+        height: 90px;
+        bottom: 1.5rem;
+    }
+}
+
+/* (Eliminado el bloque max-width: 420px y max-height: 820px:
+   tenía los mismos valores que el de 430px y ya queda cubierto.) */
+
 @media screen and (max-width: 415px) {
-    
+
     section.proyectos > h2,
     section.sobreMi > h2,
     section.herramientas > h2,
@@ -1310,7 +1321,6 @@
 }
 
 @media screen and (max-width: 400px) {
-    
 
     header.header-principal nav.nav-movil.open {
         padding-top: 7rem;
@@ -1326,34 +1336,34 @@
 
 @media screen and (max-width: 390px) {
     #flecha {
-        top: 38%;
+        top: calc(50% - 110px);
         left: 18%;
-        width: 19%;
+        width: 21%;
         z-index: -2;
     }
 
     #icono-dev {
-        width: 25%;
+        width: 27%;
         position: absolute;
-        top: 25%;
+        top: calc(50% - 211px);
         left: 13%;
     }
 
     #icono-flecha {
         right: 13%;
-        top: 31%;
-        width: 24%;
+        top: calc(50% - 160px);
+        width: 27%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 42%;
+        top: calc(50% - 68px);
         right: 3%;
         width: 18%;
     }
 
     .cartel-dev-docente {
-        top: 17%;
+        top: calc(50% - 278px);
     }
 
     section.home h1 {
@@ -1373,14 +1383,14 @@
 }
 
 @media screen and (max-width: 370px) {
-    
+
     header.header-principal nav.nav-movil a {
         font-size: 2.2rem;
     }
 }
 
 @media screen and (max-width: 365px) {
-    
+
     section.proyectos > h2,
     section.sobreMi > h2,
     section.herramientas > h2,
@@ -1397,35 +1407,39 @@
     }
 
     #flecha {
-        top: 37%;
+        top: calc(50% - 115px);
         left: 18%;
-        width: 20%;
+        width: 22%;
         z-index: -2;
     }
 
     #icono-dev {
-        width: 23%;
+        width: 25%;
         position: absolute;
-        top: 27%;
+        top: calc(50% - 200px);
         left: 15%;
     }
 
     #icono-flecha {
         right: 13%;
-        top: 32%;
-        width: 23%;
+        top: calc(50% - 150px);
+        width: 25%;
         z-index: -2;
     }
 
     #icono-hastag {
-        top: 42%;
+        top: calc(50% - 70px);
         right: 4%;
-        width: 17%;
+        width: 19%;
+    }
+
+    .cartel-dev-docente {
+        top: calc(50% - 250px);
     }
 }
 
 @media screen and (max-width: 340px) {
-    
+
     section.contacto .contenedor-contacto {
         padding: 1.5rem;
     }
