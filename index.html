@@ -13,9 +13,9 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png">
     <link rel="manifest" href="/site.webmanifest">
 
-    <!-- SEO básico -->
-    <title>danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente</title>
-    <meta name="description" content="Soy Daniel Ruiz, desarrollador Full Stack y docente. Me gusta convertir ideas en aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <!-- SEO básico, orientado a empresas de la comarca de Antequera y Málaga -->
+    <title>Desarrollo web en Antequera y Málaga | danielo24.dev</title>
+    <meta name="description" content="Desarrollador web Full Stack en Antequera. Creo webs y aplicaciones a medida para empresas de la comarca de Antequera, Málaga y alrededores.">
     <meta name="author" content="Daniel Ruiz Soto">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <link rel="canonical" href="https://danielo24.dev/">
@@ -24,35 +24,64 @@
     <meta property="og:type" content="website">
     <meta property="og:site_name" content="danielo24.dev">
     <meta property="og:url" content="https://danielo24.dev/">
-    <meta property="og:title" content="danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente">
-    <meta property="og:description" content="Aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <meta property="og:title" content="Desarrollo web en Antequera y Málaga | danielo24.dev">
+    <meta property="og:description" content="Webs y aplicaciones a medida para empresas de la comarca de Antequera, Málaga y alrededores.">
     <meta property="og:image" content="https://danielo24.dev/og-image.png">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="danielo24.dev, webs que se notan. Daniel Ruiz, desarrollador Full Stack y docente.">
+    <meta property="og:image:alt" content="danielo24.dev, webs que se notan. Desarrollo web en Antequera y Málaga.">
     <meta property="og:locale" content="es_ES">
 
     <!-- Twitter / X -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="danielo24.dev | Daniel Ruiz, desarrollador Full Stack y docente">
-    <meta name="twitter:description" content="Aplicaciones web robustas, bien diseñadas y fáciles de mantener.">
+    <meta name="twitter:title" content="Desarrollo web en Antequera y Málaga | danielo24.dev">
+    <meta name="twitter:description" content="Webs y aplicaciones a medida para empresas de la comarca de Antequera, Málaga y alrededores.">
     <meta name="twitter:image" content="https://danielo24.dev/og-image.png">
-    <meta name="twitter:image:alt" content="danielo24.dev, webs que se notan. Daniel Ruiz, desarrollador Full Stack y docente.">
+    <meta name="twitter:image:alt" content="danielo24.dev, webs que se notan. Desarrollo web en Antequera y Málaga.">
 
-    <!-- Datos estructurados para Google: quién eres y qué haces -->
+    <!-- Fuentes: Archivo (titulares), Inter (texto) y JetBrains Mono (terminal del 404) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@125,900&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+    <!-- Datos estructurados para Google: quién eres, qué ofreces y en qué zona -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Daniel Ruiz Soto",
-      "alternateName": "Daniel Ruiz",
-      "url": "https://danielo24.dev/",
-      "image": "https://danielo24.dev/og-image.png",
-      "jobTitle": "Desarrollador web Full Stack y docente",
-      "description": "Desarrollador Full Stack y docente de desarrollo web.",
-      "knowsLanguage": "es",
-      "sameAs": [
-        "https://github.com/DanieloDEV24"
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://danielo24.dev/#persona",
+          "name": "Daniel Ruiz Soto",
+          "alternateName": "Daniel Ruiz",
+          "url": "https://danielo24.dev/",
+          "image": "https://danielo24.dev/og-image.png",
+          "jobTitle": "Desarrollador web Full Stack y docente",
+          "knowsLanguage": "es",
+          "sameAs": [
+            "https://github.com/DanieloDEV24"
+          ]
+        },
+        {
+          "@type": "ProfessionalService",
+          "@id": "https://danielo24.dev/#servicio",
+          "name": "danielo24.dev | Desarrollo web",
+          "url": "https://danielo24.dev/",
+          "image": "https://danielo24.dev/og-image.png",
+          "description": "Diseño y desarrollo de webs y aplicaciones web a medida para empresas de la comarca de Antequera, Málaga y alrededores.",
+          "founder": { "@id": "https://danielo24.dev/#persona" },
+          "serviceType": [
+            "Desarrollo web",
+            "Aplicaciones web a medida",
+            "Formación en desarrollo web"
+          ],
+          "areaServed": [
+            { "@type": "City", "name": "Antequera" },
+            { "@type": "AdministrativeArea", "name": "Comarca de Antequera" },
+            { "@type": "City", "name": "Málaga" },
+            { "@type": "AdministrativeArea", "name": "Provincia de Málaga" }
+          ]
+        }
       ]
     }
     </script>
