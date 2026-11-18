@@ -1085,7 +1085,7 @@ header.header-principal nav.nav-movil.open span a, header.header-principal nav.n
  */
 .e404 {
   --fondo: #0d0e0e;
-  --turquesa: #33f0d1;
+  --turquesa: #2FF3D1 ;
   --texto: #f1f1f4;
   --texto-suave: #b9bcc0;
   --fuente-titulo: "Archivo", "Arial Black", sans-serif;
